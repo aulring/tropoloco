@@ -1,0 +1,6 @@
+Properties:
+  InternetGatewayId:
+    Ref: myInternetGateway
+  VpcId:
+    Ref: VPC
+Type: AWS::EC2::VPCGatewayAttachment

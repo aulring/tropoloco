@@ -1,0 +1,7 @@
+Properties:
+  Description: A terminal alias
+  Name: MyTerminalAlias
+  RoutingStrategy:
+    Message: Terminal routing strategy message
+    Type: TERMINAL
+Type: AWS::GameLift::Alias

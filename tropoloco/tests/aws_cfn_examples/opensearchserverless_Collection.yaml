@@ -1,0 +1,6 @@
+DependsOn: EncryptionPolicy
+Properties:
+  Description: Search collection
+  Name: test-collection
+  Type: SEARCH
+Type: AWS::OpenSearchServerless::Collection

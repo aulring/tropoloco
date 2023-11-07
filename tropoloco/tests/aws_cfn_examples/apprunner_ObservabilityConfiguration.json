@@ -1,0 +1,1 @@
+{"Type": "AWS::AppRunner::ObservabilityConfiguration", "Properties": {"ObservabilityConfigurationName": "xray-tracing", "TraceConfiguration": {"Vendor": "AWSXRAY"}}}

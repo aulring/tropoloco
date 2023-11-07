@@ -1,0 +1,1 @@
+{"Type": "AWS::EC2::KeyPair", "Properties": {"KeyName": "NameForMyImportedKeyPair", "PublicKeyMaterial": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfp1F7DhdWZdqkYAUGCzcBsLmJeu9izpIyGpmmg7eCz example"}}

@@ -1,0 +1,13 @@
+Properties:
+  AddressFamily: IPv4
+  Entries:
+  - Cidr: 10.0.0.5/32
+    Description: Server 1
+  - Cidr: 10.0.0.10/32
+    Description: Server 2
+  MaxEntries: 10
+  PrefixListName: vpc-1-servers
+  Tags:
+  - Key: Name
+    Value: VPC-1-Servers
+Type: AWS::EC2::PrefixList

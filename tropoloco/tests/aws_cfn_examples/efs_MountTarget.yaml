@@ -1,0 +1,8 @@
+Properties:
+  FileSystemId:
+    Ref: FileSystem
+  SecurityGroups:
+  - Ref: MountTargetSecurityGroup
+  SubnetId:
+    Ref: Subnet
+Type: AWS::EFS::MountTarget

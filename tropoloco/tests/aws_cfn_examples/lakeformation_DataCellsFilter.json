@@ -1,0 +1,1 @@
+{"Type": "AWS::LakeFormation::DataCellsFilter", "Properties": {"TableCatalogId": "12345678910", "DatabaseName": "sample_db", "TableName": "sample_tbl", "Name": "sample_data_cells_filter", "RowFilter": {"FilterExpression": "sample_column_1 > 0"}, "ColumnNames": ["sample_column_1", "sample_column_2"]}}

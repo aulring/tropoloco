@@ -1,0 +1,1 @@
+{"Type": "AWS::EC2::SecurityGroupEgress", "Properties": {"IpProtocol": "tcp", "FromPort": 0, "ToPort": 65535, "DestinationSecurityGroupId": {"Fn::GetAtt": ["TargetSG", "GroupId"]}, "GroupId": {"Fn::GetAtt": ["SourceSG", "GroupId"]}}}

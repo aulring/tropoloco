@@ -1,0 +1,11 @@
+Properties:
+  PolicyDocument: '{ "Name": "data-protection-policy", "Description": "", "Version":
+    "2021-06-01", "Statement": [ { "Sid": "audit-policy", "DataIdentifier": [ "arn:aws:dataprotection::aws:data-identifier/EmailAddress"
+    ], "Operation": { "Audit": { "FindingsDestination": { "CloudWatchLogs": { "LogGroup":
+    "EXISTING_LOG_GROUP_NAME" } } } } }, { "Sid": "redact-policy", "DataIdentifier":
+    [ "arn:aws:dataprotection::aws:data-identifier/EmailAddress" ], "Operation": {
+    "Deidentify": { "MaskConfig": {} } } } ] }'
+  PolicyName: TestPolicy
+  PolicyType: DATA_PROTECTION_POLICY
+  Scope: ALL
+Type: AWS::Logs::AccountPolicy

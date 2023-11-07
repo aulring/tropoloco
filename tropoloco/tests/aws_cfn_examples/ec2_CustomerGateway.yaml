@@ -1,0 +1,5 @@
+Properties:
+  BgpAsn: 65534
+  IpAddress: 12.1.2.3
+  Type: ipsec.1
+Type: AWS::EC2::CustomerGateway

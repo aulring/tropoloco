@@ -1,0 +1,5 @@
+Properties:
+  Configuration: '{"CloudFormationConfiguration":{"HookConfiguration":{"TargetStacks":"ALL","FailureMode":"WARN","Properties":{"limitSize":
+    "1","encryptionAlgorithm": "aws:kms"}}}}'
+  TypeArn: arn:aws:cloudformation:us-west-2:123456789012:type/hook/My-Sample-Hook
+Type: AWS::CloudFormation::HookTypeConfig

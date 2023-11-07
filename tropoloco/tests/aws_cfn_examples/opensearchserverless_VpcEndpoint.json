@@ -1,0 +1,1 @@
+{"Type": "AWS::OpenSearchServerless::VpcEndpoint", "Properties": {"Name": "test-vpcendpoint", "VpcId": "vpc-0d728b8430292b3f4", "SubnetIds": ["subnet-0e855f5722a9598ee"], "SecurityGroupIds": ["sg-03843b03f369eb245"]}}

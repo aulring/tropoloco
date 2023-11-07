@@ -1,0 +1,6 @@
+Properties:
+  Tags:
+  - Key: Use
+    Value: Test
+  Type: ipsec.1
+Type: AWS::EC2::VPNGateway

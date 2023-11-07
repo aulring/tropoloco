@@ -1,0 +1,8 @@
+Properties:
+  MaximumDuration: 2D
+  Name: MyTestSimulation_from_snapshot
+  RoleArn: arn:aws:iam::111122223333:role/weaver-MyTestSimulation-app-role-copy
+  SnapshotS3Location:
+    BucketName: weaver-mytestsimulation-111122223333-artifacts-us-west-2
+    ObjectKey: snapshot/MyTestSimulation_22-12-15_12_00_00-230428-1207-13.zip
+Type: AWS::SimSpaceWeaver::Simulation

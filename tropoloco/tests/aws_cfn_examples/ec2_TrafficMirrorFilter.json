@@ -1,0 +1,1 @@
+{"Type": "AWS::EC2::TrafficMirrorFilter", "Properties": {"Description": "Example traffic mirror filter", "NetworkServices": ["amazon-dns"], "Tags": [{"Key": "Name", "Value": "SampleFilter"}]}}

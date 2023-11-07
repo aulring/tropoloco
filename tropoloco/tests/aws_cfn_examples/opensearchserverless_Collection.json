@@ -1,0 +1,1 @@
+{"Type": "AWS::OpenSearchServerless::Collection", "Properties": {"Name": "test-collection", "Type": "SEARCH", "Description": "Search collection"}, "DependsOn": "EncryptionPolicy"}

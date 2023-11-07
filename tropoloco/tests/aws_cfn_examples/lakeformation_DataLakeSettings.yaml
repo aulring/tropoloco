@@ -1,0 +1,28 @@
+Properties:
+  Admins:
+  - DataLakePrincipalIdentifier: arn:aws:iam::012345678910:role/sample-role1
+  - DataLakePrincipalIdentifier: arn:aws:iam::012345678910:role/sample-role2
+  AllowExternalDataFiltering: true
+  AllowFullTableExternalDataAccess: true
+  AuthorizedSessionTagValueList:
+  - sample_val1
+  - sample_val2
+  CreateDatabaseDefaultPermissions:
+  - Permissions:
+    - ALL
+    Principal:
+      DataLakePrincipalIdentifier: IAM_ALLOWED_PRINCIPALS
+  CreateTableDefaultPermissions:
+  - Permissions:
+    - ALL
+    Principal:
+      DataLakePrincipalIdentifier: IAM_ALLOWED_PRINCIPALS
+  ExternalDataFilteringAllowList:
+  - DataLakePrincipalIdentifier: '333333333333'
+  MutationType: APPEND
+  Parameters:
+    CROSS_ACCOUNT_VERSION: '3'
+  TrustedResourceOwners:
+  - 012345678910
+  - '109876543210'
+Type: AWS::LakeFormation::DataLakeSettings

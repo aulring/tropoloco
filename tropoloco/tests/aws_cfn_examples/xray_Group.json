@@ -1,0 +1,1 @@
+{"Type": "AWS::XRay::Group", "Properties": {"GroupName": "MyGroup", "FilterExpression": "duration > 10", "InsightsConfiguration": {"InsightsEnabled": "false", "NotificationsEnabled": "false"}}}

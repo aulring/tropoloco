@@ -1,0 +1,6 @@
+Properties:
+  NetworkAclId:
+    Ref: myNetworkAcl
+  SubnetId:
+    Ref: mySubnet
+Type: AWS::EC2::SubnetNetworkAclAssociation

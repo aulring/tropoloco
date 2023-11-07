@@ -1,0 +1,13 @@
+Properties:
+  Configuration:
+    ExcludedTimeRanges:
+    - EndTime: 2019-07-01 23:59:59
+      StartTime: 2019-07-01 00:00:00
+    MetricTimeZone: UTC
+  Dimensions:
+  - Name: Memory
+    Value: UsedMemory
+  MetricName: JvmMetric
+  Namespace: AWSSDK/Java
+  Stat: Average
+Type: AWS::CloudWatch::AnomalyDetector

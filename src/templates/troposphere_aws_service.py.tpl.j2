@@ -1,0 +1,30 @@
+from typing import Optional, List, Dict, Tuple, Any
+from pydantic import BaseModel, Field
+
+{% for parsed_tropo_obj in parsed_tropo_objs %}
+class {{parsed_tropo_obj.name}}(BaseModel):
+    """
+    {%- if parsed_tropo_obj.docstring -%}
+    {{ parsed_tropo_obj.docstring.replace('\n', ' ').strip() }}
+    {%- endif -%}
+
+    {%- if parsed_tropo_obj.url -%}
+    References:
+        {{ parsed_tropo_obj.url }}
+    {% endif %}
+    Note:
+        Troposphere data type: {{parsed_tropo_obj.obj_type}}
+    Attributes:
+    {%- for field in parsed_tropo_obj.fields %}
+        - Name: {{field.name}} Type: {{field.type}} Required: {{field.required}} Description: {% if field.scraped_properties %} {{field.scraped_properties.description.replace('\n', ' ').strip()}} {% endif %}
+    {%- endfor %}
+    """
+
+    {%- for field in parsed_tropo_obj.fields %}
+    {%- if field.required == True %}
+    {{field.name}}_: {{field.type}} = Field(description="""{% if field.scraped_properties %} {{field.scraped_properties.description.replace('\n', ' ').strip()}} {% endif %}""", alias="{{field.name}}")
+    {%- else %}
+    {{field.name}}_: Optional[{{field.type}}] = Field(None, description="""Optional Param: {% if field.scraped_properties %} {{field.scraped_properties.description.replace('\n', ' ').strip()}} {% endif %}""", alias="{{field.name}}")
+    {%- endif %}
+    {%- endfor %}
+{% endfor %}

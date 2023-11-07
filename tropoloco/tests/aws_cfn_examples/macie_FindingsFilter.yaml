@@ -1,0 +1,15 @@
+DependsOn: Session
+Properties:
+  Action: ARCHIVE
+  Description: My custom findings filter
+  FindingCriteria:
+    Criterion:
+      accountId:
+        eq:
+        - '123456789012'
+  Name: MyFilterName
+  Position: 1
+  Tags:
+  - Key: CostCenter
+    Value: CC12345
+Type: AWS::Macie::FindingsFilter

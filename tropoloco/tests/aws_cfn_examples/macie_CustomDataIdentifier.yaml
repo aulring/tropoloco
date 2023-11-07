@@ -1,0 +1,16 @@
+DependsOn: Session
+Properties:
+  Description: My custom data identifier
+  IgnoreWords:
+  - '000000'
+  - '123456'
+  Keywords:
+  - employeeID
+  - employee ID
+  MaximumMatchDistance: 20
+  Name: EmployeeIDCustomDataIdentifier
+  Regex: \\d{6}
+  Tags:
+  - Key: Stack
+    Value: Production
+Type: AWS::Macie::CustomDataIdentifier

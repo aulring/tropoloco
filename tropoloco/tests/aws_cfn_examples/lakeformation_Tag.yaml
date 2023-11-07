@@ -1,0 +1,6 @@
+Properties:
+  TagKey: sample_tag_key
+  TagValues:
+  - sample_tag_value1
+  - sample_tag_value2
+Type: AWS::LakeFormation::Tag

@@ -1,0 +1,1 @@
+{"Type": "AWS::CodeStarConnections::Connection", "Properties": {"ConnectionName": "MyConnection", "ProviderType": "GitHubEnterpriseServer", "HostArn": "arn:aws:codestar-connections:us-west-2:123456789123:host/abc123-example", "Tags": [{"Key": "Project", "Value": "ProjectB"}]}}

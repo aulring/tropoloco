@@ -1,0 +1,1 @@
+{"Type": "AWS::EC2::EnclaveCertificateIamRoleAssociation", "Properties": {"CertificateArn": "arn:aws:acm:us-east-1:123456789012:certificate/123abcde-cdef-abcd-1234-123abEXAMPLE", "RoleArn": "arn:aws:iam::123456789012:role/my-acm-role"}}

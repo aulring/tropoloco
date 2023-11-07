@@ -1,0 +1,8 @@
+Properties:
+  Description: This is an example RegexPatternSet
+  Name: ExampleRegexPatternSet
+  RegularExpressionList:
+  - ^foobar$
+  - ^example$
+  Scope: REGIONAL
+Type: AWS::WAFv2::RegexPatternSet

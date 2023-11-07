@@ -1,0 +1,1 @@
+{"Type": "AWS::XRay::SamplingRule", "Properties": {"SamplingRule": {"RuleName": "MySamplingRule", "ResourceARN": "*", "Priority": 1, "FixedRate": 0.07, "ReservoirSize": 20, "ServiceName": "MyServiceName", "ServiceType": "MyServiceType", "Host": "MyHost", "HTTPMethod": "GET", "URLPath": "*"}}}

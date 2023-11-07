@@ -1,0 +1,4 @@
+Properties:
+  CertificatePem: "-----BEGIN CERTIFICATE-----\n MIID/DCCAuSgAwIBAgABCDEFgkqhkiG9w0BAQsFADCBijEXAMPLE1UEBhMCVVMx...mqfEEuC7uUoPofXdBp2ObQ==\n\
+    \ -----END CERTIFICATE-----"
+Type: AWS::DMS::Certificate

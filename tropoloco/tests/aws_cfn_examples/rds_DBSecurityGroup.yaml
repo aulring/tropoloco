@@ -1,0 +1,8 @@
+Properties:
+  DBSecurityGroupIngress:
+  - EC2SecurityGroupName:
+      Ref: WebServerSecurityGroup
+  EC2VpcId:
+    Ref: VpcId
+  GroupDescription: Frontend Access
+Type: AWS::RDS::DBSecurityGroup

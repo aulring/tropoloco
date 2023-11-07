@@ -1,0 +1,1 @@
+{"Type": "AWS::DMS::ReplicationTask", "Properties": {"SourceEndpointArn": 11, "TargetEndpointArn": "12ff", "ReplicationInstanceArn": "ert1", "MigrationType": "full-load", "TableMappings": "{\"rules\": [{\"rule-type\": \"selection\", \"rule-id\": \"1\", \"rule-name\": \"1\", \"object-locator\":{\"schema-name\": \"%\", \"table-name\": \"%\" }, \"rule-action\": \"include\" } ] }"}}

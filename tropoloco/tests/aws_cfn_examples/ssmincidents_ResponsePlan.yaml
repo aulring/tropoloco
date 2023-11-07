@@ -1,0 +1,37 @@
+DependsOn: MyReplicationSet
+Properties:
+  Actions:
+  - SsmAutomation:
+      DocumentName: SsmAutomationDocument
+      DocumentVersion: '1'
+      DynamicParameters:
+      - Key: Key2
+        Value:
+          Variable: INCIDENT_RECORD_ARN
+      - Key: Key3
+        Value:
+          Variable: INVOLVED_RESOURCES
+      Parameters:
+      - Key: Key1
+        Values:
+        - Value1
+      RoleArn: SsmRoleArn
+      TargetAccount: IMPACTED_ACCOUNT
+  ChatChannel:
+    ChatbotSns: ChatbotSnsArn
+  Engagements: MyEscalationPlanContact
+  IncidentTemplate:
+    DedupeString: MyDedupeString
+    Impact: 1
+    IncidentTags:
+    - Key: MyIncidentTagKey
+      Value: MyIncidentTagValue
+    NotificationTargets:
+    - SnsTopicArn: NotificationTargetArn
+    Summary: My incident summary.
+    Title: MyIncident
+  Name: MyResponsePlan
+  Tags:
+  - Key: MyResponsePlanTagKey
+    Value: MyResponsePlanTagValue
+Type: AWS::SSMIncidents::ResponsePlan

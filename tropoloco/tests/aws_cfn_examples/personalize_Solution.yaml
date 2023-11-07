@@ -1,0 +1,7 @@
+Properties:
+  DatasetGroupArn: arn:aws:personalize:us-west-2:123456789012:dataset-group/my-dataset-group-name
+  Name: my-solution-name
+  RecipeArn: arn:aws:personalize:::recipe/aws-user-personalization
+  SolutionConfig:
+    EventValueThreshold: '.05'
+Type: AWS::Personalize::Solution

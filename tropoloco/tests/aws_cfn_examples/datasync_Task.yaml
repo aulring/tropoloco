@@ -1,0 +1,4 @@
+Properties:
+  DestinationLocationArn: arn:aws:datasync:us-east-2:111222333444:location/loc-18ec8bcgd437d61t4
+  SourceLocationArn: arn:aws:datasync:us-east-2:111222333444:location/loc-07db7abfc326c50s3
+Type: AWS::DataSync::Task

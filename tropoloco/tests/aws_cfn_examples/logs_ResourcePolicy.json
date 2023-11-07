@@ -1,0 +1,1 @@
+{"Type": "AWS::Logs::ResourcePolicy", "Properties": {"PolicyName": "MyResourcePolicy", "PolicyDocument": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Sid\": \"Route53LogsToCloudWatchLogs\", \"Effect\": \"Allow\", \"Principal\":{\"Service\": [ \"route53.amazonaws.com\" ] }, \"Action\":\"logs:PutLogEvents\", \"Resource\": \"logArn\" } ] }"}}

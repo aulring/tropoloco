@@ -1,0 +1,1 @@
+{"Type": "AWS::IoT1Click::Device", "Properties": {"DeviceId": "G030PX0312744DWM", "Enabled": true}}

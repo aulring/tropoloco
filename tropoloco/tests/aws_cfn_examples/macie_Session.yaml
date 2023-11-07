@@ -1,0 +1,4 @@
+Properties:
+  FindingPublishingFrequency: ONE_HOUR
+  Status: ENABLED
+Type: AWS::Macie::Session

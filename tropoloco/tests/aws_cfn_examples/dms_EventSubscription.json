@@ -1,0 +1,1 @@
+{"Type": "AWS::DMS::EventSubscription", "Properties": {"EventCategories": ["configuration change", "failure", "deletion"], "SnsTopicArn": "arn:aws:sns:us-west-2:123456789012:example-topic", "SourceIds": ["rep-instance-1"], "SourceType": "replication-instance", "Enabled": false}}

@@ -1,0 +1,33 @@
+Properties:
+  AccessPolicies:
+    Statement:
+    - Action: es:*
+      Effect: Deny
+      Principal:
+        AWS: '*'
+      Resource: '*'
+    Version: '2012-10-17'
+  AdvancedOptions:
+    rest.action.multi.allow_explicit_index: true
+  DomainName:
+    Ref: DomainName
+  EBSOptions:
+    EBSEnabled: true
+    Iops: '0'
+    VolumeSize: '10'
+    VolumeType: standard
+  ElasticsearchClusterConfig:
+    InstanceCount: '1'
+    InstanceType:
+      Ref: InstanceType
+  ElasticsearchVersion:
+    Ref: ElasticsearchVersion
+  Tags:
+  - Key: foo
+    Value: bar
+  VPCOptions:
+    SecurityGroupIds:
+    - Ref: mySecurityGroup
+    SubnetIds:
+    - Ref: subnet
+Type: AWS::Elasticsearch::Domain

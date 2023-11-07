@@ -1,0 +1,24 @@
+Properties:
+  ContainerProperties:
+    Command:
+    - nvidia-smi
+    Image: nvidia/cuda
+    JobRoleArn: String
+    MountPoints:
+    - ContainerPath: /usr/local/nvidia
+      ReadOnly: false
+      SourceVolume: nvidia
+    Privileged: true
+    ReadonlyRootFilesystem: true
+    ResourceRequirements:
+    - Type: MEMORY
+      Value: '2000'
+    - Type: VCPU
+      Value: '2'
+    Volumes:
+    - Host:
+        SourcePath: /var/lib/nvidia-docker/volumes/nvidia_driver/latest
+      Name: nvidia
+  JobDefinitionName: nvidia-smi
+  Type: container
+Type: AWS::Batch::JobDefinition

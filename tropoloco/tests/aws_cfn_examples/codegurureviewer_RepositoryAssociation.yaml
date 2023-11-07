@@ -1,0 +1,9 @@
+Properties:
+  Name: MyRepository
+  Tags:
+  - Key: tag1-key
+    Value: tag1-value
+  - Key: tag2-key
+    Value: tag2-value
+  Type: CodeCommit
+Type: AWS::CodeGuruReviewer::RepositoryAssociation

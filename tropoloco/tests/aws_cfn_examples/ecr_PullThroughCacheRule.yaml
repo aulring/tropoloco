@@ -1,0 +1,4 @@
+Properties:
+  EcrRepositoryPrefix: my-ecr
+  UpstreamRegistryUrl: public.ecr.aws
+Type: AWS::ECR::PullThroughCacheRule

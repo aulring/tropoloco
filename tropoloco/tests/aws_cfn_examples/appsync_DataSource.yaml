@@ -1,0 +1,14 @@
+Properties:
+  ApiId:
+    Ref: graphQlApiId
+  Description:
+    Ref: dataSourceDescription
+  LambdaConfig:
+    LambdaFunctionArn:
+      Ref: lambdaFunctionArn
+  Name:
+    Ref: dataSourceName
+  ServiceRoleArn:
+    Ref: serviceRoleArn
+  Type: AWS_LAMBDA
+Type: AWS::AppSync::DataSource

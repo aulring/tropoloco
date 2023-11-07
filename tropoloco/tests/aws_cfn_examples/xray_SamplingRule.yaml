@@ -1,0 +1,13 @@
+Properties:
+  SamplingRule:
+    FixedRate: 0.07
+    HTTPMethod: GET
+    Host: MyHost
+    Priority: 1
+    ReservoirSize: 20
+    ResourceARN: '*'
+    RuleName: MySamplingRule
+    ServiceName: MyServiceName
+    ServiceType: MyServiceType
+    URLPath: '*'
+Type: AWS::XRay::SamplingRule

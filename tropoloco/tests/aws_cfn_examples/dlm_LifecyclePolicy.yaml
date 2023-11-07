@@ -1,0 +1,27 @@
+Properties:
+  Description: Lifecycle Policy using CloudFormation
+  ExecutionRoleArn: arn:aws:iam::123456789012:role/service-role/AWSDataLifecycleManagerDefaultRole
+  PolicyDetails:
+    ResourceTypes:
+    - VOLUME
+    Schedules:
+    - CopyTags: true
+      CreateRule:
+        Interval: 12
+        IntervalUnit: HOURS
+        Times:
+        - '13:00'
+      CrossRegionCopyRules:
+      - Encrypted: false
+        Target: us-east-1
+      Name: Daily Snapshots
+      RetainRule:
+        Count: 1
+      TagsToAdd:
+      - Key: type
+        Value: DailySnapshot
+    TargetTags:
+    - Key: costcenter
+      Value: '115'
+  State: ENABLED
+Type: AWS::DLM::LifecyclePolicy

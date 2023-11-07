@@ -1,0 +1,17 @@
+Properties:
+  ApplicationName:
+    Ref: myApp
+  Description: my sample configuration template
+  EnvironmentId: ''
+  OptionSettings:
+  - Namespace: aws:autoscaling:launchconfiguration
+    OptionName: EC2KeyName
+    Value:
+      Ref: KeyName
+  SolutionStackName: 64bit Amazon Linux running PHP 5.3
+  SourceConfiguration:
+    ApplicationName:
+      Ref: mySecondApp
+    TemplateName:
+      Ref: mySourceTemplate
+Type: AWS::ElasticBeanstalk::ConfigurationTemplate

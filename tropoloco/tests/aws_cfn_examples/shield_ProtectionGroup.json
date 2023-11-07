@@ -1,0 +1,1 @@
+{"Type": "AWS::Shield::ProtectionGroup", "Properties": {"ProtectionGroupId": "ProtectionGroupForAllEIPResources", "Aggregation": "SUM", "Pattern": "BY_RESOURCE_TYPE", "ResourceType": "ELASTIC_IP_ALLOCATION"}}

@@ -1,0 +1,1 @@
+{"DependsOn": "EKSFargateProfile", "Type": "AWS::EKS::IdentityProviderConfig", "Properties": {"ClusterName": "my-cluster", "Type": "oidc", "Oidc": {"ClientId": "kubernetes", "IssuerUrl": "https://example.com"}}}

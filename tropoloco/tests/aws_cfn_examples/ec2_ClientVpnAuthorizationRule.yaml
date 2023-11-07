@@ -1,0 +1,7 @@
+Properties:
+  AuthorizeAllGroups: true
+  ClientVpnEndpointId:
+    Ref: myClientVpnEndpoint
+  Description: myAuthRule
+  TargetNetworkCidr: 0.0.0.0/0
+Type: AWS::EC2::ClientVpnAuthorizationRule

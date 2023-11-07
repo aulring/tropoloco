@@ -1,0 +1,1 @@
+{"Type": "AWS::AppRunner::AutoScalingConfiguration", "Properties": {"AutoScalingConfigurationName": "AUTO_SCALING_CONFIGURATION_NAME", "MaxConcurrency": 100, "MaxSize": 25, "MinSize": 1}}

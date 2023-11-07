@@ -1,0 +1,20 @@
+DeletionPolicy: Retain
+Properties:
+  MrapName:
+    Ref: DOC-EXAMPLE-MULTI-REGION-ACCESS-POINT
+  Policy:
+    Statement:
+    - Action:
+      - s3:GetObject
+      Effect: Allow
+      Principal:
+        Service: cloudwatch.amazonaws.com
+      Resource:
+        Fn::Sub:
+        - arn:aws:s3::123456789012:accesspoint/mfzwi23gnjvgw.mrap/object/*
+        - mrapalias:
+            Fn::GetAtt:
+            - mfzwi23gnjvgw.mrap
+            - Alias
+Type: AWS::S3::MultiRegionAccessPointPolicy
+UpdateReplacePolicy: Retain

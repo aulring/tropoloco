@@ -1,0 +1,1 @@
+{"Type": "AWS::CloudFormation::HookDefaultVersion", "Properties": {"TypeName": "My::Sample::Hook", "VersionId": 1}}

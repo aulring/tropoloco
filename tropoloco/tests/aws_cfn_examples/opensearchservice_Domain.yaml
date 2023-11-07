@@ -1,0 +1,28 @@
+AdvancedSecurityOptions:
+  Enabled: true
+  InternalUserDatabaseEnabled: true
+  MasterUserOptions:
+    MasterUserName: <username>
+    MasterUserPassword: <password>
+Properties:
+  AccessPolicies:
+    Statement:
+      Action: es:*
+      Effect: Allow
+      Principal:
+        AWS: arn:aws:iam::478253424788:role/Admin
+      Resource: arn:aws:es:us-east-1:478253424788:domain/my-domain-logs/*
+    Version: '2012-10-17'
+  ClusterConfig:
+    DedicatedMasterCount: 3
+    DedicatedMasterEnabled: true
+    DedicatedMasterType: r6g.xlarge.search
+    InstanceCount: 2
+    InstanceType: r6g.xlarge.search
+  DomainName: my-domain-logs
+  EBSOptions:
+    EBSEnabled: true
+    VolumeSize: 10
+    VolumeType: gp2
+  EngineVersion: OpenSearch_1.0
+Type: AWS::OpenSearchService::Domain

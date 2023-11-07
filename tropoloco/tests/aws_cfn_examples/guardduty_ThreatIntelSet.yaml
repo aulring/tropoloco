@@ -1,0 +1,7 @@
+Properties:
+  Activate: true
+  DetectorId: 12abc34d567e8f4912ab3d45e67891f2
+  Format: TXT
+  Location: https://s3-us-west-2.amazonaws.com/mybucket/mythreatintelset.txt
+  Name: MyThreatIntelSet
+Type: AWS::GuardDuty::ThreatIntelSet

@@ -1,0 +1,105 @@
+import json
+import os
+
+import yaml
+import pytest
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+BAD_AWS_EXAMPLES = [
+    "appflow_Flow.json", # missing required types
+    "appmesh_VirtualRouter.yaml", #null set on non-nullable field MeshName
+    "appmesh_VirtualRouter.json", #null set on non-nullable field MeshName
+    "apprunner_Service.yaml", #Port 8080 is int instead of string.
+    "cleanrooms_AnalysisTemplate.yaml", # can't tell it's a str issue
+    "cleanrooms_AnalysisTemplate.json" # can't tell it's a str issue
+    "cleanrooms_AnalysisTemplate.json" # can't tell it's a str issue
+    "cleanrooms_AnalysisTemplate.json", # can't tell it's a str issue
+    "cloudformation_HookDefaultVersion.yaml", #can't tell it's a str issue
+    "cloudformation_HookDefaultVersion.json", #can't tell it's a str issue
+    "cloudfront_Distribution.yaml", #missing required types
+    "cloudfront_Distribution.json", #missing required types
+    "cloudwatch_AnomalyDetector.yaml", #can't tell it's a str issue
+    "cloudwatch_AnomalyDetector.json", #can't tell it's a str issue
+    "dms_ReplicationTask.json", #can't tell it's a str issue
+    "cloudwatch_AnomalyDetector.json", #can't tell it's a str issue
+    "databrew_Recipe.yaml", #can't tell it's a str issue
+    "detective_MemberInvitation.yaml", #can't tell it's a str issue
+    "detective_OrganizationAdmin.yaml", #can't tell it's a str issue 
+    "ec2_Host.yaml", #can't tell it's a str issue
+    "ecr_ReplicationConfiguration.yaml", #TODO troposphere renamed a circular reference where property and resource had the same name
+    #while understandable... it means pydantic can't parse the CFN if implementing the tropo type. We will need to implement a hack,
+    "ecr_ReplicationConfiguration.json", #TODO troposphere renamed a circular reference where property and resource had the same name    
+    "elasticloadbalancing_LoadBalancer.yaml", #TODO tropo doesn't implement this type... will have to hack
+    "elasticloadbalancing_LoadBalancer.json", #TODO tropo doesn't implement this type... will have to hack
+    "fsx_FileSystem.yaml", #missing required types
+    "fsx_FileSystem.json", #missing required types
+    "glue_Crawler.yaml", #missing/bad types
+    "glue_Crawler.json", #missing/bad types
+    "greengrass_LoggerDefinition.yaml", #tropo renamed the type
+    "greengrass_LoggerDefinition.json", #tropo renamed the type
+    "lakeformation_DataLakeSettings.yaml", #bug in tropo...ExternalDataFilteringAllowList must be empty list
+    "lakeformation_DataLakeSettings.json", #bug in tropo...ExternalDataFilteringAllowList must be empty list
+    "macie_FindingsFilter.yaml", #Troposphere typed this as a dict... when it's actually a map with specific keys #TODO raise compatability
+    "macie_FindingsFilter.json", #Troposphere typed this as a dict... when it's actually a map with specific keys #TODO raise compatability
+    "networkfirewall_RuleGroup.yaml", #Looks like a troposphere bug. It's throwing a type error, but the type conversion is correct
+    "networkfirewall_RuleGroup.json", #Looks like a troposphere bug. It's throwing a type error, but the type conversion is correct
+    "organizations_Policy.yaml", #inline json policy instead of yaml. TODO should maybe support inline policies
+    "organizations_Policy.json", #inline json policy instead of json. TODO should maybe support inline policies
+    "organizations_ResourcePolicy.yaml", #inline json policy instead of yaml.
+    "organizations_ResourcePolicy.json", #inline json policy instead of json.
+    "rds_OptionGroup.yaml", # I think this example is typed wrong... TODO double check this open
+    "rds_OptionGroup.json", # I think this example is typed wrong... TODO double check this open
+    "rekognition_StreamProcessor.yaml", # troposphere has import bug in validator
+    "rekognition_StreamProcessor.json", # troposphere has import bug in validator
+    "s3outposts_Bucket.yaml", # missing a required kwarg in the example
+    "s3outposts_Bucket.json", # missing a required kwarg in the example
+    "s3outposts_Endpoint.yaml", # Keys Misnamed "ID" instead of "Id"
+    "s3outposts_Endpoint.json", # Keys Misnamed "ID" instead of "Id"
+    "ssm_Document.yaml", # Inline JSON type
+    "ssm_Document.json", # Inline JSON type
+    "ssm_MaintenanceWindowTask.yaml", #TODO need to implement JSON type
+    "ssm_MaintenanceWindowTask.json", #TODO need to implement JSON type
+    "ssmincidents_ResponsePlan.yaml", #Example typed wrong
+    "ssmincidents_ResponsePlan.json", # Example typed wrong
+    "securityhub_AutomationRule.yaml", # AWS Type errors. Small and fixable. 
+    "securityhub_AutomationRule.json", # AWS Type errors. Small and fixable. 
+    "synthetics_Canary.yaml", # Yaml type issue with int
+]
+
+
+def load_yaml_file(filename):
+    with open(os.path.join(BASE_DIR, 'aws_cfn_examples', filename), 'r') as file:
+        return yaml.safe_load(file)
+
+def load_json_file(filename):
+    with open(os.path.join(BASE_DIR, 'aws_cfn_examples', filename), 'r') as file:
+        return json.load(file)
+
+def should_skip_test(filename):
+    with open(os.path.join(BASE_DIR, 'aws_cfn_examples', filename), 'r') as file:
+        contents =  file.read()
+    if "Fn::" in contents:
+        return True
+    if "Ref:" in contents or '"Ref":' in contents:
+        return True
+    if filename in BAD_AWS_EXAMPLES:
+        return True
+    if "cleanrooms" in filename:
+        print("cleanrooms not supported yet")
+        return True
+    return False
+
+
+{% for resource in resources %}
+
+@pytest.mark.skipif(should_skip_test("{{resource.service_name}}_{{resource.resource_name}}.{{resource.file_type}}"), reason="Skipping Test for compatability reason")
+def test_{{resource.service_name}}_{{resource.resource_name}}_{{resource.file_type}}():
+    data = load_{{resource.file_type}}_file("{{resource.service_name}}_{{resource.resource_name}}.{{resource.file_type}}")
+
+    from tropoloco.model.{{resource.service_name}} import {{resource.resource_name}} as TropoT
+    loaded_resource = TropoT(title="foo", **data["Properties"])
+
+    loaded_resource.to_troposphere()
+{% endfor %}

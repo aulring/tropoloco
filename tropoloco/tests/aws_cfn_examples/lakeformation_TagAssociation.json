@@ -1,0 +1,1 @@
+{"Type": "AWS::LakeFormation::TagAssociation", "Properties": {"Resource": {"TableWithColumns": {"CatalogId": "12345678910", "DatabaseName": "sample_db", "Name": "sample_tbl", "ColumnNames": ["sample_col1", "sample_col2"]}}, "LFTags": [{"CatalogId": "12345678910", "TagKey": "sample_tag_key", "TagValues": ["sample_tag_value1"]}]}}

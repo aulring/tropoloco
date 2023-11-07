@@ -1,0 +1,8 @@
+Properties:
+  Description: Example traffic mirror filter
+  NetworkServices:
+  - amazon-dns
+  Tags:
+  - Key: Name
+    Value: SampleFilter
+Type: AWS::EC2::TrafficMirrorFilter

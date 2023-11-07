@@ -1,0 +1,1 @@
+{"Type": "AWS::WAFv2::RegexPatternSet", "Properties": {"Name": "ExampleRegexPatternSet1", "Scope": "REGIONAL", "Description": "This is an example RegexPatternSet", "RegularExpressionList": ["^foobar$", "^example$"]}}

@@ -1,0 +1,20 @@
+Properties:
+  Comment: Creating records for mail server
+  HostedZoneId: Z1PA6795UKMFR9
+  RecordSets:
+  - Name: mail.example.com.
+    ResourceRecords:
+    - 192.0.2.44
+    TTL: '900'
+    Type: A
+  - Name: mail.example.com.
+    ResourceRecords:
+    - 10 mail.example.com
+    TTL: '900'
+    Type: MX
+  - Name: mail.example.com.
+    ResourceRecords:
+    - '"v=spf1 ip4:203.0.113.0/30 -all"'
+    TTL: '900'
+    Type: TXT
+Type: AWS::Route53::RecordSetGroup

@@ -1,0 +1,9 @@
+Properties:
+  DatasetName: dataset-name
+  Name: project-name
+  RecipeName: recipe-name
+  RoleArn: arn:aws:iam::12345678910:role/PassRoleAdmin
+  Sample:
+    Size: 500
+    Type: LAST_N
+Type: AWS::DataBrew::Project

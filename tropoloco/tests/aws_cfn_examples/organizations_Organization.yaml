@@ -1,0 +1,4 @@
+DeletionPolicy: Retain
+Properties:
+  FeatureSet: CONSOLIDATED_BILLING
+Type: AWS::Organizations::Organization

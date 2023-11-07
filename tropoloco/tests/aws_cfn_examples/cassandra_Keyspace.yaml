@@ -1,0 +1,9 @@
+Properties:
+  KeyspaceName: MultiRegionKeyspace
+  ReplicationSpecification:
+    RegionList:
+    - us-east-1
+    - us-west-2
+    - eu-west-1
+    ReplicationStrategy: MULTI_REGION
+Type: AWS::Cassandra::Keyspace

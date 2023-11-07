@@ -1,0 +1,12 @@
+DependsOn: Session
+Properties:
+  Criteria:
+    S3WordsList:
+      BucketName: DOC-EXAMPLE-BUCKET
+      ObjectKey: AllowLists/Macie/MyList.txt
+  Description: Lists all public phone numbers for Example Corp.
+  Name: MyAllowList
+  Tags:
+  - Key: Stack
+    Value: Production
+Type: AWS::Macie::AllowList

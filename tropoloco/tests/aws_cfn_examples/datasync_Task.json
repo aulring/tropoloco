@@ -1,0 +1,1 @@
+{"Type": "AWS::DataSync::Task", "Properties": {"SourceLocationArn": "arn:aws:datasync:us-east-2:111222333444:location/loc-07db7abfc326c50s3", "DestinationLocationArn": "arn:aws:datasync:us-east-2:111222333444:location/loc-18ec8bcgd437d61t4"}}

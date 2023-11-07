@@ -1,0 +1,13 @@
+Properties:
+  DestinationSecurityGroupId:
+    Fn::GetAtt:
+    - TargetSG
+    - GroupId
+  FromPort: 0
+  GroupId:
+    Fn::GetAtt:
+    - SourceSG
+    - GroupId
+  IpProtocol: tcp
+  ToPort: 65535
+Type: AWS::EC2::SecurityGroupEgress

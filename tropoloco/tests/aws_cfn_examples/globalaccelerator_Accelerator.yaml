@@ -1,0 +1,4 @@
+Properties:
+  Enabled: true
+  Name: SampleAccelerator
+Type: AWS::GlobalAccelerator::Accelerator

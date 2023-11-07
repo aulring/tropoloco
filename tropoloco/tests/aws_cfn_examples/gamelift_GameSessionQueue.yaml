@@ -1,0 +1,24 @@
+Properties:
+  Destinations:
+  - DestinationArn: arn:aws:gamelift:us-west-2:012345678912:fleet/fleet-id
+  - DestinationArn: arn:aws:gamelift:us-west-2:012345678912:alias/alias-id
+  FilterConfiguration:
+    AllowedLocations:
+    - us-east-1
+    - us-west-2
+  Name: MyGameSessionQueue
+  NotificationTarget: arn:aws:sns:us-west-2:111122223333:My_Placement_SNS_Topic
+  PlayerLatencyPolicies:
+  - LocationOrder:
+    - us-west-2
+    - us-east-1
+    MaximumIndividualPlayerLatencyMilliseconds: 1000
+    PolicyDurationSeconds: 60
+    PriorityConfiguration: null
+    PriorityOrder:
+    - COST
+    - LATENCY
+    - LOCATION
+    - DESTINATION
+  TimeoutInSeconds: 60
+Type: AWS::GameLift::GameSessionQueue

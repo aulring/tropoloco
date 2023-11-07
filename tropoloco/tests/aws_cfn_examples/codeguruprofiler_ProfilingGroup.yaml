@@ -1,0 +1,11 @@
+Properties:
+  AgentPermissions:
+    Principals:
+    - arn:aws:iam::1233456789012:role/agent-permissions-role-1
+    - arn:aws:iam::1233456789012:role/agent-permissions-role-2
+  AnomalyDetectionNotificationConfiguration:
+  - channelId: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+    channelUri: SOME_SNS_TOPIC_ARN
+  ComputePlatform: AWSLambda
+  ProfilingGroupName: MyProfilingGroup
+Type: AWS::CodeGuruProfiler::ProfilingGroup

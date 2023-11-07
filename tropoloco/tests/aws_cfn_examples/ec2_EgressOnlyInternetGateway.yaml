@@ -1,0 +1,3 @@
+Properties:
+  VpcId: vpc-1a2b3c4d
+Type: AWS::EC2::EgressOnlyInternetGateway

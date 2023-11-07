@@ -1,0 +1,4 @@
+Properties:
+  TeamId: T012ABCDEFG
+  VersionId: '1'
+Type: AWS::SupportApp::SlackWorkspaceConfiguration

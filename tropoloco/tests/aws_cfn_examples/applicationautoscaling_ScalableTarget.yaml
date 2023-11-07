@@ -1,0 +1,9 @@
+Properties:
+  MaxCapacity: 20
+  MinCapacity: 1
+  ResourceId: keyspace/mykeyspace/table/mytable
+  RoleARN:
+    Fn::Sub: arn:aws:iam::${AWS::AccountId}:role/aws-service-role/cassandra.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_CassandraTable
+  ScalableDimension: cassandra:table:WriteCapacityUnits
+  ServiceNamespace: cassandra
+Type: AWS::ApplicationAutoScaling::ScalableTarget

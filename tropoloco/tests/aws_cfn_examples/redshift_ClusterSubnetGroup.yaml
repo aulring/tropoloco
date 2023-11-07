@@ -1,0 +1,8 @@
+Properties:
+  Description: My ClusterSubnetGroup
+  SubnetIds:
+  - subnet-7fbc2813
+  Tags:
+  - Key: foo
+    Value: bar
+Type: AWS::Redshift::ClusterSubnetGroup

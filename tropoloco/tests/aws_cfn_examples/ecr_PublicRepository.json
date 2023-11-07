@@ -1,0 +1,1 @@
+{"Type": "AWS::ECR::PublicRepository", "Properties": {"RepositoryName": "test-repository", "RepositoryCatalogData": {"UsageText": "This is a sample usage text.", "AboutText": "This is a sample about text.", "OperatingSystems": ["Linux", "Windows"], "Architectures": ["x86", "ARM"], "RepositoryDescription": "This is a sample repository description."}}}

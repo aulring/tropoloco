@@ -1,0 +1,5 @@
+Properties:
+  ResourceGroupTags:
+  - Key: Name
+    Value: example
+Type: AWS::Inspector::ResourceGroup

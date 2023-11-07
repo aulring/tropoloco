@@ -1,0 +1,13 @@
+Properties:
+  RepositoryCatalogData:
+    AboutText: This is a sample about text.
+    Architectures:
+    - x86
+    - ARM
+    OperatingSystems:
+    - Linux
+    - Windows
+    RepositoryDescription: This is a sample repository description.
+    UsageText: This is a sample usage text.
+  RepositoryName: test-repository
+Type: AWS::ECR::PublicRepository

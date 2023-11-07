@@ -1,0 +1,13 @@
+Properties:
+  ApplicationName:
+    Ref: BasicApplication
+  Output:
+    DestinationSchema:
+      RecordFormatType: CSV
+    KinesisStreamsOutput:
+      ResourceARN:
+        Fn::GetAtt:
+        - OutputKinesisStream
+        - Arn
+    Name: exampleOutput
+Type: AWS::KinesisAnalyticsV2::ApplicationOutput

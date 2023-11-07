@@ -1,0 +1,7 @@
+Properties:
+  Description: CloudFormation Sample Aurora Cluster Parameter Group
+  Family: aurora5.6
+  Parameters:
+    character_set_database: utf32
+    time_zone: US/Eastern
+Type: AWS::RDS::DBClusterParameterGroup

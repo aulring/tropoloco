@@ -1,0 +1,1 @@
+{"DeletionPolicy": "Retain", "Type": "AWS::Organizations::Organization", "Properties": {"FeatureSet": "CONSOLIDATED_BILLING"}}

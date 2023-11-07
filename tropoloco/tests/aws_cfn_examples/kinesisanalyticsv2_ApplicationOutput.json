@@ -1,0 +1,1 @@
+{"Type": "AWS::KinesisAnalyticsV2::ApplicationOutput", "Properties": {"ApplicationName": {"Ref": "BasicApplication"}, "Output": {"Name": "exampleOutput", "DestinationSchema": {"RecordFormatType": "CSV"}, "KinesisStreamsOutput": {"ResourceARN": {"Fn::GetAtt": ["OutputKinesisStream", "Arn"]}}}}}

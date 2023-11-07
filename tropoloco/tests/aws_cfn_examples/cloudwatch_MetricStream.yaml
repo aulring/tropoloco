@@ -1,0 +1,8 @@
+Properties:
+  FirehoseArn: arn:aws:firehose:us-east-1:123456789012:deliverystream/MyDeliveryStream
+  IncludeFilters:
+  - Namespace: AWS/ELB
+  - Namespace: AWS/EC2
+  OutputFormat: json
+  RoleArn: arn:aws:iam::123456789012:role/service-role/MyRole
+Type: AWS::CloudWatch::MetricStream

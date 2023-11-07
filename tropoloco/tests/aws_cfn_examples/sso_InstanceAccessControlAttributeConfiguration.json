@@ -1,0 +1,1 @@
+{"Type": "AWS::SSO::InstanceAccessControlAttributeConfiguration", "Properties": {"InstanceArn": "arn:aws:sso:::instance/ssoins-instanceId", "AccessControlAttributes": [{"Key": "CostCenter", "Value": {"Source": ["${path:enterprise.costCenter}"]}}]}}

@@ -1,0 +1,10 @@
+Properties:
+  ComputeEnvironmentOrder:
+  - ComputeEnvironment: C4OnDemand
+    Order: 1
+  - ComputeEnvironment: M4Spot
+    Order: 2
+  JobQueueName: HighPriority
+  Priority: 1
+  State: ENABLED
+Type: AWS::Batch::JobQueue

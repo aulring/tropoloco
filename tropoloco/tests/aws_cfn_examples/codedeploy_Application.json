@@ -1,0 +1,1 @@
+{"Type": "AWS::CodeDeploy::Application", "Properties": {"ComputePlatform": "Server"}}

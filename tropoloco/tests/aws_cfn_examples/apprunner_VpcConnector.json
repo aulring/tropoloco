@@ -1,0 +1,1 @@
+{"Type": "AWS::AppRunner::VpcConnector", "Properties": {"VpcConnectorName": "my-vpc-connector", "Subnets": ["subnet-123", "subnet-456"], "SecurityGroups": ["sg-123", "sg-456"]}}

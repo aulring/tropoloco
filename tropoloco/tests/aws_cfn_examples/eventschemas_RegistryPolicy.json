@@ -1,0 +1,1 @@
+{"Type": "AWS::EventSchemas::RegistryPolicy", "Properties": {"RegistryName": "MyRegistry", "Policy": {"Version": "2012-10-17", "Statement": [{"Sid": "Test", "Effect": "Allow", "Action": ["schemas:*"], "Principal": {"AWS": ["109876543210"]}, "Resource": ["arn:aws:schemas:us-east-1:012345678901:registry/MyRegistry", "arn:aws:schemas:us-east-1:012345678901:schema/MyRegistry*"]}]}}}

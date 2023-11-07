@@ -1,0 +1,7 @@
+Properties:
+  Tags:
+  - Key: stack
+    Value: production
+  VpcId:
+    Ref: myVPC
+Type: AWS::EC2::NetworkAcl

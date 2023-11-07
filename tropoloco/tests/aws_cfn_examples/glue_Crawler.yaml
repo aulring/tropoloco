@@ -1,0 +1,14 @@
+Properties:
+  Classifiers:
+  - ''
+  Configuration: '{"Version":1.0,"CrawlerOutput":{"Partitions":{"AddOrUpdateBehavior":"InheritFromTable"},"Tables":{"AddOrUpdateBehavior":"MergeNewColumns"}}}'
+  DatabaseName: test
+  Description: example classifier
+  Name: my-crawler
+  Role: role1
+  Schedule: Schedule
+  SchemaChangePolicy: ''
+  TablePrefix: test-
+  Targets:
+  - ''
+Type: AWS::Glue::Crawler

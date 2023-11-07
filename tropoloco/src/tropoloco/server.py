@@ -11,12 +11,18 @@ from jinja2 import (
     ChoiceLoader,
     select_autoescape,
 )
-from pydantic_web_editor import copy_static_folder
+from pydantic_web_editor import WebEditorConfig, copy_static_folder
+
+
+from tropoloco.model.awslambda import Function
+
 
 app = FastAPI()
 
 
-ui_static_path = os.path.join("tropoloco", "static")
+home = os.path.expanduser("~")
+
+ui_static_path = os.path.join(home, ".tropoloco", "static")
 os.makedirs(ui_static_path, exist_ok=True)
 copy_static_folder(copy_path=ui_static_path)
 
@@ -49,7 +55,7 @@ class StandaloneApplication(BaseApplication):
 JINJA_ENV = Environment(
     loader=ChoiceLoader(
         [
-            PackageLoader("troposphere", "templates"),
+            PackageLoader("tropoloco", "templates"),
             FileSystemLoader("templates"),
         ]
     ),
@@ -58,7 +64,10 @@ JINJA_ENV = Environment(
 
 
 @app.get("/")
-async def read_item(request: Request):
-    # Render the template manually with the environment
-    template = JINJA_ENV.get_template("index.html")
-    return HTMLResponse(template.render(pwe_static_mount="/p_w_e/static"))
+def hello():
+    web_editor_config = WebEditorConfig(
+        title="Example Pydantic Editor demoing Schema Org's About Page",
+        model=Function,
+        start_val={},
+    )
+    return HTMLResponse(web_editor_config.html)

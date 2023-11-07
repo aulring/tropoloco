@@ -1,0 +1,4 @@
+Properties:
+  LogGroupName: exampleLogGroup
+  LogStreamName: MyAppLogStream
+Type: AWS::Logs::LogStream

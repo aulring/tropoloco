@@ -1,0 +1,8 @@
+Properties:
+  DetectorId: a12abc34d567e8fa901bc2d34e56789f0
+  DisableEmailNotification: true
+  Email: guarddutymember@amazon.com
+  MemberId: 012345678901
+  Message: You are invited to enable Amazon Guardduty.
+  Status: Invited
+Type: AWS::GuardDuty::Member

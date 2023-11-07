@@ -1,0 +1,8 @@
+DependsOn: EKSFargateProfile
+Properties:
+  ClusterName: my-cluster
+  Oidc:
+    ClientId: kubernetes
+    IssuerUrl: https://example.com
+  Type: oidc
+Type: AWS::EKS::IdentityProviderConfig

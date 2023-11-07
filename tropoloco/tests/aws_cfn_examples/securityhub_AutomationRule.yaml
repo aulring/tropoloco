@@ -1,0 +1,174 @@
+Properties:
+  Actions:
+  - FindingFieldsUpdate:
+      Confidence: 98
+      Criticality: 95
+      Note:
+        Text: sample-note-text
+        UpdatedBy: sechub
+      RelatedFindings:
+      - Id: sample-finding-id-1
+        ProductArn: arn:aws:securityhub:us-west-2:123456789012:product/123456789012/default
+      - Id: sample-finding-id-2
+        ProductArn: arn:aws:securityhub:us-west-2:123456789012:product/123456789012/default
+      Severity:
+        Label: MEDIUM
+        Normalized: 60
+        Product: 50
+      Types:
+      - Software and Configuration Checks/Industry and Regulatory Standards/AWS-Foundational-Security-Best-Practices
+      - Industry Compliance
+      UserDefinedFields:
+        key1: value1
+        key2: value2
+      VerificationState: TRUE_POSITIVE
+      Workflow:
+        Status: NOTIFIED
+    Type: FINDING_FIELDS_UPDATE
+  Criteria:
+    AwsAccountId:
+    - Comparison: EQUALS
+      Value: 123456789012
+    CompanyName:
+    - Comparison: EQUALS
+      Value: AWS
+    - Comparison: PREFIX
+      Value: Private
+    ComplianceAssociatedStandardsId:
+    - Comparison: EQUALS
+      Value: ruleset/cis-aws-foundations-benchmark/v/1.2.0
+    ComplianceSecurityControlId:
+    - Comparison: EQUALS
+      Value: EC2.3
+    ComplianceStatus:
+    - Comparison: EQUALS
+      Value: FAILED
+    Confidence:
+    - Gte: 50
+      Lte: 95
+    CreatedAt:
+    - DateRange:
+        Unit: DAYS
+        Value: 5
+    Criticality:
+    - Gte: 50
+      Lte: 95
+    Description:
+    - Comparison: EQUALS
+      Value: description1
+    - Comparison: EQUALS
+      Value: description2
+    FirstObservedAt:
+    - DateRange:
+        Unit: DAYS
+        Value: 5
+    GeneratorId:
+    - Comparison: EQUALS
+      Value: example-generator-id
+    Id:
+    - Comparison: EQUALS
+      Value: example-finding-id
+    LastObservedAt:
+    - DateRange:
+        Unit: DAYS
+        Value: 5
+    NoteText:
+    - Comparison: EQUALS
+      Value: example-note-text
+    NoteUpdatedAt:
+    - DateRange:
+        Unit: DAYS
+        Value: 5
+    NoteUpdatedBy:
+    - Comparison: PREFIX
+      Value: sechub
+    ProductArn:
+    - Comparison: EQUALS
+      Value: arn:aws:securityhub:us-west-2:123456789012:product/123456789012/default
+    - Comparison: PREFIX
+      Value: arn:aws:securityhub:us-west-2:123456789012:product/aws
+    ProductName:
+    - Comparison: EQUALS
+      Value: GuardDuty
+    - Comparison: PREFIX
+      Value: SecurityHub
+    RecordState:
+    - Comparison: EQUALS
+      Value: ACTIVE
+    RelatedFindingsId:
+    - Comparison: EQUALS
+      Value: example-finding-id-2
+    RelatedFindingsProductArn:
+    - Comparison: EQUALS
+      Value: arn:aws:securityhub:eu-central-1::product/aws/securityhub
+    ResourceDetailsOther:
+    - Comparison: NOT_EQUALS
+      Key: area
+      Value: na
+    - Comparison: NOT_EQUALS
+      Key: department
+      Value: sales
+    ResourceId:
+    - Comparison: PREFIX
+      Value: i-1234567890
+    ResourcePartition:
+    - Comparison: EQUALS
+      Value: aws
+    ResourceRegion:
+    - Comparison: PREFIX
+      Value: us-west
+    ResourceTags:
+    - Comparison: NOT_EQUALS
+      Key: department
+      Value: security
+    - Comparison: NOT_EQUALS
+      Key: department
+      Value: operations
+    ResourceType:
+    - Comparison: EQUALS
+      Value: AwsEc2Instance
+    SeverityLabel:
+    - Comparison: EQUALS
+      Value: LOW
+    - Comparison: EQUALS
+      Value: HIGH
+    SourceUrl:
+    - Comparison: PREFIX
+      Value: https
+    - Comparison: PREFIX
+      Value: ftp
+    Title:
+    - Comparison: EQUALS
+      Value: title-1
+    - Comparison: PREFIX
+      Value: title-2
+    Type:
+    - Comparison: EQUALS
+      Value: type-1
+    - Comparison: EQUALS
+      Value: type-2
+    UpdatedAt:
+    - End: '2023-05-25T17:05:54.832Z'
+      Start: '2023-04-25T17:05:54.832Z'
+    UserDefinedFields:
+    - Comparison: EQUALS
+      Key: key1
+      Value: security
+    - Comparison: EQUALS
+      Key: key2
+      Value: operations
+    VerificationState:
+    - Comparison: EQUALS
+      Value: BENIGN_POSITIVE
+    WorkflowStatus:
+    - Comparison: EQUALS
+      Value: NEW
+  Description: Example rule description.
+  IsTerminal: false
+  RuleName: Example rule name
+  RuleOrder: 5
+  RuleStatus: ENABLED
+  Tags:
+    organizationUnit: pnw
+    sampleTag: sampleValue
+Type: AWS::SecurityHub::AutomationRule

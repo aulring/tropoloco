@@ -1,0 +1,1 @@
+{"Type": "AWS::DMS::ReplicationInstance", "Properties": {"ReplicationInstanceClass": "dms.t2.small"}}

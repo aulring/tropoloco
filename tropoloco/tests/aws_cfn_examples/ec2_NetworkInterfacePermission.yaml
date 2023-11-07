@@ -1,0 +1,5 @@
+Properties:
+  AwsAccountId: '11111111111'
+  NetworkInterfaceId: eni-030e3xxx
+  Permission: INSTANCE-ATTACH
+Type: AWS::EC2::NetworkInterfacePermission

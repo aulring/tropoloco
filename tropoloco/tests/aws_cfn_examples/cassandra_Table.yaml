@@ -1,0 +1,22 @@
+Properties:
+  KeyspaceName: my_keyspace
+  PartitionKeyColumns:
+  - ColumnName: Message
+    ColumnType: ASCII
+  RegularColumns:
+  - ColumnName: name
+    ColumnType: TEXT
+  - ColumnName: region
+    ColumnType: TEXT
+  - ColumnName: project
+    ColumnType: TEXT
+  - ColumnName: role
+    ColumnType: TEXT
+  - ColumnName: pay_scale
+    ColumnType: TEXT
+  - ColumnName: vacation_hrs
+    ColumnType: FLOAT
+  - ColumnName: manager_id
+    ColumnType: TEXT
+  TableName: my_table
+Type: AWS::Cassandra::Table

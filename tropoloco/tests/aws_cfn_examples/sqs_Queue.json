@@ -1,0 +1,1 @@
+{"Type": "AWS::SQS::Queue", "Properties": {"RedrivePolicy": {"deadLetterTargetArn": {"Fn::GetAtt": ["MyDeadLetterQueue", "Arn"]}, "maxReceiveCount": 5}}}

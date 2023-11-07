@@ -1,0 +1,1 @@
+{"Type": "AWS::DataSync::LocationNFS", "Properties": {"MountOptions": {"Version": "NFS4_0"}, "OnPremConfig": {"AgentArns": ["arn:aws:datasync:us-east-2:111222333444:agent/agent-000addbcdf44bbnfs"]}, "ServerHostname": "MyServer@example.com", "Subdirectory": "/MySubdirectory"}}

@@ -1,0 +1,1 @@
+{"Type": "AWS::IoTEvents::Input", "Properties": {"InputName": "myInput", "InputDescription": "My Input created by CloudFormation", "InputDefinition": {"Attributes": [{"JsonPath": "foo"}, {"JsonPath": "bar"}]}}}

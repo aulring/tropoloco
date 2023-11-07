@@ -1,0 +1,1 @@
+{"Type": "AWS::CloudWatch::MetricStream", "Properties": {"FirehoseArn": "arn:aws:firehose:us-east-1:123456789012:deliverystream/MyDeliveryStream", "IncludeFilters": [{"Namespace": "AWS/ELB"}, {"Namespace": "AWS/EC2"}], "Name": "MyMetricStream", "OutputFormat": "json", "RoleArn": "arn:aws:iam::123456789012:role/service-role/MyRole"}}

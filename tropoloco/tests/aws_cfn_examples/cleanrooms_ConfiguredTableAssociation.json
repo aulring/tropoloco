@@ -1,0 +1,1 @@
+{"Type": "AWS::CleanRooms::ConfiguredTableAssociation", "Properties": {"Name": "Example Table", "Description": "Example associated configured table", "ConfiguredTableIdentifier": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222", "MembershipIdentifier": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333", "RoleArn": "arn:aws:iam::123456789012:role/service-role/cleanrooms-association-example"}}

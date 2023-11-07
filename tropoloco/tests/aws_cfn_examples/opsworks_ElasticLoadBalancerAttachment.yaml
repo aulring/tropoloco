@@ -1,0 +1,6 @@
+Properties:
+  ElasticLoadBalancerName:
+    Ref: ELB
+  LayerId:
+    Ref: Layer
+Type: AWS::OpsWorks::ElasticLoadBalancerAttachment

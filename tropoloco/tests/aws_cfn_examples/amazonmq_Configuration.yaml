@@ -1,0 +1,13 @@
+Properties:
+  Data:
+    Fn::Base64: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<broker\
+      \ xmlns=\"http://activemq.apache.org/schema/core\" start=\"false\">\n  <destinationPolicy>\n\
+      \    <policyMap>\n      <policyEntries>\n        <policyEntry topic=\">\">\n\
+      \          <pendingMessageLimitStrategy>\n            <constantPendingMessageLimitStrategy\
+      \ limit=\"3000\"/>\n          </pendingMessageLimitStrategy>\n        </policyEntry>\n\
+      \      </policyEntries>\n    </policyMap>\n  </destinationPolicy>\n  <plugins>\n\
+      \  </plugins>\n</broker>\n"
+  EngineType: ACTIVEMQ
+  EngineVersion: 5.15.0
+  Name: my-configuration-1
+Type: AWS::AmazonMQ::Configuration

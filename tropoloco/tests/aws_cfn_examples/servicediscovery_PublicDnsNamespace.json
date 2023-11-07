@@ -1,0 +1,1 @@
+{"Type": "AWS::ServiceDiscovery::PublicDnsNamespace", "Properties": {"Description": "AWS Cloud Map public DNS namespace for example.com website", "Name": "example.com", "Properties": {"DnsProperties": {"SOA": {"TTL": 100}}}}}

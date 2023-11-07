@@ -1,0 +1,11 @@
+Properties:
+  ColumnNames:
+  - sample_column_1
+  - sample_column_2
+  DatabaseName: sample_db
+  Name: sample_data_cells_filter
+  RowFilter:
+    FilterExpression: sample_column_1 > 0
+  TableCatalogId: '12345678910'
+  TableName: sample_tbl
+Type: AWS::LakeFormation::DataCellsFilter

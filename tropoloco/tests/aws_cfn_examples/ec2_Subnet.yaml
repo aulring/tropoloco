@@ -1,0 +1,9 @@
+Properties:
+  AvailabilityZone: us-east-1a
+  CidrBlock: 10.0.0.0/24
+  Tags:
+  - Key: stack
+    Value: production
+  VpcId:
+    Ref: myVPC
+Type: AWS::EC2::Subnet

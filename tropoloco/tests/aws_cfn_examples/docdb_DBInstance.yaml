@@ -1,0 +1,11 @@
+Properties:
+  AutoMinorVersionUpgrade: true
+  AvailabilityZone: us-east-1c
+  DBClusterIdentifier: sample-cluster
+  DBInstanceClass: db.r5.large
+  DBInstanceIdentifier: sample-cluster-instance-0
+  PreferredMaintenanceWindow: sat:06:54-sat:07:24
+  Tags:
+  - Key: String
+    Value: String
+Type: AWS::DocDB::DBInstance

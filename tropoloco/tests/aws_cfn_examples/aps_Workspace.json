@@ -1,0 +1,1 @@
+{"Type": "AWS::APS::Workspace", "Properties": {"Alias": "TestWorkspace", "LoggingConfiguration": {"LogGroupArn": "arn:aws:logs:{region}:{account}:log-group:test-log-group:*"}, "Tags": [{"Key": "BusinessPurpose", "Value": "LoadTesting"}]}}

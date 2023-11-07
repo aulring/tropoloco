@@ -1,0 +1,8 @@
+Properties:
+  Name: test-vpcendpoint
+  SecurityGroupIds:
+  - sg-03843b03f369eb245
+  SubnetIds:
+  - subnet-0e855f5722a9598ee
+  VpcId: vpc-0d728b8430292b3f4
+Type: AWS::OpenSearchServerless::VpcEndpoint

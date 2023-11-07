@@ -1,0 +1,3 @@
+Properties:
+  Name: my-dataset-group-name
+Type: AWS::Personalize::DatasetGroup

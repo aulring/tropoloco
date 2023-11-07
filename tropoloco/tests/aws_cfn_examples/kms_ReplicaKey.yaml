@@ -1,0 +1,45 @@
+Properties:
+  Description: Example replica key
+  KeyPolicy:
+    Id: key-default-1
+    Statement:
+    - Action: kms:*
+      Effect: Allow
+      Principal:
+        AWS: arn:aws:iam::111122223333:root
+      Resource: '*'
+      Sid: Enable IAM User Permissions
+    - Action:
+      - kms:Create*
+      - kms:Delete*
+      - kms:Disable*
+      - kms:Describe*
+      - kms:Enable*
+      - kms:Get*
+      - kms:List*
+      - kms:Put*
+      - kms:Revoke*
+      - kms:UpdateAlias
+      - kms:ScheduleKeyDeletion
+      - kms:CancelKeyDeletion
+      Effect: Allow
+      Principal:
+        AWS: arn:aws:iam::111122223333:role/admin
+      Resource: '*'
+      Sid: Allow administration of the key
+    - Action:
+      - kms:DescribeKey
+      - kms:Encrypt
+      - kms:Decrypt
+      - kms:ReEncrypt*
+      - kms:GenerateDataKey
+      - kms:GenerateDataKeyWithoutPlaintext
+      Effect: Allow
+      Principal:
+        AWS: arn:aws:iam::111122223333:role/developer
+      Resource: '*'
+      Sid: Allow use of the key
+    Version: 2012-10-17
+  PendingWindowInDays: 7
+  PrimaryKeyArn: arn:aws:kms:us-west-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab
+Type: AWS::KMS::ReplicaKey

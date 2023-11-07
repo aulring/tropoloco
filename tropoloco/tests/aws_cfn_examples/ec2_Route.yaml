@@ -1,0 +1,8 @@
+DependsOn: GatewayToInternetAndCarrierNetwork
+Properties:
+  DestinationCidrBlock: 0.0.0.0/0
+  GatewayId:
+    Ref: myCarrierGateway
+  RouteTableId:
+    Ref: myRouteTable
+Type: AWS::EC2::Route

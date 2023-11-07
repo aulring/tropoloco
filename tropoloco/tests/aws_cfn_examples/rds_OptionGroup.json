@@ -1,0 +1,1 @@
+{"Type": "AWS::RDS::OptionGroup", "Properties": {"EngineName": "sqlserver-se", "MajorEngineVersion": "12.00", "OptionGroupDescription": "SQL Server Native Backup and Restore", "OptionConfigurations": [{"OptionName": "SQLSERVER_BACKUP_RESTORE", "OptionSettings": [{"Name": "IAM_ROLE_ARN", "Value": "arn:aws:iam::333333333333333:role/service-role/sqlserverrestore"}]}]}}

@@ -1,0 +1,1 @@
+{"Type": "AWS::Route53::CidrCollection", "Properties": {"Name": "my-first-cidr-collection", "Locations": [{"LocationName": "location-1", "CidrList": ["1.1.0.0/24", "2.1.0.0/16"]}, {"LocationName": "location-2", "CidrList": ["2002::1234:0:0:0:0:0/48", "1002::/32"]}]}}

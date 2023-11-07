@@ -1,0 +1,5 @@
+Properties:
+  Path: /
+  Roles:
+  - Ref: MyRole
+Type: AWS::IAM::InstanceProfile

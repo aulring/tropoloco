@@ -1,0 +1,9 @@
+Properties:
+  DeletionProtected: true
+  Regions:
+  - RegionName:
+      Ref: AWS::Region
+  Tags:
+  - Key: MyReplicationSetTagKey
+    Value: MyReplicationSetTagValue
+Type: AWS::SSMIncidents::ReplicationSet

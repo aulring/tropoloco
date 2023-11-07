@@ -1,0 +1,1 @@
+{"Type": "AWS::NetworkManager::GlobalNetwork", "Properties": {"Description": "Global network for USA sites", "Tags": [{"Key": "Name", "Value": "global-network-usa"}]}}

@@ -1,0 +1,6 @@
+Properties:
+  Aggregation: SUM
+  Pattern: BY_RESOURCE_TYPE
+  ProtectionGroupId: ProtectionGroupForAllEIPResources
+  ResourceType: ELASTIC_IP_ALLOCATION
+Type: AWS::Shield::ProtectionGroup

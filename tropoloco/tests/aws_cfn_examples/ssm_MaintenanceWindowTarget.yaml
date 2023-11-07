@@ -1,0 +1,12 @@
+DependsOn: MaintenanceWindow
+Properties:
+  Description: A target for demonstrating maintenance windows and step functions
+  Name: SSMStepFunctionDemo
+  OwnerInformation: SSM Step Function Demo
+  ResourceType: INSTANCE
+  Targets:
+  - Key: tag:ENV
+    Values:
+    - DEV
+  WindowId: MaintenanceWindow
+Type: AWS::SSM::MaintenanceWindowTarget

@@ -1,0 +1,1 @@
+{"Type": "AWS::WAFv2::IPSet", "Properties": {"Description": "SampleIPSet", "Name": "SampleIPSSet", "Scope": "REGIONAL", "IPAddressVersion": "IPV4", "Addresses": ["1.2.1.1/32"]}}

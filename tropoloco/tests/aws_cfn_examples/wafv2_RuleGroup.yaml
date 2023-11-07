@@ -1,0 +1,110 @@
+Properties:
+  Capacity: 1000
+  CustomResponseBodies:
+    CustomResponseBodyKey1:
+      Content: this is a plain text
+      ContentType: TEXT_PLAIN
+    CustomResponseBodyKey2:
+      Content: '{"jsonfieldname": "jsonfieldvalue"}'
+      ContentType: APPLICATION_JSON
+    CustomResponseBodyKey3:
+      Content: <html>HTML text content</html>
+      ContentType: TEXT_HTML
+  Description: SampleRuleGroup
+  Name: SampleRuleGroup
+  Rules:
+  - Action:
+      Allow:
+        CustomRequestHandling:
+          InsertHeaders:
+          - Name: AllowActionHeader1Name
+            Value: AllowActionHeader1Value
+          - Name: AllowActionHeader2Name
+            Value: AllowActionHeader2Value
+    Name: RuleOne
+    Priority: 1
+    Statement:
+      ByteMatchStatement:
+        FieldToMatch:
+          AllQueryArguments: {}
+        PositionalConstraint: CONTAINS
+        SearchString: testagent
+        TextTransformations:
+        - Priority: 1
+          Type: HTML_ENTITY_DECODE
+    VisibilityConfig:
+      CloudWatchMetricsEnabled: true
+      MetricName: RuleOneMetric
+      SampledRequestsEnabled: true
+  - Action:
+      Block:
+        CustomResponse:
+          CustomResponseBodyKey: CustomResponseBodyKey1
+          ResponseCode: 503
+          ResponseHeaders:
+          - Name: BlockActionHeader1Name
+            Value: BlockActionHeader1Value
+          - Name: BlockActionHeader2Name
+            Value: BlockActionHeader2Value
+    Name: RuleTwo
+    Priority: 2
+    Statement:
+      ByteMatchStatement:
+        FieldToMatch:
+          SingleHeader:
+            Name: haystack
+        PositionalConstraint: CONTAINS
+        SearchString: badbot
+        TextTransformations:
+        - Priority: 0
+          Type: NONE
+    VisibilityConfig:
+      CloudWatchMetricsEnabled: true
+      MetricName: RuleTwoMetric
+      SampledRequestsEnabled: true
+  - Action:
+      Count:
+        CustomRequestHandling:
+          InsertHeaders:
+          - Name: CountActionHeader1Name
+            Value: CountActionHeader1Value
+          - Name: CountActionHeader2Name
+            Value: CountActionHeader2Value
+    Name: RuleThree
+    Priority: 3
+    Statement:
+      ByteMatchStatement:
+        FieldToMatch:
+          Body: {}
+        PositionalConstraint: CONTAINS
+        SearchString: RegionOne
+        TextTransformations:
+        - Priority: 0
+          Type: HTML_ENTITY_DECODE
+    VisibilityConfig:
+      CloudWatchMetricsEnabled: true
+      MetricName: RuleThreeMetric
+      SampledRequestsEnabled: true
+  - Action:
+      Allow: {}
+    Name: RuleFour
+    Priority: 4
+    Statement:
+      SizeConstraintStatement:
+        ComparisonOperator: GT
+        FieldToMatch:
+          UriPath: {}
+        Size: 1000
+        TextTransformations:
+        - Priority: 0
+          Type: NONE
+    VisibilityConfig:
+      CloudWatchMetricsEnabled: true
+      MetricName: RuleFourMetric
+      SampledRequestsEnabled: true
+  Scope: REGIONAL
+  VisibilityConfig:
+    CloudWatchMetricsEnabled: true
+    MetricName: SampleRuleGroupMetrics
+    SampledRequestsEnabled: true
+Type: AWS::WAFv2::RuleGroup

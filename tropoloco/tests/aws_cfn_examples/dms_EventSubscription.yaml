@@ -1,0 +1,11 @@
+Properties:
+  Enabled: false
+  EventCategories:
+  - configuration change
+  - failure
+  - deletion
+  SnsTopicArn: arn:aws:sns:us-west-2:123456789012:example-topic
+  SourceIds:
+  - rep-instance-1
+  SourceType: replication-instance
+Type: AWS::DMS::EventSubscription

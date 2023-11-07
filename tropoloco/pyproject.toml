@@ -8,7 +8,24 @@ packages = [{include = "tropoloco", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pydantic = "^2.3.0"
+gunicorn = "^21.2.0"
+#pip install git+https://github.com/aulring/pydantic_web_editor.git@fb363b4#subdirectory=pydantic_web_editor
+fastapi = "^0.103.1"
+troposphere = {git = "https://github.com/cloudtools/troposphere.git"}
+uvicorn = "^0.23.2"
 
+[tool.poetry.scripts]
+tropoloco = 'tropoloco.cli:cli'
+
+[tool.poetry.group.dev.dependencies]
+gitpython = "^3.1.36"
+beautifulsoup4 = "^4.12.2"
+loguru = "^0.7.2"
+requests = "^2.31.0"
+jinja2 = "^3.1.2"
+tqdm = "^4.66.1"
+networkx = "^3.1"
 
 [build-system]
 requires = ["poetry-core"]

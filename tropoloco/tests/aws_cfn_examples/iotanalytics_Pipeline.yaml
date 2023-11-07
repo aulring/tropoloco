@@ -1,0 +1,55 @@
+Properties:
+  PipelineActivities:
+  - AddAttributes:
+      Attributes:
+        key1: attribute1
+        key2: attribute2
+      Name: AddAttributesActivity
+      Next: RemoveAttributesActivity
+    Channel:
+      ChannelName: Channel
+      Name: ChannelActivity
+      Next: LambdaActivity
+    Datastore:
+      DatastoreName: Datastore
+      Name: DatastoreActivity
+    DeviceRegistryEnrich:
+      Attribute: attribute
+      Name: DeviceRegistryEnrichActivity
+      Next: DeviceShadowEnrichActivity
+      RoleArn: arn:aws:iam::<your_Account_Id>:role/Enrich
+      ThingName: thingName
+    DeviceShadowEnrich:
+      Attribute: attribute
+      Name: DeviceShadowEnrichActivity
+      Next: DatastoreActivity
+      RoleArn: arn:aws:iam::<your_Account_Id>:role/Enrich
+      ThingName: thingName
+    Filter:
+      Filter: attribute1 > 40 AND attribute2 < 20
+      Name: FilterActivity
+      Next: MathActivity
+    Lambda:
+      BatchSize: 1
+      LambdaName: Lambda
+      Name: LambdaActivity
+      Next: AddAttributesActivity
+    Math:
+      Attribute: attribute
+      Math: attribute - 10
+      Name: MathActivity
+      Next: DeviceRegistryEnrichActivity
+    RemoveAttributes:
+      Attributes:
+      - attribute1
+      - attribute2
+      Name: RemoveAttributesActivity
+      Next: SelectAttributesActivity
+    SelectAttributes:
+      Attributes:
+      - attribute1
+      - attribute2
+      Name: SelectAttributesActivity
+      Next: FilterActivity
+  PipelineName: ComplexPipeline
+Type: AWS::IoTAnalytics::Pipeline

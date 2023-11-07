@@ -1,0 +1,1 @@
+{"Type": "AWS::DataBrew::Project", "Properties": {"Name": "test-project", "RecipeName": "test-project-recipe", "DatasetName": "test-dataset", "RoleArn": "arn:aws:iam::1234567891011:role/PassRoleAdmin", "Sample": {"Size": 500, "Type": "LAST_N"}, "Tags": [{"Key": "key00AtCreate", "Value": "value001AtCreate"}]}}

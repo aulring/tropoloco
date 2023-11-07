@@ -1,0 +1,1 @@
+{"Type": "AWS::S3Outposts::Endpoint", "Properties": {"OutpostID": "op-01ac5d28a6a232977", "SecurityGroupID": "sg-0eada697f44597077", "SubnetID": "subnet-0e866e469c4ec9b77", "AccessType": "CustomerOwnedIp", "CustomerOwnedIpv4Pool": "ipv4pool-coip-12345678901234567"}}

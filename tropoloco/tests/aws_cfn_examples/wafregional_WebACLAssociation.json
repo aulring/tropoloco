@@ -1,0 +1,1 @@
+{"Type": "AWS::WAFRegional::WebACLAssociation", "Properties": {"ResourceArn": {"Ref": "MyLoadBalancer"}, "WebACLId": {"Ref": "MyWebACL"}}}

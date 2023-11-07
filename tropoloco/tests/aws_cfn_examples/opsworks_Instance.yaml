@@ -1,0 +1,24 @@
+Properties:
+  AutoScalingType: timer
+  InstanceType: m1.small
+  LayerIds:
+  - Ref: DBLayer
+  StackId:
+    Ref: Stack
+  TimeBasedAutoScaling:
+    Friday:
+      '12': 'on'
+      '13': 'on'
+      '14': 'on'
+      '15': 'on'
+    Saturday:
+      '12': 'on'
+      '13': 'on'
+      '14': 'on'
+      '15': 'on'
+    Sunday:
+      '12': 'on'
+      '13': 'on'
+      '14': 'on'
+      '15': 'on'
+Type: AWS::OpsWorks::Instance

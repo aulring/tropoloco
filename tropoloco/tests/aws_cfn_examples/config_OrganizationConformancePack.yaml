@@ -1,0 +1,5 @@
+Properties:
+  DeliveryS3Bucket: DeliveryS3Bucket
+  OrganizationConformancePackName: OrganizationConformancePackName
+  TemplateS3Uri: s3://bucketname/prefix
+Type: AWS::Config::OrganizationConformancePack

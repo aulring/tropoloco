@@ -1,0 +1,6 @@
+Properties:
+  ResourceArn:
+    Ref: MyLoadBalancer
+  WebACLId:
+    Ref: MyWebACL
+Type: AWS::WAFRegional::WebACLAssociation

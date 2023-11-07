@@ -1,0 +1,15 @@
+Properties:
+  LFTags:
+  - CatalogId: '12345678910'
+    TagKey: sample_tag_key
+    TagValues:
+    - sample_tag_value1
+  Resource:
+    TableWithColumns:
+      CatalogId: '12345678910'
+      ColumnNames:
+      - sample_col1
+      - sample_col2
+      DatabaseName: sample_db
+      Name: sample_tbl
+Type: AWS::LakeFormation::TagAssociation

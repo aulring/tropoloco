@@ -1,0 +1,22 @@
+Properties:
+  ApplicationName:
+    Ref: BasicApplication
+  ReferenceDataSource:
+    ReferenceSchema:
+      RecordColumns:
+      - Mapping: $.example
+        Name: example
+        SqlType: VARCHAR(16)
+      RecordFormat:
+        MappingParameters:
+          JSONMappingParameters:
+            RecordRowPath: $
+        RecordFormatType: JSON
+    S3ReferenceDataSource:
+      BucketARN:
+        Fn::GetAtt:
+        - S3Bucket
+        - Arn
+      FileKey: fakeKey
+    TableName: exampleTable
+Type: AWS::KinesisAnalyticsV2::ApplicationReferenceDataSource

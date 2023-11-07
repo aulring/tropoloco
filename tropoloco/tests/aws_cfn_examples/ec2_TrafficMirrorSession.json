@@ -1,0 +1,1 @@
+{"Type": "AWS::EC2::TrafficMirrorSession", "Properties": {"Description": "Example traffic mirror session", "NetworkInterfaceId": "eni-070203a001EXAMPLE", "TrafficMirrorTargetId": "tmt-5319fsEXAMPLE", "TrafficMirrorFilterId": "tmf-1tdbhqEXAMPLE", "SessionNumber": 1, "PacketLength": 100, "VirtualNetworkId": 1234, "Tags": [{"Key": "Name", "Value": "SampleSession"}]}}

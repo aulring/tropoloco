@@ -1,0 +1,1 @@
+{"Type": "AWS::GlobalAccelerator::Listener", "Properties": {"AcceleratorArn": {"Ref": "Accelerator"}, "Protocol": "TCP", "PortRanges": [{"FromPort": 80, "ToPort": 80}]}}

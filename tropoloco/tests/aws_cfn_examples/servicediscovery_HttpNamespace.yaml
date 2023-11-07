@@ -1,0 +1,4 @@
+Properties:
+  Description: AWS Cloud Map HTTP namespace for resources for example.com website
+  Name: example-namespace
+Type: AWS::ServiceDiscovery::HttpNamespace

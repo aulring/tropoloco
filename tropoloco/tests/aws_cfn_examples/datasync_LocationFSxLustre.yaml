@@ -1,0 +1,6 @@
+Properties:
+  FsxFilesystemArn: arn:aws:fsx:us-east-2:111222333444:file-system/fs-12345fsx
+  SecurityGroupArns:
+  - arn:aws:ec2:us-east-2:11122233344:security-group/sg-12345678901212345
+  Subdirectory: /MySubdirectory
+Type: AWS::DataSync::LocationFSxLustre

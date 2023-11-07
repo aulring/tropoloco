@@ -1,0 +1,8 @@
+DeletionPolicy: Retain
+Properties:
+  Content: "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"\
+    Sid\": \"AllowDescribeOrganization\",\n      \"Effect\": \"Allow\",\n      \"\
+    Principal\": {\n        \"AWS\": \"arn:aws:iam::111122223333:root\"\n      },\n\
+    \      \"Action\": [\n        \"organizations:DescribeOrganization\"\n      ],\n\
+    \      \"Resource\": \"*\"\n    }\n  ]\n}"
+Type: AWS::Organizations::ResourcePolicy

@@ -1,0 +1,10 @@
+Properties:
+  AppSource:
+    Revision: version1
+    Type: git
+    Url: git://github.com/amazonwebservices/opsworks-demo-php-simple-app.git
+  Name: myPHPapp
+  StackId:
+    Ref: myStack
+  Type: php
+Type: AWS::OpsWorks::App

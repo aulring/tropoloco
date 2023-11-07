@@ -1,0 +1,12 @@
+Properties:
+  Locations:
+  - CidrList:
+    - 1.1.0.0/24
+    - 2.1.0.0/16
+    LocationName: location-1
+  - CidrList:
+    - 2002::1234:0:0:0:0:0/48
+    - 1002::/32
+    LocationName: location-2
+  Name: my-first-cidr-collection
+Type: AWS::Route53::CidrCollection

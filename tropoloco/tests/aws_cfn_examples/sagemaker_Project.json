@@ -1,0 +1,1 @@
+{"Type": "AWS::SageMaker::Project", "Properties": {"ProjectName": "project1", "ProjectDescription": "Project Description", "ServiceCatalogProvisioningDetails": {"ProductId": "prod-53ibyqbj2cgmo", "ProvisioningArtifactId": "pa-sm4pjfuzictpe"}}}

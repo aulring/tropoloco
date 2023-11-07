@@ -1,0 +1,1 @@
+{"Type": "AWS::SupportApp::SlackWorkspaceConfiguration", "Properties": {"TeamId": "T012ABCDEFG", "VersionId": "1"}}

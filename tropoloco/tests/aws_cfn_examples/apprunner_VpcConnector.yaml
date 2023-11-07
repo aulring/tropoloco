@@ -1,0 +1,9 @@
+Properties:
+  SecurityGroups:
+  - sg-123
+  - sg-456
+  Subnets:
+  - subnet-123
+  - subnet-456
+  VpcConnectorName: my-vpc-connector
+Type: AWS::AppRunner::VpcConnector

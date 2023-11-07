@@ -1,0 +1,3 @@
+Properties:
+  ReplicationInstanceClass: dms.t2.small
+Type: AWS::DMS::ReplicationInstance

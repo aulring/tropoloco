@@ -1,0 +1,13 @@
+Properties:
+  PolicyText:
+    Statement:
+    - Action:
+      - ecr:CreateRepository
+      - ecr:ReplicateImage
+      Effect: Allow
+      Principal:
+        AWS: arn:aws:iam::210987654321:root
+      Resource: arn:aws:ecr:us-west-2:123456789012:repository/*
+      Sid: UpdatedRegistryPolicy
+    Version: 2012-10-17
+Type: AWS::ECR::RegistryPolicy

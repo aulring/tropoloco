@@ -1,0 +1,18 @@
+Properties:
+  Description: This is the recipe description.
+  Name: recipe-name
+  Steps:
+  - Action:
+      Operation: EXTRACT_PATTERN
+      Parameters:
+        Pattern: A
+        SourceColumn: Consulate
+        TargetColumn: extract_pattern
+    ConditionExpressions:
+    - Condition: LESS_THAN_EQUAL
+      TargetColumn: Target
+      Value: 5
+  Tags:
+  - Key: key00AtCreate
+    Value: value001AtCreate
+Type: AWS::DataBrew::Recipe

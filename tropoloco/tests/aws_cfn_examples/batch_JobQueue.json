@@ -1,0 +1,1 @@
+{"Type": "AWS::Batch::JobQueue", "Properties": {"ComputeEnvironmentOrder": [{"Order": 1, "ComputeEnvironment": "C4OnDemand"}, {"Order": 2, "ComputeEnvironment": "M4Spot"}], "State": "ENABLED", "Priority": 1, "JobQueueName": "HighPriority"}}

@@ -1,0 +1,1 @@
+{"Type": "AWS::WAFRegional::Rule", "Properties": {"Name": "MyIPSetRule", "MetricName": "MyIPSetRule", "Predicates": [{"DataId": {"Ref": "MyIPSetBlacklist"}, "Negated": false, "Type": "IPMatch"}]}}

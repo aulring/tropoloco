@@ -1,0 +1,4 @@
+Properties:
+  CloudFrontOriginAccessIdentityConfig:
+    Comment: string-value
+Type: AWS::CloudFront::CloudFrontOriginAccessIdentity

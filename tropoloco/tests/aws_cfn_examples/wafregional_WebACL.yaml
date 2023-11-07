@@ -1,0 +1,22 @@
+Properties:
+  DefaultAction:
+    Type: ALLOW
+  MetricName: MyWebACL
+  Name: WebACL to with three rules
+  Rules:
+  - Action:
+      Type: BLOCK
+    Priority: 1
+    RuleId:
+      Ref: MyRule
+  - Action:
+      Type: BLOCK
+    Priority: 2
+    RuleId:
+      Ref: BadReferersRule
+  - Action:
+      Type: BLOCK
+    Priority: 3
+    RuleId:
+      Ref: SqlInjRule
+Type: AWS::WAFRegional::WebACL

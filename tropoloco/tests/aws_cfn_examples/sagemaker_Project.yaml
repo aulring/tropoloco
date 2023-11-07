@@ -1,0 +1,7 @@
+Properties:
+  ProjectDescription: Project Description
+  ProjectName: SampleProject
+  ServiceCatalogProvisioningDetails:
+    ProductId: prod-53ibyqbj2cgmo
+    ProvisioningArtifactId: pa-sm4pjfuzictpe
+Type: AWS::SageMaker::Project

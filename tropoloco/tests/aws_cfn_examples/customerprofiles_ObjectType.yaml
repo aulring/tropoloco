@@ -1,0 +1,21 @@
+Properties:
+  AllowProfileCreation: false
+  Description: Description Example
+  DomainName: ExampleDomain
+  ExpirationDays: 1
+  Fields:
+  - Name: email
+    ObjectTypeField:
+      ContentType: EMAIL_ADDRESS
+      Source: _source.email
+      Target: _profile.BusinessEmail
+  Keys:
+  - Name: _email
+    ObjectTypeKeyList:
+    - FieldNames:
+      - email
+      StandardIdentifiers:
+      - PROFILE
+      - UNIQUE
+  ObjectTypeName: ExampleObjectType
+Type: AWS::CustomerProfiles::ObjectType

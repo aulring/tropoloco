@@ -1,0 +1,17 @@
+Properties:
+  Bucket:
+    Ref: ExampleS3OutpostsBucket
+  Name: ExampleAccessPoint
+  Policy:
+    ID: AccessPointPolicy
+    Statement:
+    - Action: s3-outposts:*
+      Effect: Allow
+      Principal:
+        AWS: arn:aws:iam::123456789012:root
+      Resource: arn:aws:s3-outposts:us-east-1:1234567890:outpost/op-01ac5d28a6a232904/accesspoint/ExampleAccessPoint
+      Sid: st1
+    Version: '2012-10-17'
+  VpcConfiguration:
+    VpcID: vpc-12345
+Type: AWS::S3Outposts::AccessPoint

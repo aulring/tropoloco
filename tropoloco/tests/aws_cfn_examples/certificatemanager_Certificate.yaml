@@ -1,0 +1,4 @@
+Properties:
+  DomainName: example.com
+  ValidationMethod: DNS
+Type: AWS::CertificateManager::Certificate

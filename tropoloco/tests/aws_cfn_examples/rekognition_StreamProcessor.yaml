@@ -1,0 +1,34 @@
+Properties:
+  ConnectedHomeSettings:
+    Labels:
+    - PERSON
+    - PACKAGE
+    MinConfidence: 60
+  KinesisVideoStream:
+    Arn: arn:aws:kinesisvideo:us-east-1:123456789012:stream/my-stream/0123456789012
+  KmsKeyId: 1234abcd-12ab-34cd-56ef-1234567890ab
+  NotificationChannel:
+    Arn: arn:aws:sns:us-east-1:123456789012:mystack-mytopic-ABCDEFGHIJKL
+  PolygonRegionsOfInterest:
+  - - X: 0.2
+      Y: 0.4
+    - X: 0.1
+      Y: 0.5
+    - X: 0.6
+      Y: 0.6
+  - - X: 0.6
+      Y: 0.3
+    - X: 0.2
+      Y: 0.7
+    - X: 0.1
+      Y: 0.1
+  RoleArn: arn:aws:iam::123456789012:role/RoleForRekognition
+  S3Destination:
+    BucketName: MyS3Bucket
+    ObjectKeyPrefix: /my/prefix/
+  Tags:
+  - Key: Key1
+    Value: Value1
+  - Key: Key2
+    Value: Value2
+Type: AWS::Rekognition::StreamProcessor

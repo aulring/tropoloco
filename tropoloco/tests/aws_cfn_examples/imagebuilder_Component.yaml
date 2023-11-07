@@ -1,0 +1,15 @@
+Properties:
+  ChangeDescription: change-description
+  Description: description
+  KmsKeyId: customer-kms-key-id
+  Name: component-name
+  Platform: Linux
+  SupportedOsVersions:
+  - CentOS
+  - Red Hat Enterprise Linux
+  Tags:
+    CustomerComponentTagKey1: CustomerComponentTagValue1
+    CustomerComponentTagKey2: CustomerComponentTagValue2
+  Uri: s3://imagebuilder/component_document.yml
+  Version: 1.0.0
+Type: AWS::ImageBuilder::Component

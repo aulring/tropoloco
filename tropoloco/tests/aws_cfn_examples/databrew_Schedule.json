@@ -1,0 +1,1 @@
+{"Type": "AWS::DataBrew::Schedule", "Properties": {"JobNames": ["job-test"], "Name": "cf-test-schedule1", "CronExpression": "cron(0 0/1 ? * * *)"}, "Tags": [{"Key": "key00AtCreate", "Value": "value001AtCreate"}]}

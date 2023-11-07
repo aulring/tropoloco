@@ -1,0 +1,1 @@
+{"Type": "AWS::Cassandra::Keyspace", "Properties": {"KeyspaceName": "MultiRegionKeyspace", "ReplicationSpecification": {"ReplicationStrategy": "MULTI_REGION", "RegionList": ["us-east-1", "us-west-2", "eu-west-1"]}}}

@@ -1,0 +1,9 @@
+Properties:
+  MetricName: MyIPSetRule
+  Name: MyIPSetRule
+  Predicates:
+  - DataId:
+      Ref: MyIPSetDenylist
+    Negated: false
+    Type: IPMatch
+Type: AWS::WAF::Rule

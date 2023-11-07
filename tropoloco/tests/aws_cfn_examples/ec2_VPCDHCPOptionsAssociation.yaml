@@ -1,0 +1,6 @@
+Properties:
+  DhcpOptionsId:
+    Ref: myDHCPOptions
+  VpcId:
+    Ref: myVPC
+Type: AWS::EC2::VPCDHCPOptionsAssociation

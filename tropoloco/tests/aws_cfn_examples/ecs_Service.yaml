@@ -1,0 +1,8 @@
+Properties:
+  Cluster:
+    Ref: ECSCluster
+  DesiredCount: 1
+  EnableExecuteCommand: true
+  TaskDefinition:
+    Ref: ECSTaskDefinition
+Type: AWS::ECS::Service

@@ -1,0 +1,16 @@
+Properties:
+  Description: Example traffic mirror filter rule
+  DestinationCidrBlock: 10.0.0.0/16
+  DestinationPortRange:
+    FromPort: 50
+    ToPort: 100
+  Protocol: 17
+  RuleAction: accept
+  RuleNumber: 10
+  SourceCidrBlock: 10.0.0.0/16
+  SourcePortRange:
+    FromPort: 10
+    ToPort: 50
+  TrafficDirection: ingress
+  TrafficMirrorFilterId: tmf-04812ff784EXAMPLE
+Type: AWS::EC2::TrafficMirrorFilterRule

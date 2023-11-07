@@ -1,0 +1,1 @@
+{"Type": "AWS::EC2::TrafficMirrorTarget", "Properties": {"Description": "Example traffic mirror target associated with a network interface", "NetworkInterfaceId": "eni-070203a001EXAMPLE", "Tags": [{"Key": "Name", "Value": "SampleNetworkInterfaceTarget"}]}}

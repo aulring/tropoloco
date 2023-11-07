@@ -1,0 +1,7 @@
+Properties:
+  Actions:
+  - ActionName: SqlAction
+    QueryAction:
+      SqlQuery: select * from Datastore
+  DatasetName: TriggeringDataset
+Type: AWS::IoTAnalytics::Dataset

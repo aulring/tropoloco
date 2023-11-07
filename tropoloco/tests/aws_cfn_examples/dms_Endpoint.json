@@ -1,0 +1,1 @@
+{"Type": "AWS::DMS::Endpoint", "Properties": {"EngineName": "mysql", "EndpointType": "source", "Username": "username", "Password": {"Ref": "PasswordParameter"}, "ServerName": "source.db.amazon.com", "Port": 1234, "DatabaseName": "source-db"}}

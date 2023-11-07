@@ -1,0 +1,28 @@
+Properties:
+  DataProtectionPolicy:
+    Description: test description
+    Name: data-protection-policy
+    Statement:
+    - DataIdentifier:
+      - arn:aws:dataprotection::aws:data-identifier/EmailAddress
+      - arn:aws:dataprotection::aws:data-identifier/DriversLicense-US
+      Operation:
+        Audit:
+          FindingsDestination:
+            CloudWatchLogs:
+              LogGroup: EXISTING_LOG_GROUP_IN_YOUR_ACCOUNT
+            Firehose:
+              DeliveryStream: EXISTING_STREAM_IN_YOUR_ACCOUNT
+            S3:
+              Bucket: EXISTING_BUCKET
+      Sid: audit-policy test
+    - DataIdentifier:
+      - arn:aws:dataprotection::aws:data-identifier/EmailAddress
+      - arn:aws:dataprotection::aws:data-identifier/DriversLicense-US
+      Operation:
+        Deidentify:
+          MaskConfig: {}
+      Sid: redact-policy
+    Version: '2021-06-01'
+  LogGroupName: my-log-group
+Type: AWS::Logs::LogGroup

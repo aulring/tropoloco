@@ -1,0 +1,5 @@
+Properties:
+  Config:
+    Sns:
+      TopicArn: arn:aws:sns:us-east-1:123456789012:DefaultNotificationChannel
+Type: AWS::DevOpsGuru::NotificationChannel

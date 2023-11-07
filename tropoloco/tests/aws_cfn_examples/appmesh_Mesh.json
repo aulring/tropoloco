@@ -1,0 +1,1 @@
+{"Type": "AWS::AppMesh::Mesh", "Properties": {"MeshName": "BasicMesh1", "Spec": {"EgressFilter": {"Type": "ALLOW_ALL"}}, "Tags": [{"Key": "Key1", "Value": "Value1"}, {"Key": "Key2", "Value": "Value2"}]}}

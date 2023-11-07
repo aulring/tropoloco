@@ -1,0 +1,10 @@
+Properties:
+  InitialVersion:
+    Loggers:
+    - Component: GreengrassSystem
+      Id: TestLogger1
+      Level: INFO
+      Space: '128'
+      Type: FileSystem
+  Name: DemoTestLoggerDefinition
+Type: AWS::Greengrass::LoggerDefinition

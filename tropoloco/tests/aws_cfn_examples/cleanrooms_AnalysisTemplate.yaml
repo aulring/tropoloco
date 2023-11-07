@@ -1,0 +1,17 @@
+Properties:
+  AnalysisParameters:
+  - DefaultValue: 1
+    Name: Param1
+    Type: SMALLINT
+  - Name: Param2
+    Type: CHAR
+  Description: example description
+  Format: SQL
+  MembershipIdentifier: a1b2c3d4-5678-90ab-cdef-EXAMPLE1111
+  Name: exampleAnalysisTemplate
+  Source:
+    Text: SELECT * FROM cta1 WHERE cta1.column1 > :Param1 AND cta1.column2 like :Param2
+  Tags:
+  - Key: Hello
+    Value: World
+Type: AWS::CleanRooms::AnalysisTemplate

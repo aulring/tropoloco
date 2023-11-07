@@ -1,0 +1,10 @@
+Properties:
+  EndpointConfigurations:
+  - EndpointId:
+      Ref: EndpointId
+  EndpointGroupRegion:
+    Ref: EndpointRegion
+  ListenerArn:
+    Ref: Listener
+  TrafficDialPercentage: 100
+Type: AWS::GlobalAccelerator::EndpointGroup

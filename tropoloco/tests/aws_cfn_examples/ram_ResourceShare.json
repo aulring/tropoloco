@@ -1,0 +1,1 @@
+{"Type": "AWS::RAM::ResourceShare", "Properties": {"Name": "My Resource Share", "ResourceArns": ["arn:aws:ec2:us-east-1:123456789012:resource-type/12345678-1234-1234-1234-12345678"], "Principals": ["210987654321"], "Tags": [{"Key": "Key1", "Value": "Value1"}, {"Key": "Key2", "Value": "Value2"}]}}

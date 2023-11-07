@@ -1,0 +1,7 @@
+Properties:
+  Description: Network policy for test collections
+  Name: logs-network-policy
+  Policy: '[{"Rules":[{"ResourceType":"collection","Resource":["collection/logs*"]},
+    {"ResourceType":"dashboard","Resource":["collection/logs*"]}],"AllowFromPublic":true}]'
+  Type: network
+Type: AWS::OpenSearchServerless::SecurityPolicy

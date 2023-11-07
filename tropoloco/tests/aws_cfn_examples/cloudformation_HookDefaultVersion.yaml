@@ -1,0 +1,4 @@
+Properties:
+  TypeName: My::Sample::Hook
+  VersionId: 1
+Type: AWS::CloudFormation::HookDefaultVersion

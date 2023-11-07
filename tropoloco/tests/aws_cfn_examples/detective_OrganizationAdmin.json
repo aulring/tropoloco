@@ -1,0 +1,1 @@
+{"Type": "AWS::Detective::OrganizationAdmin", "Properties": {"AccountId": "123456789101"}}

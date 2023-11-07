@@ -1,0 +1,3 @@
+Properties:
+  ComputePlatform: Server
+Type: AWS::CodeDeploy::Application

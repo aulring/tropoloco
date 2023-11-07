@@ -1,0 +1,13 @@
+Properties:
+  Name: UpdateLambdaTaskEXAMPLE
+  Priority: 1
+  ServiceRoleArn: arn:aws:iam::111222333444:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM
+  TaskArn: arn:aws:lambda:us-east-2:111222333444:function:MyLambdaTaskArn
+  TaskInvocationParameters:
+    MaintenanceWindowLambdaParameters:
+      ClientContext: eyJ0ZXN0Q29udGV4dCI6Ik5vdGhp==trucated==EXAMPLE
+      Payload: eyJJbnN0YW5jZUlkIjoie3tSRVNPVVJDRV9JRH19IiwidGFyZ2V0VHlwZSI6Int7VEFSR0VUX1RZUEV9fSJ9
+      Qualifier: $LATEST
+  TaskType: LAMBDA
+  WindowId: mw-04fd6f19dfEXAMPLE
+Type: AWS::SSM::MaintenanceWindowTask

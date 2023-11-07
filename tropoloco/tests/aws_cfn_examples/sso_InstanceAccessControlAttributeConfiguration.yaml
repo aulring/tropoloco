@@ -1,0 +1,8 @@
+Properties:
+  AccessControlAttributes:
+  - Key: CostCenter
+    Value:
+      Source:
+      - ${path:enterprise.costCenter}
+  InstanceArn: arn:aws:sso:::instance/ssoins-instanceId
+Type: AWS::SSO::InstanceAccessControlAttributeConfiguration

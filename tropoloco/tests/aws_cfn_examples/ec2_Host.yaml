@@ -1,0 +1,5 @@
+Properties:
+  AutoPlacement: true
+  AvailabilityZone: us-east-1a
+  InstanceType: c3.large
+Type: AWS::EC2::Host

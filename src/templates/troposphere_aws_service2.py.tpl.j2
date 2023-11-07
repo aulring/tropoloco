@@ -1,0 +1,130 @@
+from __future__ import annotations
+from typing import Optional, List, Dict, Tuple, Any, Union
+
+from pydantic import BaseModel, Field
+
+import troposphere
+from tropoloco.tag import Tag, Tags
+from tropoloco import resource_to_troposphere, property_to_troposphere
+
+
+{%- macro lookup_property_overrides(dictionary, key) %}
+    {%- if key in dictionary %}
+    {{ dictionary[key] }}
+    {%- else -%}
+    {{ key }}
+    {%- endif -%}
+{%- endmacro %}
+
+{%- macro lookup_property_type_overrides(dictionary, key) %}
+    {%- if key in dictionary %}{{ dictionary[key] }}
+    {%- else -%}{{ key[1] }}
+    {%- endif -%}
+{%- endmacro %}
+
+{%- macro lookup_resource_type_overrides(dictionary, key) %}
+    {%- if key in dictionary %}{{ dictionary[key] }}
+    {%- else -%}{{ key[1] }}
+    {%- endif -%}
+{%- endmacro %}
+
+{%- macro lookup_resource_name(dictionary, key) %}
+    {%- if key in dictionary %}{{ dictionary[key] }}
+    {%- else -%}{{ key[1] }}
+    {%- endif -%}
+{%- endmacro %}
+
+
+######################################################################
+# AWS Property
+######################################################################
+
+
+{% for aws_property in properties %}
+class {{aws_property.name}}(BaseModel):
+    """
+    {%- if aws_property.Documentation -%}
+    {{ aws_property.Documentation }}
+    {%- endif -%}
+    {% if aws_property.Properties %}
+    Properties:
+        {%- for property_name, property in aws_property.Properties.items() %}
+        - Name: {{property_name}}
+        {%- endfor %}
+    {% else %}
+    Properties:
+        - did not locate and properties
+    {% endif %}
+    """
+    {% if aws_property.Properties %}
+        {%- for property_name, property in aws_property.Properties.items() %}
+            {%- if property.Required %}
+    {{property_name}}_: {{ lookup_resource_type_overrides(tropo_resource_typing_overrides, (aws_property.lookup_key, property.typing)) }} =  Field(description="""{{ property.Documentation }}""", alias="{{ property_name }}")
+            {%- elif property_name == Tags %}
+    {{property_name}}_: Optional[Union[List[{{ lookup_resource_type_overrides(tropo_resource_typing_overrides, (aws_property.lookup_key, property.typing)) }}], {{ lookup_resource_type_overrides(tropo_resource_typing_overrides, (aws_property.lookup_key, property.typing)) }}]] =  Field(None, description="""{{ property.Documentation }}""", alias="{{ property_name }}")
+            {%- else %}
+    {{property_name}}_: Optional[{{ lookup_resource_type_overrides(tropo_resource_typing_overrides, (aws_property.lookup_key, property.typing)) }}] = Field(None, description="""{{ property.Documentation }}""", alias="{{ property_name }}")
+            {%- endif %}
+        {%- endfor %}
+    {% else %}
+    pass
+{% endif %}
+
+
+    @property
+    def tropo_type(self) -> troposphere.{{output_file_name}}.{{aws_property.tropo_name}}:
+        from troposphere.{{output_file_name}} import {{aws_property.tropo_name}} as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+{% endfor %}
+
+######################################################################
+# AWS Resource
+######################################################################
+
+{% for aws_resource in resources %}
+class {{ lookup_resource_name(tropo_resource_renames, (service_name, aws_resource.name)) }}(BaseModel):
+    """
+{%- if aws_resource.Documentation -%}
+    {{ aws_resource.Documentation }}
+{%- endif -%}
+{%- if aws_resource.Properties %}
+    Properties:
+        {%- for property_name, property in aws_resource.Properties.items() %}
+        - Name: {{property_name}}
+        {%- endfor %}   
+{%- endif %}
+{%- if aws_resource.Attributes %}
+    Attributes:
+        {%- for attribute_name, attribute in aws_resource.Attributes.items() %}
+        - Name: {{attribute_name}}
+        {%- endfor %}     
+{%- endif %}
+    """
+    {% if aws_resource.Properties %}
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+        {%- for property_name, property in aws_resource.Properties.items() %}
+            {%- if property.Required %}
+    {{ lookup_property_overrides(tropo_property_name_overrides, property_name) }}_: {{ lookup_resource_type_overrides(tropo_resource_typing_overrides, (aws_resource.service_name, property.typing)) }} =  Field(description="""{{ property.Documentation }}""", alias="{{ property_name }}") 
+            {%- else %}
+    {{ lookup_property_overrides(tropo_property_name_overrides, property_name) }}_: Optional[{{ lookup_resource_type_overrides(tropo_resource_typing_overrides, (aws_resource.service_name, property.typing)) }}] = Field(None, description="""{{ property.Documentation }}""", alias="{{ property_name }}")
+            {%- endif %}
+        {%- endfor %}
+    {% else %}
+    pass
+    {% endif %}
+
+    @property
+    def tropo_type(self) -> troposphere.{{output_file_name}}.{{aws_resource.name}}:
+        from troposphere.{{output_file_name}} import {{aws_resource.name}} as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.{{output_file_name}} import {{aws_resource.name}} as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+{% endfor %}

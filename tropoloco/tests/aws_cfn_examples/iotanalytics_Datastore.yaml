@@ -1,0 +1,11 @@
+Properties:
+  DatastoreName: ComplexDatastore
+  RetentionPeriod:
+    NumberOfDays: 10
+    Unlimited: false
+  Tags:
+  - Key: keyname1
+    Value: value1
+  - Key: keyname2
+    Value: value2
+Type: AWS::IoTAnalytics::Datastore

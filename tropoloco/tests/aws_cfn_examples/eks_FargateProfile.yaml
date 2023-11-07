@@ -1,0 +1,14 @@
+DependsOn: EKSIdpConfig
+Properties:
+  ClusterName: my-cluster
+  FargateProfileName: my-fargate-profile
+  PodExecutionRoleArn: arn:aws:iam::012345678910:role/AmazonEKSFargatePodExecutionRole
+  Selectors:
+  - Labels:
+    - Key: my-key
+      Value: my-value
+    Namespace: my-namespace
+  Subnets:
+  - subnet-6782e71e
+  - subnet-e7e761ac
+Type: AWS::EKS::FargateProfile

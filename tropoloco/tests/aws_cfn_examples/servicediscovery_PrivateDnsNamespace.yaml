@@ -1,0 +1,9 @@
+Properties:
+  Description: AWS Cloud Map private DNS namespace for resources for example.com website
+  Name: private-example.com
+  Properties:
+    DnsProperties:
+      SOA:
+        TTL: 100
+  Vpc: vpc-12345678
+Type: AWS::ServiceDiscovery::PrivateDnsNamespace

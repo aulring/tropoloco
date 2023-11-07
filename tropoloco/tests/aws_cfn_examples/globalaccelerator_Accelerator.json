@@ -1,0 +1,1 @@
+{"Type": "AWS::GlobalAccelerator::Accelerator", "Properties": {"Name": "SampleAccelerator", "Enabled": true}}

@@ -1,0 +1,1 @@
+{"Type": "AWS::Config::OrganizationConfigRule", "Properties": {"OrganizationConfigRuleName": "OrganizationConfigRuleName", "OrganizationCustomRuleMetadata": {"LambdaFunctionArn": "CustomRuleLambdaArn", "OrganizationConfigRuleTriggerTypes": ["ScheduledNotification"]}, "ExcludedAccounts": ["accountId"]}}

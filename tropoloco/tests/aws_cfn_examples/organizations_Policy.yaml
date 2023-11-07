@@ -1,0 +1,9 @@
+DeletionPolicy: Retain
+Properties:
+  Content: "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"\
+    Sid\": \"SCPDenyLeaveOrganization\",\n      \"Effect\": \"Deny\",\n      \"Action\"\
+    : [\n        \"organizations:LeaveOrganization\"\n      ],\n      \"Resource\"\
+    : \"*\"\n    }\n  ]\n}"
+  Name: SCPDenyLeaveOrganization
+  Type: SERVICE_CONTROL_POLICY
+Type: AWS::Organizations::Policy

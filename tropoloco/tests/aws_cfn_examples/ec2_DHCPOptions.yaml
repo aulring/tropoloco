@@ -1,0 +1,13 @@
+Properties:
+  DomainName: example.com
+  DomainNameServers:
+  - AmazonProvidedDNS
+  NetbiosNameServers:
+  - 10.2.5.1
+  NetbiosNodeType: 2
+  NtpServers:
+  - 10.2.5.1
+  Tags:
+  - Key: project
+    Value: 123
+Type: AWS::EC2::DHCPOptions

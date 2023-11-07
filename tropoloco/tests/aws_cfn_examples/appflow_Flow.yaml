@@ -1,0 +1,51 @@
+Properties:
+  Description: Test flow for CloudFormation from salesforce to s3
+  DestinationFlowConfigList:
+  - ConnectorType: S3
+    DestinationConnectorProperties:
+      S3:
+        BucketName: TestOutputBucket
+        S3OutputFormatConfig:
+          AggregationConfig:
+            AggregationType: None
+          FileType: JSON
+  FlowName: MyEventFlow
+  SourceFlowConfig:
+    ConnectorProfileName: TestConnectorProfile
+    ConnectorType: Salesforce
+    SourceConnectorProperties:
+      Salesforce:
+        EnableDynamicFieldUpdate: false
+        IncludeDeletedRecords: true
+        Object: Account
+  Tasks:
+  - ConnectorOperator:
+      Salesforce: PROJECTION
+    SourceFields:
+    - Id
+    TaskType: Filter
+  - ConnectorOperator:
+      Salesforce: NO_OP
+    DestinationField: Id
+    SourceFields:
+    - Id
+    TaskProperties:
+    - Key: SOURCE_DATA_TYPE
+      Value: id
+    - Key: DESTINATION_DATA_TYPE
+      Value: id
+    TaskType: Map
+  - ConnectorOperator:
+      Salesforce: NO_OP
+    DestinationField: Name
+    SourceFields:
+    - Name
+    TaskProperties:
+    - Key: SOURCE_DATA_TYPE
+      Value: string
+    - Key: DESTINATION_DATA_TYPE
+      Value: string
+    TaskType: Map
+  TriggerConfig:
+    TriggerType: Event
+Type: AWS::AppFlow::Flow

@@ -1,0 +1,3 @@
+Properties:
+  AccountId: 123456789101
+Type: AWS::Detective::OrganizationAdmin

@@ -1,0 +1,8 @@
+Properties:
+  Description: CloudFormation Sample MySQL Parameter Group
+  Family: mysql8.0
+  Parameters:
+    innodb_buffer_pool_size: '{DBInstanceClassMemory*3/4}'
+    max_allowed_packet: 1024
+    sql_mode: IGNORE_SPACE
+Type: AWS::RDS::DBParameterGroup

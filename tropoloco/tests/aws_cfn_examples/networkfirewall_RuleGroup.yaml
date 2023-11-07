@@ -1,0 +1,30 @@
+Properties:
+  Capacity: 100
+  Description: Rulegroup description goes here
+  RuleGroup:
+    RulesSource:
+      StatelessRulesAndCustomActions:
+        StatelessRules:
+        - Priority: 1
+          RuleDefinition:
+            Actions:
+            - aws:pass
+            MatchAttributes:
+              DestinationPorts:
+              - FromPort: 443
+                ToPort: 443
+              Destinations:
+              - AddressDefinition: 10.0.0.0/8
+              Protocols:
+              - 6
+              SourcePorts:
+              - FromPort: 15000
+                ToPort: 30000
+              Sources:
+              - AddressDefinition: 0.0.0.0/0
+  RuleGroupName: SampleStatelessRulegroupName
+  Tags:
+  - Key: Foo
+    Value: Bar
+  Type: STATELESS
+Type: AWS::NetworkFirewall::RuleGroup

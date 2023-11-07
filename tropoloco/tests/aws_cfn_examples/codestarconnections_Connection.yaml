@@ -1,0 +1,8 @@
+Properties:
+  ConnectionName: MyConnection
+  HostArn: arn:aws:codestar-connections:us-west-2:123456789123:host/abc123-example
+  ProviderType: GitHubEnterpriseServer
+  Tags:
+  - Key: Project
+    Value: ProjectB
+Type: AWS::CodeStarConnections::Connection

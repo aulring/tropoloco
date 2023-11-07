@@ -1,0 +1,1 @@
+{"Type": "AWS::EC2::ClientVpnRoute", "Properties": {"ClientVpnEndpointId": {"Ref": "myClientVpnEndpoint"}, "TargetVpcSubnetId": {"Ref": "mySubnet"}, "DestinationCidrBlock": "0.0.0.0/0", "Description": "myRoute"}}

@@ -1,0 +1,5 @@
+Properties:
+  CIDRIP: 10.0.0.0/16
+  ClusterSecurityGroupName: null
+  Ref: myClusterSecurityGroup
+Type: AWS::Redshift::ClusterSecurityGroupIngress

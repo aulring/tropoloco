@@ -1,0 +1,8 @@
+Properties:
+  InputDefinition:
+    Attributes:
+    - JsonPath: foo
+    - JsonPath: bar
+  InputDescription: My Input created by CloudFormation
+  InputName: myInput
+Type: AWS::IoTEvents::Input

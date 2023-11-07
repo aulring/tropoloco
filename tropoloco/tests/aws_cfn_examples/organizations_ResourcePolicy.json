@@ -1,0 +1,1 @@
+{"DeletionPolicy": "Retain", "Type": "AWS::Organizations::ResourcePolicy", "Properties": {"Content": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"AllowDescribeOrganization\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::111122223333:root\"},\"Action\":[\"organizations:DescribeOrganization\"],\"Resource\":\"*\"}]}"}}

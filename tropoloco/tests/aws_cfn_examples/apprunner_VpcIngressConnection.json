@@ -1,0 +1,1 @@
+{"Type": "AWS::AppRunner::VpcIngressConnection", "Properties": {"IngressVpcConfiguration": {"VpcEndpointId": "vpc-1a2b3c4d", "VpcId": "vpc-4a6b7c8d"}, "ServiceArn": "arn:aws:apprunner:us-east-1:123456789012:service/my-service", "VpcIngressConnectionName": "my-vpc-ingress-connection"}}

@@ -1,0 +1,9 @@
+Properties:
+  OrganizationConfigRuleName: OrganizationConfigRuleName
+  OrganizationCustomRuleMetadata:
+    ExcludedAccounts:
+    - accountId
+    LambdaFunctionArn: CustomRuleLambdaArn
+    OrganizationConfigRuleTriggerTypes:
+    - ScheduledNotification
+Type: AWS::Config::OrganizationConfigRule

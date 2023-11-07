@@ -1,0 +1,12 @@
+Properties:
+  SuiteDefinitionConfiguration:
+    DevicePermissionRoleArn: arn:aws:iam::123456789012:role/RoleName
+    Devices:
+    - ThingArn: arn:aws:iot:us-east-1:123456789012:thing/ThingName
+    IntendedForQualification: false
+    RootGroup: '{ "configuration": {}, "tests": [{ "name": "TestGroup", "configuration":
+      { "EXECUTION_TIMEOUT": "30" }, "tests": [{ "name": "MQTTPublishTest", "configuration":
+      { "TOPIC_FOR_PUBLISH_VALIDATION": "target" }, "test": { "id": "MQTT_Publish",
+      "version": "0.0.0" } }] }] }'
+    SuiteDefinitionName: SuiteDefinitionName
+Type: AWS::IoTCoreDeviceAdvisor::SuiteDefinition

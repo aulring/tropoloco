@@ -1,0 +1,9 @@
+Properties:
+  CronExpression: cron(0 0/1 ? * * *)
+  JobNames:
+  - job-name
+  Name: schedule-name
+  Tags:
+  - Key: key00AtCreate
+    Value: value001AtCreate
+Type: AWS::DataBrew::Schedule

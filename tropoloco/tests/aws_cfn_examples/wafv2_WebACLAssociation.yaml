@@ -1,0 +1,4 @@
+Properties:
+  ResourceArn: ExampleARNForRegionalResource
+  WebACLArn: ExampleARNForWebACL
+Type: AWS::WAFv2::WebACLAssociation

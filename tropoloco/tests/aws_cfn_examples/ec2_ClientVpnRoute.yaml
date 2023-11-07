@@ -1,0 +1,8 @@
+Properties:
+  ClientVpnEndpointId:
+    Ref: myClientVpnEndpoint
+  Description: myRoute
+  DestinationCidrBlock: 0.0.0.0/0
+  TargetVpcSubnetId:
+    Ref: mySubnet
+Type: AWS::EC2::ClientVpnRoute

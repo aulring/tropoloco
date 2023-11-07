@@ -1,0 +1,1 @@
+{"DeletionPolicy": "Retain", "Type": "AWS::Organizations::Policy", "Properties": {"Type": "SERVICE_CONTROL_POLICY", "Name": "SCPDenyLeaveOrganization", "Content": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"SCPDenyLeaveOrganization\",\"Effect\":\"Deny\",\"Action\":[\"organizations:LeaveOrganization\"],\"Resource\":\"*\"}]}"}}

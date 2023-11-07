@@ -1,0 +1,1 @@
+{"Type": "AWS::CodeGuruReviewer::RepositoryAssociation", "Properties": {"Name": "MyRepository", "Type": "CodeCommit", "Tags": [{"Key": "tag1-key", "Value": "tag1-value"}, {"Key": "tag2-key", "Value": "tag2-value"}]}}

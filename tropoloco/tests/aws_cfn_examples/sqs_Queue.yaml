@@ -1,0 +1,8 @@
+Properties:
+  RedrivePolicy:
+    deadLetterTargetArn:
+      Fn::GetAtt:
+      - MyDeadLetterQueue
+      - Arn
+    maxReceiveCount: 5
+Type: AWS::SQS::Queue

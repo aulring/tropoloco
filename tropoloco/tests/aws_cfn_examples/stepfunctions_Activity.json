@@ -1,0 +1,1 @@
+{"Type": "AWS::StepFunctions::Activity", "Properties": {"Name": "myActivity", "Tags": [{"Key": "keyname1", "Value": "value1"}, {"Key": "keyname2", "Value": "value2"}]}}

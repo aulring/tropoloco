@@ -1,0 +1,7 @@
+Properties:
+  FilterExpression: duration > 10
+  GroupName: MyGroup
+  InsightsConfiguration:
+    InsightsEnabled: false
+    NotificationsEnabled: false
+Type: AWS::XRay::Group

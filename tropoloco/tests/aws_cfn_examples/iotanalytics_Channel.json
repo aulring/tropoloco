@@ -1,0 +1,1 @@
+{"Type": "AWS::IoTAnalytics::Channel", "Properties": {"ChannelName": "ComplexChannel", "RetentionPeriod": {"Unlimited": false, "NumberOfDays": 10}, "Tags": [{"Key": "keyname1", "Value": "value1"}, {"Key": "keyname2", "Value": "value2"}]}}

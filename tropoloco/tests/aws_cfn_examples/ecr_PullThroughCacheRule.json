@@ -1,0 +1,1 @@
+{"Type": "AWS::ECR::PullThroughCacheRule", "Properties": {"EcrRepositoryPrefix": "my-ecr", "UpstreamRegistryUrl": "public.ecr.aws"}}

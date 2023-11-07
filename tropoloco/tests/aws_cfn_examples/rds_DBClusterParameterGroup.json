@@ -1,0 +1,1 @@
+{"Type": "AWS::RDS::DBClusterParameterGroup", "Properties": {"Description": "CloudFormation Sample Aurora Cluster Parameter Group", "Family": "aurora-mysql8.0", "Parameters": {"time_zone": "US/Eastern", "character_set_database": "utf32"}}}

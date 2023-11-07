@@ -1,0 +1,8 @@
+Condition: DevOpsGuruEnable
+Properties:
+  ResourceCollectionFilter:
+    Tags:
+    - AppBoundaryKey: devops-guru-workshop
+      TagValues:
+      - '*'
+Type: AWS::DevOpsGuru::ResourceCollection

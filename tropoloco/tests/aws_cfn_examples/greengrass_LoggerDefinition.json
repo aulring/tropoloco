@@ -1,0 +1,1 @@
+{"Type": "AWS::Greengrass::LoggerDefinition", "Properties": {"Name": "DemoTestLoggerDefinition", "InitialVersion": {"Loggers": [{"Id": "TestLogger1", "Type": "FileSystem", "Component": "GreengrassSystem", "Level": "INFO", "Space": "128"}]}}}

@@ -1,0 +1,1 @@
+{"Type": "AWS::DataSync::LocationS3", "Properties": {"S3BucketArn": "arn:aws:s3:::MyBucket", "S3Config": {"BucketAccessRoleArn": "arn:aws:iam::111222333444:role/MyBucketAccessRole"}, "S3StorageClass": "STANDARD", "Subdirectory": "/MyFolder"}}

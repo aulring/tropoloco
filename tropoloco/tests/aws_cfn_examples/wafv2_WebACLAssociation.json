@@ -1,0 +1,1 @@
+{"Type": "AWS::WAFv2::WebACLAssociation", "Properties": {"WebACLArn": "WebACLArn", "ResourceArn": "APIGatewayOrALBArn"}}

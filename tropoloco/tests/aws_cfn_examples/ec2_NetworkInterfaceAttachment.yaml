@@ -1,0 +1,7 @@
+Properties:
+  DeviceIndex: 1
+  InstanceId:
+    Ref: MyInstance
+  NetworkInterfaceId:
+    Ref: MyNetworkInterface
+Type: AWS::EC2::NetworkInterfaceAttachment

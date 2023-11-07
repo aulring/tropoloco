@@ -1,0 +1,1 @@
+{"Type": "AWS::Inspector::AssessmentTarget", "Properties": {"AssessmentTargetName": "MyAssessmentTarget", "ResourceGroupArn": "arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-AB6DMKnv"}}

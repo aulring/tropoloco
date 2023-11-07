@@ -1,0 +1,16 @@
+Properties:
+  AgentArns:
+  - arn:aws:datasync:us-east-1:111222333444:agent/agent-012345abcde012345
+  CloudWatchLogGroupArn: arn:aws:logs:us-east-1:111222333444:log-group:/aws/datasync/discovery:*
+  Name: MyOnPremStorage
+  ServerConfiguration:
+    ServerHostname: 172.16.0.0
+    ServerPort: 443
+  ServerCredentials:
+    Password: '1234'
+    Username: admin
+  SystemType: NetAppONTAP
+  Tags:
+  - Key: Migration Plan
+    Value: '1'
+Type: AWS::DataSync::StorageSystem

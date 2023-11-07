@@ -1,0 +1,5 @@
+Properties:
+  ObservabilityConfigurationName: xray-tracing
+  TraceConfiguration:
+    Vendor: AWSXRAY
+Type: AWS::AppRunner::ObservabilityConfiguration

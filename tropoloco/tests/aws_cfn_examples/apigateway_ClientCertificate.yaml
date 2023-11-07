@@ -1,0 +1,3 @@
+Properties:
+  Description: A test client certificate
+Type: AWS::ApiGateway::ClientCertificate

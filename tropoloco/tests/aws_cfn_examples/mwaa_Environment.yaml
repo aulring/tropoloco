@@ -1,0 +1,36 @@
+Properties:
+  AirflowConfigurationOptions:
+    core.default_timezone: utc
+    logging.logging_level: INFO
+  DagS3Path: dags
+  EnvironmentClass: mw1.small
+  ExecutionRoleArn: arn:aws:iam::012345678900:role/service-role/my-execution-role
+  LoggingConfiguration:
+    DagProcessingLogs:
+      Enabled: true
+      LogLevel: INFO
+    SchedulerLogs:
+      Enabled: false
+      LogLevel: INFO
+    TaskLogs:
+      Enabled: true
+      LogLevel: INFO
+    WebserverLogs:
+      Enabled: false
+      LogLevel: INFO
+    WorkerLogs:
+      Enabled: false
+      LogLevel: INFO
+  MaxWorkers: 1
+  Name: my-airflow-environment
+  NetworkConfiguration:
+    SecurityGroupIds:
+    - sg-0101010
+    SubnetIds:
+    - subnet-123456
+    - subnet-789011
+  SourceBucketArn: arn:aws:s3:::my-dags-bucket
+  Tags:
+    Environment: Staging
+    Team: Analytics
+Type: AWS::MWAA::Environment

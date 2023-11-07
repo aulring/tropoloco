@@ -1,0 +1,1 @@
+{"Type": "AWS::EC2::NetworkInterfacePermission", "Properties": {"NetworkInterfaceId": "eni-030e3xxx", "AwsAccountId": "11111111111", "Permission": "INSTANCE-ATTACH"}}

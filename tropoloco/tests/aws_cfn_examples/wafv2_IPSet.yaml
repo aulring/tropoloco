@@ -1,0 +1,8 @@
+Properties:
+  Addresses:
+  - 1.2.1.1/32
+  Description: SampleIPSet
+  IPAddressVersion: IPV4
+  Name: SampleIPSet
+  Scope: REGIONAL
+Type: AWS::WAFv2::IPSet

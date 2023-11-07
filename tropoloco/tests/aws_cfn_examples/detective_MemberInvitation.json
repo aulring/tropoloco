@@ -1,0 +1,1 @@
+{"Type": "AWS::Detective::MemberInvitation", "Properties": {"GraphArn": "arn:aws:detective:us-east-1:111122223333:graph:027c7c4610ea4aacaf0b883093cab899", "MemberId": "444455556666", "MemberEmailAddress": "mmajor@example.com", "DisableEmailNotification": "true"}}

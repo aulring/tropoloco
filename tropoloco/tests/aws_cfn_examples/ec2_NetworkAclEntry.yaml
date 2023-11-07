@@ -1,0 +1,11 @@
+Properties:
+  CidrBlock: 172.16.0.0/24
+  NetworkAclId:
+    Ref: MyNACL
+  PortRange:
+    From: 22
+    To: 22
+  Protocol: 6
+  RuleAction: allow
+  RuleNumber: 100
+Type: AWS::EC2::NetworkAclEntry

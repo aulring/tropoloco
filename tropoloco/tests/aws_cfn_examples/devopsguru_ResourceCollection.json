@@ -1,0 +1,1 @@
+{"Type": "AWS::DevOpsGuru::ResourceCollection", "Condition": "DevOpsGuruEnable", "Properties": {"ResourceCollectionFilter": {"Tags": [{"AppBoundaryKey": "devops-guru-workshop", "TagValues": ["*"]}]}}}

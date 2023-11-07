@@ -1,0 +1,1 @@
+{"Type": "AWS::SSM::ResourceDataSync", "Properties": {"SyncName": "test-sync", "SyncType": "SyncFromSource", "SyncSource": {"SourceType": "AwsOrganizations", "AwsOrganizationsSource": {"OrganizationSourceType": "OrganizationalUnits", "OrganizationalUnits": ["ou-12345"]}, "SourceRegions": ["us-west-1"], "IncludeFutureRegions": false}}}

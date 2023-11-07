@@ -1,0 +1,12 @@
+Properties:
+  DetailType: FULL
+  EventTypeIds:
+  - codecommit-repository-comments-on-commits
+  Name: My Notification Rule for Comments on Commits
+  Resource: arn:aws:codecommit:us-east-2:123456789012:MyDemoRepo
+  Tags:
+    Team: Saanvi
+  Targets:
+  - TargetAddress: arn:aws:sns:us-east-2:123456789012:MyNotificationTopic
+    TargetType: SNS
+Type: AWS::CodeStarNotifications::NotificationRule

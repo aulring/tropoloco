@@ -1,0 +1,14 @@
+Properties:
+  ClusterName: prod
+  Labels:
+    Key1: Value1
+    Key2: Value2
+  NodeRole: arn:aws:iam::012345678910:role/eksInstanceRole
+  ScalingConfig:
+    DesiredSize: 5
+    MaxSize: 7
+    MinSize: 3
+  Subnets:
+  - subnet-6782e71e
+  - subnet-e7e761ac
+Type: AWS::EKS::Nodegroup

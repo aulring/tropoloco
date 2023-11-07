@@ -1,0 +1,5 @@
+Properties:
+  DetectorId: a12abc34d567e8fa901bc2d34e56789f0
+  InvitationId: 84b097800250d17d1872b34c4daadcf5
+  MasterId: 012345678901
+Type: AWS::GuardDuty::Master

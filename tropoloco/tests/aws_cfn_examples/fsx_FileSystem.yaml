@@ -1,0 +1,26 @@
+Condition: OntapMazEnabled
+Properties:
+  FileSystemType: ONTAP
+  OntapConfiguration:
+    AutomaticBackupRetentionDays: 3
+    DailyAutomaticBackupStartTime: 07:00
+    DeploymentType: MULTI_AZ_1
+    DiskIopsConfiguration:
+      Iops: 10000
+      Mode: USER_PROVISIONED
+    PreferredSubnetId: subnet-abcdef01234567890
+    RouteTableIds:
+    - rtb-abcdef01234567890
+    ThroughputCapacity: 512
+    WeeklyMaintenanceStartTime: '4:16:30'
+  SecurityGroupIds:
+  - sg-068ec2a396aa7c2c8
+  StorageCapacity: 1024
+  StorageType: SSD
+  SubnetIds:
+  - subnet-1234567890abcdef0
+  - subnet-abcdef01234567890
+  Tags:
+  - Key: Name
+    Value: OntapFileSystem_MAZ
+Type: AWS::FSx::FileSystem

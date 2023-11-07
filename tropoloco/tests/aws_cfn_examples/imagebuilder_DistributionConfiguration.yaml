@@ -1,0 +1,27 @@
+Properties:
+  Description: Set target repository and container tags for container distribution
+    to two Regions.
+  Distributions:
+  - ContainerDistributionConfiguration:
+      ContainerTags:
+      - Tag1
+      - Tag2
+      Description: test distribution cfn template
+      TargetRepository:
+        RepositoryName: cfn-test
+        Service: ECR
+    Region: us-west-2
+  - ContainerDistributionConfiguration:
+      ContainerTags:
+      - Tag1
+      - Tag2
+      Description: test distribution cfn template
+      TargetRepository:
+        RepositoryName: cfn-test
+        Service: ECR
+    Region: us-east-1
+  Name: distribution-configuration-all-parameters
+Tags:
+  DistributionConfigurationTestTagKey1: DistributionConfigurationTestTagValue1
+  DistributionConfigurationTestTagKey2: DistributionConfigurationTestTagValue2
+Type: AWS::ImageBuilder::DistributionConfiguration

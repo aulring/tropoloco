@@ -1,0 +1,4 @@
+Properties:
+  ApplicationName: SampleAWSElasticBeanstalkApplication
+  Description: AWS Elastic Beanstalk PHP Sample Application
+Type: AWS::ElasticBeanstalk::Application

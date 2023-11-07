@@ -1,0 +1,13 @@
+Properties:
+  Bucket:
+    Ref: S3Bucket
+  Name: my-access-point
+  PublicAccessBlockConfiguration:
+    BlockPublicAcls: true
+    BlockPublicPolicy: true
+    IgnorePublicAcls: true
+    RestrictPublicBuckets: true
+  VpcConfiguration:
+    VpcId:
+      Ref: VPC
+Type: AWS::S3::AccessPoint

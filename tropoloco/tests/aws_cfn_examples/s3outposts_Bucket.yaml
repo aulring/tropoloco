@@ -1,0 +1,36 @@
+Properties:
+  BucketName: DOC-EXAMPLE-BUCKET
+  LifecycleConfiguration:
+    Rules:
+    - ExpirationInDays: 2
+      ID: rule1
+      Status: Enabled
+    - AbortIncompleteMultipartUpload:
+        DaysAfterInitiation: 2
+      Filter:
+        AndOperator:
+          Prefix: st
+          Tags:
+          - Key: purpose
+            Value: testing
+      ID: rule2
+      Status: Disabled
+    - ExpirationDate: '2020-02-25T00:00:00Z'
+      Filter:
+        Tag:
+          Key: stage
+          Value: beta
+      ID: rule3
+      Status: Disabled
+    - ExpirationInDays: 4
+      Filter:
+        Prefix: st
+      ID: rule4
+      Status: Disabled
+  OutpostID: op-01ac5d28a6a232904
+  Tags:
+  - Key: stage
+    Value: beta
+  - Key: purpose
+    Value: testing
+Type: AWS::S3Outposts::Bucket

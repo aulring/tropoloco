@@ -1,0 +1,6 @@
+Properties:
+  ClientVpnEndpointId:
+    Ref: myClientVpnEndpoint
+  SubnetId:
+    Ref: mySubnet
+Type: AWS::EC2::ClientVpnTargetNetworkAssociation

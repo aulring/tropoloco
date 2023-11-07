@@ -1,0 +1,28 @@
+Properties:
+  ComputeEnvironmentName: C4OnDemand
+  ComputeResources:
+    DesiredvCpus: 48
+    Ec2KeyPair: id_rsa
+    ImageId: ami-a1b2c3d4
+    InstanceRole: ecsInstanceRole
+    InstanceTypes:
+    - c4.large
+    - c4.xlarge
+    - c4.2xlarge
+    - c4.4xlarge
+    - c4.8xlarge
+    MaxvCpus: 128
+    MinvCpus: 0
+    SecurityGroupIds:
+    - sg-abcd1234
+    Subnets:
+    - subnet-aaaaaaaa
+    - subnet-bbbbbbbb
+    - subnet-cccccccc
+    Tags:
+      Name: Batch Instance - C4OnDemand
+    Type: EC2
+  ServiceRole: arn:aws:iam::111122223333:role/aws-service-role/batch.amazonaws.com/AWSServiceRoleForBatch
+  State: ENABLED
+  Type: MANAGED
+Type: AWS::Batch::ComputeEnvironment

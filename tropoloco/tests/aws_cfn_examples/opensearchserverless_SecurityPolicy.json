@@ -1,0 +1,1 @@
+{"Type": "AWS::OpenSearchServerless::SecurityPolicy", "Properties": {"Name": "logs-network-policy", "Type": "network", "Description": "Network policy for test collections", "Policy": "[{\"Rules\":[{\"ResourceType\":\"collection\",\"Resource\":[\"collection/logs*\"]},{\"ResourceType\":\"dashboard\",\"Resource\":[\"collection/logs*\"]}],\"AllowFromPublic\":true}]"}}

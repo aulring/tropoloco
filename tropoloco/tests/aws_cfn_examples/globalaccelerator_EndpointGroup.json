@@ -1,0 +1,1 @@
+{"Type": "AWS::GlobalAccelerator::EndpointGroup", "Properties": {"ListenerArn": {"Ref": "Listener"}, "EndpointGroupRegion": {"Ref": "EndpointRegion"}, "TrafficDialPercentage": 100.0, "EndpointConfigurations": [{"EndpointId": {"Ref": "EndpointId"}}]}}

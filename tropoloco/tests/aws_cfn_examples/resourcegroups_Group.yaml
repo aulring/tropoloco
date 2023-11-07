@@ -1,0 +1,16 @@
+Properties:
+  Configuration:
+  - Parameters:
+    - Name: allowed-resource-types
+      Values:
+      - AWS::EC2::Host
+    - Name: deletion-protection
+      Values:
+      - UNLESS_EMPTY
+    Type: AWS::EC2::HostManagement
+  Description: A resource group for EC2 dedicated hosts
+  Name: MyHostResourceGroup
+  Resources:
+  - arn:aws:ec2:us-east-1:123456789012:dedicated-host/h-0375ef7462b26b11f
+  - arn:aws:ec2:us-east-1:123456789012:dedicated-host/h-0501ab6812c719123
+Type: AWS::ResourceGroups::Group

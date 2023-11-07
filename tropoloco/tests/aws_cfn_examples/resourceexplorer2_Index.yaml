@@ -1,0 +1,5 @@
+Properties:
+  Tags:
+    Purpose: ResourceExplorer Sample Stack
+  Type: AGGREGATOR
+Type: AWS::ResourceExplorer2::Index

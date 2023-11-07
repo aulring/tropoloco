@@ -1,0 +1,8 @@
+Properties:
+  AcceleratorArn:
+    Ref: Accelerator
+  PortRanges:
+  - FromPort: 80
+    ToPort: 80
+  Protocol: TCP
+Type: AWS::GlobalAccelerator::Listener

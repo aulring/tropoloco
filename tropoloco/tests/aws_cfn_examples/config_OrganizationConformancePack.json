@@ -1,0 +1,1 @@
+{"Type": "AWS::Config::OrganizationConformancePack", "Properties": {"OrganizationConformancePackName": "OrganizationConformancePackName", "DeliveryS3Bucket": "DeliveryS3Bucket", "TemplateS3Uri": "s3://bucketname/prefix"}}

@@ -1,0 +1,1 @@
+{"Type": "AWS::IoTAnalytics::Dataset", "Properties": {"DatasetName": "TriggeringDataset", "Actions": [{"ActionName": "SqlAction", "QueryAction": {"SqlQuery": "select * from Datastore"}}]}}

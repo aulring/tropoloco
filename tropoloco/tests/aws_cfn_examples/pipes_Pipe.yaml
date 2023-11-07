@@ -1,0 +1,24 @@
+Properties:
+  Description: EventBridge Pipe template example. Pipe that receives events from a
+    DynamoDB stream, applies a filter, and sends matching events on to an SQS Queue.
+  Name:
+    Ref: PipeName
+  RoleArn:
+    Fn::GetAtt:
+    - PipeTutorialPipeRole
+    - Arn
+  Source:
+    Fn::GetAtt:
+    - PipeSourceDynamoDBTable
+    - StreamArn
+  SourceParameters:
+    DynamoDBStreamParameters:
+      StartingPosition: LATEST
+    FilterCriteria:
+      Filters:
+      - Pattern: '{ "eventName": ["INSERT", "MODIFY"] }'
+  Target:
+    Fn::GetAtt:
+    - PipeTargetQueue
+    - Arn
+Type: AWS::Pipes::Pipe

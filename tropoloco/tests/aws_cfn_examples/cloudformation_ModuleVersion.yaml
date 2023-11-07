@@ -1,0 +1,4 @@
+Properties:
+  ModuleName: My::Sample::Test::MODULE
+  ModulePackage: s3://my-sample-moduleversion-bucket/sample-module-package-v1.zip
+Type: AWS::CloudFormation::ModuleVersion

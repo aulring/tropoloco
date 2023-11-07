@@ -1,0 +1,1 @@
+{"Type": "AWS::SSM::MaintenanceWindow", "Properties": {"AllowUnassociatedTargets": false, "Cutoff": 1, "Description": "Maintenance Window to update SSM Agent", "Duration": 2, "Name": "UpdateSSMAgentMaintenanceWindow", "Schedule": "cron(0 4 ? * SUN *)", "ScheduleTimezone": "US/Eastern"}}

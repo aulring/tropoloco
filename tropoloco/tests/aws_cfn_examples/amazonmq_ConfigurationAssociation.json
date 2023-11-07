@@ -1,0 +1,1 @@
+{"Type": "AWS::AmazonMQ::ConfigurationAssociation", "Properties": {"Broker": {"Ref": "Broker1"}, "Configuration": {"Id": {"Ref": "Configuration1"}, "Revision": {"Fn::GetAtt": ["Configuration1", "Revision"]}}}}

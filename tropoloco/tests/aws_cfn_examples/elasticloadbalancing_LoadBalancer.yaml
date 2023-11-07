@@ -1,0 +1,25 @@
+Properties:
+  AvailabilityZones:
+  - us-east-2a
+  CrossZone: true
+  HealthCheck:
+    HealthyThreshold: '2'
+    Interval: '10'
+    Target: HTTP:80/
+    Timeout: '5'
+    UnhealthyThreshold: '3'
+  Listeners:
+  - InstancePort: '80'
+    InstanceProtocol: HTTP
+    LoadBalancerPort: '443'
+    PolicyNames:
+    - My-SSLNegotiation-Policy
+    Protocol: HTTPS
+    SSLCertificateId: arn:aws:iam::123456789012:server-certificate/my-server-certificate
+  Policies:
+  - Attributes:
+    - Name: Reference-Security-Policy
+      Value: ELBSecurityPolicy-TLS-1-2-2017-01
+    PolicyName: My-SSLNegotiation-Policy
+    PolicyType: SSLNegotiationPolicyType
+Type: AWS::ElasticLoadBalancing::LoadBalancer

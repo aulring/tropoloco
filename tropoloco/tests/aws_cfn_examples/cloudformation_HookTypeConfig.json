@@ -1,0 +1,1 @@
+{"Type": "AWS::CloudFormation::HookTypeConfig", "Properties": {"TypeArn": "arn:aws:cloudformation:us-west-2:123456789012:type/hook/My-Sample-Hook", "Configuration": "{\"CloudFormationConfiguration\":{\"HookConfiguration\":{\"TargetStacks\":\"ALL\",\"FailureMode\":\"WARN\",\"Properties\":{\"limitSize\": \"1\",\"encryptionAlgorithm\": \"aws:kms\"}}}}"}}

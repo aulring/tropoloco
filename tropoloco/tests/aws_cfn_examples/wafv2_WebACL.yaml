@@ -1,0 +1,35 @@
+Properties:
+  DefaultAction:
+    Allow: {}
+  Description: WebACL for JsonBody Testing
+  Name: TestingJsonBody
+  Rules:
+  - Action:
+      Block: {}
+    Name: TestJsonBodyRule
+    Priority: 0
+    Statement:
+      ByteMatchStatement:
+        FieldToMatch:
+          JsonBody:
+            InvalidFallbackBehavior: MATCH
+            MatchPattern:
+              IncludedPaths:
+              - /foo
+              - /bar
+            MatchScope: VALUE
+        PositionalConstraint: EXACTLY
+        SearchString: BadBot
+        TextTransformations:
+        - Priority: 0
+          Type: NONE
+    VisibilityConfig:
+      CloudWatchMetricsEnabled: true
+      MetricName: JsonBodyMatchMetric
+      SampledRequestsEnabled: true
+  Scope: REGIONAL
+  VisibilityConfig:
+    CloudWatchMetricsEnabled: true
+    MetricName: ExampleWebACLMetric
+    SampledRequestsEnabled: true
+Type: AWS::WAFv2::WebACL

@@ -1,0 +1,1 @@
+{"Type": "AWS::DMS::Certificate", "Properties": {"CertificatePem": "-----BEGIN CERTIFICATE-----\n MIID/DCCAuSgAwIBAgIBUDANBgkqhkiG9w0BAQsFADCBijELMAkGA1UEBhMCVVMx...mqfEEuC7uUoPofXdBp2ObQ==\n -----END CERTIFICATE-----\n"}}

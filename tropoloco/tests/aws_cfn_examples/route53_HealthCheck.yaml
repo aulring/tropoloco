@@ -1,0 +1,15 @@
+Properties:
+  HealthCheckConfig:
+    FailureThreshold: 3
+    FullyQualifiedDomainName: example.com
+    IPAddress: 192.0.2.44
+    Port: 80
+    RequestInterval: 30
+    ResourcePath: /example/index.html
+    Type: HTTP
+  HealthCheckTags:
+  - Key: SampleKey1
+    Value: SampleValue1
+  - Key: SampleKey2
+    Value: SampleValue2
+Type: AWS::Route53::HealthCheck

@@ -1,0 +1,13 @@
+Properties:
+  SyncName: test-sync
+  SyncSource:
+    AwsOrganizationsSource:
+      OrganizationSourceType: OrganizationalUnits
+      OrganizationalUnits:
+      - ou-12345
+    IncludeFutureRegions: false
+    SourceRegions:
+    - us-west-1
+    SourceType: AwsOrganizations
+  SyncType: SyncFromSource
+Type: AWS::SSM::ResourceDataSync

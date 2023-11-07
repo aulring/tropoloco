@@ -1,0 +1,1 @@
+{"Type": "AWS::ApiGatewayV2::DomainName", "Properties": {"DomainName": "mydomainame.us-east-1.com", "DomainNameConfigurations": [{"EndpointType": "REGIONAL", "CertificateArn": "arn:aws:acm:us-east-1:123456789012:certificate/1a2b3c4d-aaaa-aaaa-aaaa-1a2b3c4d5e6f", "CertificateName": "testCertificate"}]}}
