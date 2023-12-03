@@ -66,6 +66,12 @@ BAD_AWS_EXAMPLES = [
     "securityhub_AutomationRule.yaml", # AWS Type errors. Small and fixable. 
     "securityhub_AutomationRule.json", # AWS Type errors. Small and fixable. 
     "synthetics_Canary.yaml", # Yaml type issue with int
+    "wafv2_LoggingConfiguration.yaml", # very goofy AWS types we need to figure out (duplicate types FieldToMatch)
+    "wafv2_LoggingConfiguration.json", # very goofy AWS types we need to figure out (duplicate types FieldToMatch)
+    "wafv2_RuleGroup.yaml", # very goofy AWS types we need to figure out (duplicate types FieldToMatch)
+    "wafv2_RuleGroup.json", # very goofy AWS types we need to figure out (duplicate types FieldToMatch)
+    "wafv2_WebACL.yaml", # very goofy AWS types we need to figure out (duplicate wafv2_WebACL.yaml
+    "wafv2_WebACL.json", # very goofy AWS types we need to figure out (duplicate wafv2_WebACL.yaml
 ]
 
 

@@ -1,1 +1,29 @@
-{"Type": "AWS::AppRunner::Service", "Properties": {"ServiceName": "golang-container-app", "SourceConfiguration": {"AuthenticationConfiguration": {"AccessRoleArn": "arn:aws:iam::123456789012:role/my-ecr-role"}, "AutoDeploymentsEnabled": true, "ImageRepository": {"ImageIdentifier": "123456789012.dkr.ecr.us-east-1.amazonaws.com/golang-app:latest", "ImageRepositoryType": "ECR", "ImageConfiguration": {"Port": "8080", "RuntimeEnvironmentVariables": [{"Name": "NAME", "Value": "Jane"}]}}}, "InstanceConfiguration": {"Cpu": "1 vCPU", "Memory": "3 GB"}}}
+{
+    "Type": "AWS::AppRunner::Service",
+    "Properties": {
+        "ServiceName": "golang-container-app",
+        "SourceConfiguration": {
+            "AuthenticationConfiguration": {
+                "AccessRoleArn": "arn:aws:iam::123456789012:role/my-ecr-role"
+            },
+            "AutoDeploymentsEnabled": true,
+            "ImageRepository": {
+                "ImageIdentifier": "123456789012.dkr.ecr.us-east-1.amazonaws.com/golang-app:latest",
+                "ImageRepositoryType": "ECR",
+                "ImageConfiguration": {
+                    "Port": "8080",
+                    "RuntimeEnvironmentVariables": [
+                        {
+                            "Name": "NAME",
+                            "Value": "Jane"
+                        }
+                    ]
+                }
+            }
+        },
+        "InstanceConfiguration": {
+            "Cpu": "1 vCPU",
+            "Memory": "3 GB"
+        }
+    }
+}

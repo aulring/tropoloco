@@ -1,1 +1,23 @@
-{"Type": "AWS::AppSync::DataSource", "Properties": {"ApiId": {"Ref": "graphQlApiId"}, "Name": {"Ref": "dataSourceName"}, "Description": {"Ref": "dataSourceDescription"}, "Type": "AWS_LAMBDA", "ServiceRoleArn": {"Ref": "serviceRoleArn"}, "LambdaConfig": {"LambdaFunctionArn": {"Ref": "lambdaFunctionArn"}}}}
+{
+    "Type": "AWS::AppSync::DataSource",
+    "Properties": {
+        "ApiId": {
+            "Ref": "graphQlApiId"
+        },
+        "Name": {
+            "Ref": "dataSourceName"
+        },
+        "Description": {
+            "Ref": "dataSourceDescription"
+        },
+        "Type": "AWS_LAMBDA",
+        "ServiceRoleArn": {
+            "Ref": "serviceRoleArn"
+        },
+        "LambdaConfig": {
+            "LambdaFunctionArn": {
+                "Ref": "lambdaFunctionArn"
+            }
+        }
+    }
+}

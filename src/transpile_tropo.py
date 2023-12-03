@@ -40,6 +40,7 @@ TROPO_TYPE_PROPERTY_OVERRIDES = {
     ("lambda", "VpcConfig"): "VPCConfig",
     ("networkfirewall", "RuleGroup"): "RuleGroupProperty",
     ("redshift", "Parameter"): "AmazonRedshiftParameter",
+    ("xray", "SamplingRule"): "SamplingRuleProperty",
     #("wafv2", "FieldToMatch"): "LoggingConfigurationFieldToMatch",
 }
 
@@ -52,6 +53,7 @@ TROPO_PROPERTY_NAME_OVERRIDES = {
     ("lambda", "VpcConfig"): "VPCConfig",
     ("networkfirewall", "RuleGroup"): "RuleGroupProperty",
     ("redshift", "Parameter"): "AmazonRedshiftParameter",
+    ("xray", "SamplingRule"): "SamplingRuleProperty",
     #("wafv2", "FieldToMatch"): "LoggingConfigurationFieldToMatch",
     
 }
@@ -80,6 +82,7 @@ RESOURCE_TYPING_OVERRIDES = {
     ("stepfunctions", "List['TagsEntry']"): "Tags",
     ("transfer", "List['Protocol']"): "List[str]",
     ("wafv2", "'FieldToMatch'"): "'LoggingConfigurationFieldToMatch'",
+    ("xray", "'SamplingRule'"): "'SamplingRuleProperty'",
     #("ByteMatchStatement", "'FieldToMatch'"): "'LoggingConfigurationFieldToMatch'",
     #("RegexMatchStatement", "'FieldToMatch'"): "'LoggingConfigurationFieldToMatch'",
     #("RegexPatternSetReferenceStatement", "'FieldToMatch'"): "'LoggingConfigurationFieldToMatch'",
@@ -262,6 +265,7 @@ def main():
                 prop.tropo_name = TROPO_TYPE_PROPERTY_OVERRIDES[
                     (service_key.split("::")[-1].lower(), property_name)
                 ]
+                print("LJDLFJ", prop.tropo_name)
                 prop.lookup_key = (service_key.split("::")[-1].lower(), property_name)
                 print(prop.tropo_name)
             else:

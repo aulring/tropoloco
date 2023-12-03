@@ -66,7 +66,7 @@ class LoggingConfigurationFieldToMatch(BaseModel):
         - Name: UriPath
         - Name: Method
         - Name: SingleHeader
-    
+    8
     """
     
     JsonBody_: Optional['JsonBody'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-loggingconfiguration-fieldtomatch.html#cfn-wafv2-loggingconfiguration-fieldtomatch-jsonbody""", alias="JsonBody")

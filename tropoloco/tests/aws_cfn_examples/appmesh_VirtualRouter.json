@@ -1,1 +1,27 @@
-{"Type": "AWS::AppMesh::VirtualRouter", "Properties": {"VirtualRouterName": "TestVirtualRouter", "MeshName": null, "Spec": {"Listeners": [{"PortMapping": {"Port": 8080, "Protocol": "http"}}]}, "Tags": [{"Key": "Key1", "Value": "Value1"}, {"Key": "Key2", "Value": "Value2"}]}}
+{
+    "Type": "AWS::AppMesh::VirtualRouter",
+    "Properties": {
+        "VirtualRouterName": "TestVirtualRouter",
+        "MeshName": null,
+        "Spec": {
+            "Listeners": [
+                {
+                    "PortMapping": {
+                        "Port": 8080,
+                        "Protocol": "http"
+                    }
+                }
+            ]
+        },
+        "Tags": [
+            {
+                "Key": "Key1",
+                "Value": "Value1"
+            },
+            {
+                "Key": "Key2",
+                "Value": "Value2"
+            }
+        ]
+    }
+}

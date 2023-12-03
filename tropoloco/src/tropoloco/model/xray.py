@@ -37,7 +37,7 @@ class InsightsConfiguration(BaseModel):
 
     
 
-class SamplingRule(BaseModel):
+class SamplingRuleProperty(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-xray-samplingrule-samplingrule.html
     Properties:
         - Name: Priority
@@ -73,8 +73,8 @@ class SamplingRule(BaseModel):
 
 
     @property
-    def tropo_type(self) -> troposphere.xray.SamplingRule:
-        from troposphere.xray import SamplingRule as TropoT
+    def tropo_type(self) -> troposphere.xray.SamplingRuleProperty:
+        from troposphere.xray import SamplingRuleProperty as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -150,7 +150,7 @@ class SamplingRule(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
-    SamplingRule_: Optional['SamplingRule'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-xray-samplingrule.html#cfn-xray-samplingrule-samplingrule""", alias="SamplingRule")
+    SamplingRule_: Optional['SamplingRuleProperty'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-xray-samplingrule.html#cfn-xray-samplingrule-samplingrule""", alias="SamplingRule")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-xray-samplingrule.html#cfn-xray-samplingrule-tags""", alias="Tags")
     
 
