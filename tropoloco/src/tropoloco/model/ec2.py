@@ -1522,6 +1522,31 @@ class CapacityReservationTarget(BaseModel):
 
     
 
+class ConnectionTrackingSpecification(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-connectiontrackingspecification.html
+    Properties:
+        - Name: UdpTimeout
+        - Name: TcpEstablishedTimeout
+        - Name: UdpStreamTimeout
+    
+    """
+    
+    UdpTimeout_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-connectiontrackingspecification.html#cfn-ec2-launchtemplate-connectiontrackingspecification-udptimeout""", alias="UdpTimeout")
+    TcpEstablishedTimeout_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-connectiontrackingspecification.html#cfn-ec2-launchtemplate-connectiontrackingspecification-tcpestablishedtimeout""", alias="TcpEstablishedTimeout")
+    UdpStreamTimeout_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-connectiontrackingspecification.html#cfn-ec2-launchtemplate-connectiontrackingspecification-udpstreamtimeout""", alias="UdpStreamTimeout")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.ec2.ConnectionTrackingSpecification:
+        from troposphere.ec2 import ConnectionTrackingSpecification as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class CpuOptions(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-cpuoptions.html
     Properties:
@@ -1617,6 +1642,50 @@ class ElasticGpuSpecification(BaseModel):
     @property
     def tropo_type(self) -> troposphere.ec2.ElasticGpuSpecification:
         from troposphere.ec2 import ElasticGpuSpecification as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class EnaSrdSpecification(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-enasrdspecification.html
+    Properties:
+        - Name: EnaSrdEnabled
+        - Name: EnaSrdUdpSpecification
+    
+    """
+    
+    EnaSrdEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-enasrdspecification.html#cfn-ec2-launchtemplate-enasrdspecification-enasrdenabled""", alias="EnaSrdEnabled")
+    EnaSrdUdpSpecification_: Optional['EnaSrdUdpSpecification'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-enasrdspecification.html#cfn-ec2-launchtemplate-enasrdspecification-enasrdudpspecification""", alias="EnaSrdUdpSpecification")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.ec2.EnaSrdSpecification:
+        from troposphere.ec2 import EnaSrdSpecification as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class EnaSrdUdpSpecification(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-enasrdudpspecification.html
+    Properties:
+        - Name: EnaSrdUdpEnabled
+    
+    """
+    
+    EnaSrdUdpEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-enasrdudpspecification.html#cfn-ec2-launchtemplate-enasrdudpspecification-enasrdudpenabled""", alias="EnaSrdUdpEnabled")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.ec2.EnaSrdUdpSpecification:
+        from troposphere.ec2 import EnaSrdUdpSpecification as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -2148,9 +2217,11 @@ class NetworkInterface(BaseModel):
         - Name: NetworkCardIndex
         - Name: InterfaceType
         - Name: AssociateCarrierIpAddress
+        - Name: EnaSrdSpecification
         - Name: Ipv6AddressCount
         - Name: Groups
         - Name: DeleteOnTermination
+        - Name: ConnectionTrackingSpecification
     
     """
     
@@ -2171,9 +2242,11 @@ class NetworkInterface(BaseModel):
     NetworkCardIndex_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-networkinterface.html#cfn-ec2-launchtemplate-networkinterface-networkcardindex""", alias="NetworkCardIndex")
     InterfaceType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-networkinterface.html#cfn-ec2-launchtemplate-networkinterface-interfacetype""", alias="InterfaceType")
     AssociateCarrierIpAddress_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-networkinterface.html#cfn-ec2-launchtemplate-networkinterface-associatecarrieripaddress""", alias="AssociateCarrierIpAddress")
+    EnaSrdSpecification_: Optional['EnaSrdSpecification'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-networkinterface.html#cfn-ec2-launchtemplate-networkinterface-enasrdspecification""", alias="EnaSrdSpecification")
     Ipv6AddressCount_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-networkinterface.html#cfn-ec2-launchtemplate-networkinterface-ipv6addresscount""", alias="Ipv6AddressCount")
     Groups_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-networkinterface.html#cfn-ec2-launchtemplate-networkinterface-groups""", alias="Groups")
     DeleteOnTermination_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-networkinterface.html#cfn-ec2-launchtemplate-networkinterface-deleteontermination""", alias="DeleteOnTermination")
+    ConnectionTrackingSpecification_: Optional['ConnectionTrackingSpecification'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-networkinterface.html#cfn-ec2-launchtemplate-networkinterface-connectiontrackingspecification""", alias="ConnectionTrackingSpecification")
     
 
 
@@ -4213,12 +4286,14 @@ class Options(BaseModel):
     Properties:
         - Name: Ipv6Support
         - Name: ApplianceModeSupport
+        - Name: SecurityGroupReferencingSupport
         - Name: DnsSupport
     
     """
     
     Ipv6Support_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-transitgatewayattachment-options.html#cfn-ec2-transitgatewayattachment-options-ipv6support""", alias="Ipv6Support")
     ApplianceModeSupport_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-transitgatewayattachment-options.html#cfn-ec2-transitgatewayattachment-options-appliancemodesupport""", alias="ApplianceModeSupport")
+    SecurityGroupReferencingSupport_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-transitgatewayattachment-options.html#cfn-ec2-transitgatewayattachment-options-securitygroupreferencingsupport""", alias="SecurityGroupReferencingSupport")
     DnsSupport_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-transitgatewayattachment-options.html#cfn-ec2-transitgatewayattachment-options-dnssupport""", alias="DnsSupport")
     
 
@@ -4583,10 +4658,12 @@ class DeviceOptions(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-verifiedaccesstrustprovider-deviceoptions.html
     Properties:
         - Name: TenantId
+        - Name: PublicSigningKeyUrl
     
     """
     
     TenantId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-verifiedaccesstrustprovider-deviceoptions.html#cfn-ec2-verifiedaccesstrustprovider-deviceoptions-tenantid""", alias="TenantId")
+    PublicSigningKeyUrl_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-verifiedaccesstrustprovider-deviceoptions.html#cfn-ec2-verifiedaccesstrustprovider-deviceoptions-publicsigningkeyurl""", alias="PublicSigningKeyUrl")
     
 
 
@@ -6701,6 +6778,7 @@ class TransitGateway(BaseModel):
         - Name: AmazonSideAsn
         - Name: Tags
     Attributes:
+        - Name: TransitGatewayArn
         - Name: Id
     """
     

@@ -14,6 +14,33 @@ from tropoloco import resource_to_troposphere, property_to_troposphere
 
 
 
+class LoggingConfig(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic-loggingconfig.html
+    Properties:
+        - Name: FailureFeedbackRoleArn
+        - Name: SuccessFeedbackSampleRate
+        - Name: SuccessFeedbackRoleArn
+        - Name: Protocol
+    
+    """
+    
+    FailureFeedbackRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic-loggingconfig.html#cfn-sns-topic-loggingconfig-failurefeedbackrolearn""", alias="FailureFeedbackRoleArn")
+    SuccessFeedbackSampleRate_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic-loggingconfig.html#cfn-sns-topic-loggingconfig-successfeedbacksamplerate""", alias="SuccessFeedbackSampleRate")
+    SuccessFeedbackRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic-loggingconfig.html#cfn-sns-topic-loggingconfig-successfeedbackrolearn""", alias="SuccessFeedbackRoleArn")
+    Protocol_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic-loggingconfig.html#cfn-sns-topic-loggingconfig-protocol""", alias="Protocol")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sns.LoggingConfig:
+        from troposphere.sns import LoggingConfig as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class Subscription(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic-subscription.html
     Properties:
@@ -54,6 +81,7 @@ class Subscription(BaseModel):
         - Name: RawMessageDelivery
         - Name: RedrivePolicy
         - Name: Region
+        - Name: ReplayPolicy
         - Name: SubscriptionRoleArn
         - Name: TopicArn
     """
@@ -67,6 +95,7 @@ class Subscription(BaseModel):
     RawMessageDelivery_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html#cfn-sns-subscription-rawmessagedelivery""", alias="RawMessageDelivery")
     RedrivePolicy_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html#cfn-sns-subscription-redrivepolicy""", alias="RedrivePolicy")
     Region_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html#cfn-sns-subscription-region""", alias="Region")
+    ReplayPolicy_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html#cfn-sns-subscription-replaypolicy""", alias="ReplayPolicy")
     SubscriptionRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html#cfn-sns-subscription-subscriptionrolearn""", alias="SubscriptionRoleArn")
     TopicArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html#topicarn""", alias="TopicArn")
     
@@ -85,16 +114,17 @@ class Topic(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html
     Properties:
         - Name: SignatureVersion
+        - Name: DeliveryStatusLogging
         - Name: KmsMasterKeyId
         - Name: TracingConfig
-        - Name: DisplayName
         - Name: FifoTopic
+        - Name: DisplayName
         - Name: ContentBasedDeduplication
         - Name: Subscription
         - Name: Tags
         - Name: DataProtectionPolicy
-        - Name: ArchivePolicy
         - Name: TopicName
+        - Name: ArchivePolicy
     Attributes:
         - Name: TopicArn
         - Name: TopicName
@@ -102,16 +132,17 @@ class Topic(BaseModel):
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     SignatureVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-signatureversion""", alias="SignatureVersion")
+    DeliveryStatusLogging_: Optional[List['LoggingConfig']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-deliverystatuslogging""", alias="DeliveryStatusLogging")
     KmsMasterKeyId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-kmsmasterkeyid""", alias="KmsMasterKeyId")
     TracingConfig_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-tracingconfig""", alias="TracingConfig")
-    DisplayName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-displayname""", alias="DisplayName")
     FifoTopic_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-fifotopic""", alias="FifoTopic")
+    DisplayName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-displayname""", alias="DisplayName")
     ContentBasedDeduplication_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-contentbaseddeduplication""", alias="ContentBasedDeduplication")
     Subscription_: Optional[List['Subscription']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-subscription""", alias="Subscription")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-tags""", alias="Tags")
     DataProtectionPolicy_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-dataprotectionpolicy""", alias="DataProtectionPolicy")
-    ArchivePolicy_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-archivepolicy""", alias="ArchivePolicy")
     TopicName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-topicname""", alias="TopicName")
+    ArchivePolicy_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html#cfn-sns-topic-archivepolicy""", alias="ArchivePolicy")
     
 
     @property

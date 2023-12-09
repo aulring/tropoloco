@@ -255,6 +255,73 @@ class EncryptionKey(BaseModel):
 
     
 
+class GitConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers-git-configuration.html
+    Properties:
+        - Name: Push
+        - Name: SourceActionName
+    
+    """
+    
+    Push_: Optional[List['GitPushFilter']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers-git-configuration.html#aws-properties-codepipeline-pipeline-triggers-git-configuration-push""", alias="Push")
+    SourceActionName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers-git-configuration.html#aws-properties-codepipeline-pipeline-triggers-git-configuration-source-action-name""", alias="SourceActionName")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.codepipeline.GitConfiguration:
+        from troposphere.codepipeline import GitConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class GitPushFilter(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers-git-push-filter.html
+    Properties:
+        - Name: Tags
+    
+    """
+    
+    Tags_: Optional['GitTagFilterCriteria'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers-git-push-filter.html#aws-properties-codepipeline-pipeline-triggers-git-tag-filter-criteria""", alias="Tags")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.codepipeline.GitPushFilter:
+        from troposphere.codepipeline import GitPushFilter as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class GitTagFilterCriteria(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers-git-tag-filter-criteria.html
+    Properties:
+        - Name: Excludes
+        - Name: Includes
+    
+    """
+    
+    Excludes_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers-git-tag-filter-criteria.html#aws-properties-codepipeline-pipeline-triggers-git-tag-pattern""", alias="Excludes")
+    Includes_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers-git-tag-filter-criteria.html#aws-properties-codepipeline-pipeline-triggers-git-tag-pattern""", alias="Includes")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.codepipeline.GitTagFilterCriteria:
+        from troposphere.codepipeline import GitTagFilterCriteria as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class InputArtifact(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-stages-actions-inputartifacts.html
     Properties:
@@ -290,6 +357,29 @@ class OutputArtifact(BaseModel):
     @property
     def tropo_type(self) -> troposphere.codepipeline.OutputArtifact:
         from troposphere.codepipeline import OutputArtifact as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class PipelineTriggerDeclaration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers.html
+    Properties:
+        - Name: GitConfiguration
+        - Name: ProviderType
+    
+    """
+    
+    GitConfiguration_: Optional['GitConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers.html#cfn-codepipeline-pipeline-triggers-git-configuration""", alias="GitConfiguration")
+    ProviderType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-triggers.html#cfn-codepipeline-pipeline-triggers-provider-type""", alias="ProviderType")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.codepipeline.PipelineTriggerDeclaration:
+        from troposphere.codepipeline import PipelineTriggerDeclaration as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -338,6 +428,31 @@ class StageTransition(BaseModel):
     @property
     def tropo_type(self) -> troposphere.codepipeline.StageTransition:
         from troposphere.codepipeline import StageTransition as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class VariableDeclaration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-variables.html
+    Properties:
+        - Name: DefaultValue
+        - Name: Description
+        - Name: Name
+    
+    """
+    
+    DefaultValue_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-variables.html#cfn-codepipeline-pipeline-variables-value""", alias="DefaultValue")
+    Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-variables.html#cfn-codepipeline-pipeline-variables-description""", alias="Description")
+    Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-variables.html#cfn-codepipeline-pipeline-variables-name""", alias="Name")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.codepipeline.VariableDeclaration:
+        from troposphere.codepipeline import VariableDeclaration as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -440,10 +555,13 @@ class Pipeline(BaseModel):
         - Name: ArtifactStores
         - Name: DisableInboundStageTransitions
         - Name: Name
+        - Name: PipelineType
         - Name: RestartExecutionOnUpdate
         - Name: RoleArn
         - Name: Stages
         - Name: Tags
+        - Name: Triggers
+        - Name: Variables
     Attributes:
         - Name: Version
     """
@@ -453,10 +571,13 @@ class Pipeline(BaseModel):
     ArtifactStores_: Optional[List['ArtifactStoreMap']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-artifactstores""", alias="ArtifactStores")
     DisableInboundStageTransitions_: Optional[List['StageTransition']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-disableinboundstagetransitions""", alias="DisableInboundStageTransitions")
     Name_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-name""", alias="Name")
+    PipelineType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-pipelinetype""", alias="PipelineType")
     RestartExecutionOnUpdate_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-restartexecutiononupdate""", alias="RestartExecutionOnUpdate")
     RoleArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-rolearn""", alias="RoleArn")
     Stages_: List['StageDeclaration'] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-stages""", alias="Stages")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-tags""", alias="Tags")
+    Triggers_: Optional[List['PipelineTriggerDeclaration']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-triggers""", alias="Triggers")
+    Variables_: Optional[List['VariableDeclaration']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-variables""", alias="Variables")
     
 
     @property

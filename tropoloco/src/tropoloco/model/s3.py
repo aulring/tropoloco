@@ -14,6 +14,50 @@ from tropoloco import resource_to_troposphere, property_to_troposphere
 
 
 
+class AccessGrantsLocationConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accessgrant-accessgrantslocationconfiguration.html
+    Properties:
+        - Name: S3SubPrefix
+    
+    """
+    
+    S3SubPrefix_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accessgrant-accessgrantslocationconfiguration.html#cfn-s3-accessgrant-accessgrantslocationconfiguration-s3subprefix""", alias="S3SubPrefix")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.s3.AccessGrantsLocationConfiguration:
+        from troposphere.s3 import AccessGrantsLocationConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class Grantee(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accessgrant-grantee.html
+    Properties:
+        - Name: GranteeType
+        - Name: GranteeIdentifier
+    
+    """
+    
+    GranteeType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accessgrant-grantee.html#cfn-s3-accessgrant-grantee-granteetype""", alias="GranteeType")
+    GranteeIdentifier_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accessgrant-grantee.html#cfn-s3-accessgrant-grantee-granteeidentifier""", alias="GranteeIdentifier")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.s3.Grantee:
+        from troposphere.s3 import Grantee as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class PublicAccessBlockConfiguration(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-accesspoint-publicaccessblockconfiguration.html
     Properties:
@@ -499,11 +543,13 @@ class LoggingConfiguration(BaseModel):
     Properties:
         - Name: DestinationBucketName
         - Name: LogFilePrefix
+        - Name: TargetObjectKeyFormat
     
     """
     
     DestinationBucketName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-loggingconfig.html#cfn-s3-bucket-loggingconfig-destinationbucketname""", alias="DestinationBucketName")
     LogFilePrefix_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-loggingconfig.html#cfn-s3-bucket-loggingconfig-logfileprefix""", alias="LogFilePrefix")
+    TargetObjectKeyFormat_: Optional['TargetObjectKeyFormat'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-loggingconfig.html#cfn-s3-bucket-loggingconfig-targetobjectkeyformat""", alias="TargetObjectKeyFormat")
     
 
 
@@ -742,6 +788,27 @@ class OwnershipControlsRule(BaseModel):
     @property
     def tropo_type(self) -> troposphere.s3.OwnershipControlsRule:
         from troposphere.s3 import OwnershipControlsRule as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class PartitionedPrefix(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-loggingconfig-targetobjectkeyformat-partitionedprefix.html
+    Properties:
+        - Name: PartitionDateSource
+    
+    """
+    
+    PartitionDateSource_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-loggingconfig-targetobjectkeyformat-partitionedprefix.html#cfn-s3-bucket-loggingconfig-targetobjectkeyformat-partitionedprefix-partitiondatesource""", alias="PartitionDateSource")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.s3.PartitionedPrefix:
+        from troposphere.s3 import PartitionedPrefix as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -1302,6 +1369,29 @@ class TagFilter(BaseModel):
     @property
     def tropo_type(self) -> troposphere.s3.TagFilter:
         from troposphere.s3 import TagFilter as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class TargetObjectKeyFormat(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-loggingconfig-targetobjectkeyformat.html
+    Properties:
+        - Name: PartitionedPrefix
+        - Name: SimplePrefix
+    
+    """
+    
+    PartitionedPrefix_: Optional['PartitionedPrefix'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-loggingconfig-targetobjectkeyformat.html#cfn-s3-bucket-loggingconfig-targetobjectkeyformat-partitionedprefix""", alias="PartitionedPrefix")
+    SimplePrefix_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-loggingconfig-targetobjectkeyformat.html#cfn-s3-bucket-loggingconfig-targetobjectkeyformat-simpleprefix""", alias="SimplePrefix")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.s3.TargetObjectKeyFormat:
+        from troposphere.s3 import TargetObjectKeyFormat as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -1956,10 +2046,235 @@ class StorageLensGroupSelectionCriteria(BaseModel):
 
     
 
+class And(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-and.html
+    Properties:
+        - Name: MatchObjectAge
+        - Name: MatchAnyPrefix
+        - Name: MatchAnyTag
+        - Name: MatchAnySuffix
+        - Name: MatchObjectSize
+    
+    """
+    
+    MatchObjectAge_: Optional['MatchObjectAge'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-and.html#cfn-s3-storagelensgroup-and-matchobjectage""", alias="MatchObjectAge")
+    MatchAnyPrefix_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-and.html#cfn-s3-storagelensgroup-and-matchanyprefix""", alias="MatchAnyPrefix")
+    MatchAnyTag_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-and.html#cfn-s3-storagelensgroup-and-matchanytag""", alias="MatchAnyTag")
+    MatchAnySuffix_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-and.html#cfn-s3-storagelensgroup-and-matchanysuffix""", alias="MatchAnySuffix")
+    MatchObjectSize_: Optional['MatchObjectSize'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-and.html#cfn-s3-storagelensgroup-and-matchobjectsize""", alias="MatchObjectSize")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.s3.And:
+        from troposphere.s3 import And as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class Filter(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-filter.html
+    Properties:
+        - Name: MatchObjectAge
+        - Name: Or
+        - Name: And
+        - Name: MatchAnyPrefix
+        - Name: MatchAnyTag
+        - Name: MatchAnySuffix
+        - Name: MatchObjectSize
+    
+    """
+    
+    MatchObjectAge_: Optional['MatchObjectAge'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-filter.html#cfn-s3-storagelensgroup-filter-matchobjectage""", alias="MatchObjectAge")
+    Or_: Optional['Or'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-filter.html#cfn-s3-storagelensgroup-filter-or""", alias="Or")
+    And_: Optional['And'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-filter.html#cfn-s3-storagelensgroup-filter-and""", alias="And")
+    MatchAnyPrefix_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-filter.html#cfn-s3-storagelensgroup-filter-matchanyprefix""", alias="MatchAnyPrefix")
+    MatchAnyTag_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-filter.html#cfn-s3-storagelensgroup-filter-matchanytag""", alias="MatchAnyTag")
+    MatchAnySuffix_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-filter.html#cfn-s3-storagelensgroup-filter-matchanysuffix""", alias="MatchAnySuffix")
+    MatchObjectSize_: Optional['MatchObjectSize'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-filter.html#cfn-s3-storagelensgroup-filter-matchobjectsize""", alias="MatchObjectSize")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.s3.Filter:
+        from troposphere.s3 import Filter as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MatchObjectAge(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-matchobjectage.html
+    Properties:
+        - Name: DaysLessThan
+        - Name: DaysGreaterThan
+    
+    """
+    
+    DaysLessThan_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-matchobjectage.html#cfn-s3-storagelensgroup-matchobjectage-dayslessthan""", alias="DaysLessThan")
+    DaysGreaterThan_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-matchobjectage.html#cfn-s3-storagelensgroup-matchobjectage-daysgreaterthan""", alias="DaysGreaterThan")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.s3.MatchObjectAge:
+        from troposphere.s3 import MatchObjectAge as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MatchObjectSize(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-matchobjectsize.html
+    Properties:
+        - Name: BytesLessThan
+        - Name: BytesGreaterThan
+    
+    """
+    
+    BytesLessThan_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-matchobjectsize.html#cfn-s3-storagelensgroup-matchobjectsize-byteslessthan""", alias="BytesLessThan")
+    BytesGreaterThan_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-matchobjectsize.html#cfn-s3-storagelensgroup-matchobjectsize-bytesgreaterthan""", alias="BytesGreaterThan")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.s3.MatchObjectSize:
+        from troposphere.s3 import MatchObjectSize as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class Or(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-or.html
+    Properties:
+        - Name: MatchObjectAge
+        - Name: MatchAnyPrefix
+        - Name: MatchAnyTag
+        - Name: MatchAnySuffix
+        - Name: MatchObjectSize
+    
+    """
+    
+    MatchObjectAge_: Optional['MatchObjectAge'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-or.html#cfn-s3-storagelensgroup-or-matchobjectage""", alias="MatchObjectAge")
+    MatchAnyPrefix_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-or.html#cfn-s3-storagelensgroup-or-matchanyprefix""", alias="MatchAnyPrefix")
+    MatchAnyTag_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-or.html#cfn-s3-storagelensgroup-or-matchanytag""", alias="MatchAnyTag")
+    MatchAnySuffix_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-or.html#cfn-s3-storagelensgroup-or-matchanysuffix""", alias="MatchAnySuffix")
+    MatchObjectSize_: Optional['MatchObjectSize'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-storagelensgroup-or.html#cfn-s3-storagelensgroup-or-matchobjectsize""", alias="MatchObjectSize")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.s3.Or:
+        from troposphere.s3 import Or as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 
 ######################################################################
 # AWS Resource
 ######################################################################
+
+
+class AccessGrant(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrant.html
+    Properties:
+        - Name: Grantee
+        - Name: AccessGrantsLocationConfiguration
+        - Name: ApplicationArn
+        - Name: Permission
+        - Name: S3PrefixType
+        - Name: Tags
+        - Name: AccessGrantsLocationId
+    Attributes:
+        - Name: GrantScope
+        - Name: AccessGrantId
+        - Name: AccessGrantArn
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    Grantee_: 'Grantee' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrant.html#cfn-s3-accessgrant-grantee""", alias="Grantee")
+    AccessGrantsLocationConfiguration_: Optional['AccessGrantsLocationConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrant.html#cfn-s3-accessgrant-accessgrantslocationconfiguration""", alias="AccessGrantsLocationConfiguration")
+    ApplicationArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrant.html#cfn-s3-accessgrant-applicationarn""", alias="ApplicationArn")
+    Permission_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrant.html#cfn-s3-accessgrant-permission""", alias="Permission")
+    S3PrefixType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrant.html#cfn-s3-accessgrant-s3prefixtype""", alias="S3PrefixType")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrant.html#cfn-s3-accessgrant-tags""", alias="Tags")
+    AccessGrantsLocationId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrant.html#cfn-s3-accessgrant-accessgrantslocationid""", alias="AccessGrantsLocationId")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.s3.AccessGrant:
+        from troposphere.s3 import AccessGrant as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.s3 import AccessGrant as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class AccessGrantsInstance(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrantsinstance.html
+    Properties:
+        - Name: IdentityCenterArn
+        - Name: Tags
+    Attributes:
+        - Name: AccessGrantsInstanceArn
+        - Name: AccessGrantsInstanceId
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    IdentityCenterArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrantsinstance.html#cfn-s3-accessgrantsinstance-identitycenterarn""", alias="IdentityCenterArn")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrantsinstance.html#cfn-s3-accessgrantsinstance-tags""", alias="Tags")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.s3.AccessGrantsInstance:
+        from troposphere.s3 import AccessGrantsInstance as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.s3 import AccessGrantsInstance as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class AccessGrantsLocation(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrantslocation.html
+    Properties:
+        - Name: LocationScope
+        - Name: IamRoleArn
+        - Name: Tags
+    Attributes:
+        - Name: AccessGrantsLocationArn
+        - Name: AccessGrantsLocationId
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    LocationScope_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrantslocation.html#cfn-s3-accessgrantslocation-locationscope""", alias="LocationScope")
+    IamRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrantslocation.html#cfn-s3-accessgrantslocation-iamrolearn""", alias="IamRoleArn")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accessgrantslocation.html#cfn-s3-accessgrantslocation-tags""", alias="Tags")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.s3.AccessGrantsLocation:
+        from troposphere.s3 import AccessGrantsLocation as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.s3 import AccessGrantsLocation as TropoT
+        return resource_to_troposphere(self, TropoT)
 
 
 class AccessPoint(BaseModel):
@@ -2156,5 +2471,31 @@ class StorageLens(BaseModel):
 
     def to_troposphere(self):
         from troposphere.s3 import StorageLens as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class StorageLensGroup(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-storagelensgroup.html
+    Properties:
+        - Name: Filter
+        - Name: Tags
+        - Name: Name
+    Attributes:
+        - Name: StorageLensGroupArn
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    Filter_: 'Filter' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-storagelensgroup.html#cfn-s3-storagelensgroup-filter""", alias="Filter")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-storagelensgroup.html#cfn-s3-storagelensgroup-tags""", alias="Tags")
+    Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-storagelensgroup.html#cfn-s3-storagelensgroup-name""", alias="Name")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.s3.StorageLensGroup:
+        from troposphere.s3 import StorageLensGroup as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.s3 import StorageLensGroup as TropoT
         return resource_to_troposphere(self, TropoT)
 

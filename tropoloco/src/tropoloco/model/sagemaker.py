@@ -1461,40 +1461,90 @@ class ExplainerConfig(BaseModel):
 
     
 
+class ManagedInstanceScaling(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant-managedinstancescaling.html
+    Properties:
+        - Name: Status
+        - Name: MaxInstanceCount
+        - Name: MinInstanceCount
+    
+    """
+    
+    Status_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant-managedinstancescaling.html#cfn-sagemaker-endpointconfig-productionvariant-managedinstancescaling-status""", alias="Status")
+    MaxInstanceCount_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant-managedinstancescaling.html#cfn-sagemaker-endpointconfig-productionvariant-managedinstancescaling-maxinstancecount""", alias="MaxInstanceCount")
+    MinInstanceCount_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant-managedinstancescaling.html#cfn-sagemaker-endpointconfig-productionvariant-managedinstancescaling-mininstancecount""", alias="MinInstanceCount")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.ManagedInstanceScaling:
+        from troposphere.sagemaker import ManagedInstanceScaling as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class ProductionVariant(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html
     Properties:
-        - Name: ModelDataDownloadTimeoutInSeconds
+        - Name: ManagedInstanceScaling
         - Name: ModelName
         - Name: VolumeSizeInGB
         - Name: EnableSSMAccess
         - Name: VariantName
-        - Name: ContainerStartupHealthCheckTimeoutInSeconds
         - Name: InitialInstanceCount
-        - Name: ServerlessConfig
-        - Name: InstanceType
+        - Name: RoutingConfig
         - Name: AcceleratorType
         - Name: InitialVariantWeight
+        - Name: ModelDataDownloadTimeoutInSeconds
+        - Name: ContainerStartupHealthCheckTimeoutInSeconds
+        - Name: ServerlessConfig
+        - Name: InstanceType
     
     """
     
-    ModelDataDownloadTimeoutInSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-modeldatadownloadtimeoutinseconds""", alias="ModelDataDownloadTimeoutInSeconds")
-    ModelName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-modelname""", alias="ModelName")
+    ManagedInstanceScaling_: Optional['ManagedInstanceScaling'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-managedinstancescaling""", alias="ManagedInstanceScaling")
+    ModelName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-modelname""", alias="ModelName")
     VolumeSizeInGB_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-volumesizeingb""", alias="VolumeSizeInGB")
     EnableSSMAccess_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-enablessmaccess""", alias="EnableSSMAccess")
     VariantName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-variantname""", alias="VariantName")
-    ContainerStartupHealthCheckTimeoutInSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-containerstartuphealthchecktimeoutinseconds""", alias="ContainerStartupHealthCheckTimeoutInSeconds")
     InitialInstanceCount_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-initialinstancecount""", alias="InitialInstanceCount")
+    RoutingConfig_: Optional['RoutingConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-routingconfig""", alias="RoutingConfig")
+    AcceleratorType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-acceleratortype""", alias="AcceleratorType")
+    InitialVariantWeight_: Optional[float] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-initialvariantweight""", alias="InitialVariantWeight")
+    ModelDataDownloadTimeoutInSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-modeldatadownloadtimeoutinseconds""", alias="ModelDataDownloadTimeoutInSeconds")
+    ContainerStartupHealthCheckTimeoutInSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-containerstartuphealthchecktimeoutinseconds""", alias="ContainerStartupHealthCheckTimeoutInSeconds")
     ServerlessConfig_: Optional['ServerlessConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-serverlessconfig""", alias="ServerlessConfig")
     InstanceType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-instancetype""", alias="InstanceType")
-    AcceleratorType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-acceleratortype""", alias="AcceleratorType")
-    InitialVariantWeight_: float =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant.html#cfn-sagemaker-endpointconfig-productionvariant-initialvariantweight""", alias="InitialVariantWeight")
     
 
 
     @property
     def tropo_type(self) -> troposphere.sagemaker.ProductionVariant:
         from troposphere.sagemaker import ProductionVariant as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class RoutingConfig(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant-routingconfig.html
+    Properties:
+        - Name: RoutingStrategy
+    
+    """
+    
+    RoutingStrategy_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-productionvariant-routingconfig.html#cfn-sagemaker-endpointconfig-productionvariant-routingconfig-routingstrategy""", alias="RoutingStrategy")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.RoutingConfig:
+        from troposphere.sagemaker import RoutingConfig as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -1520,6 +1570,29 @@ class ServerlessConfig(BaseModel):
     @property
     def tropo_type(self) -> troposphere.sagemaker.ServerlessConfig:
         from troposphere.sagemaker import ServerlessConfig as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class VpcConfig(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-vpcconfig.html
+    Properties:
+        - Name: Subnets
+        - Name: SecurityGroupIds
+    
+    """
+    
+    Subnets_: List[str] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-vpcconfig.html#cfn-sagemaker-endpointconfig-vpcconfig-subnets""", alias="Subnets")
+    SecurityGroupIds_: List[str] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-endpointconfig-vpcconfig.html#cfn-sagemaker-endpointconfig-vpcconfig-securitygroupids""", alias="SecurityGroupIds")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.VpcConfig:
+        from troposphere.sagemaker import VpcConfig as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -1662,6 +1735,160 @@ class S3StorageConfig(BaseModel):
     @property
     def tropo_type(self) -> troposphere.sagemaker.S3StorageConfig:
         from troposphere.sagemaker import S3StorageConfig as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class DeployedImage(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-deployedimage.html
+    Properties:
+        - Name: ResolutionTime
+        - Name: SpecifiedImage
+        - Name: ResolvedImage
+    
+    """
+    
+    ResolutionTime_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-deployedimage.html#cfn-sagemaker-inferencecomponent-deployedimage-resolutiontime""", alias="ResolutionTime")
+    SpecifiedImage_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-deployedimage.html#cfn-sagemaker-inferencecomponent-deployedimage-specifiedimage""", alias="SpecifiedImage")
+    ResolvedImage_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-deployedimage.html#cfn-sagemaker-inferencecomponent-deployedimage-resolvedimage""", alias="ResolvedImage")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.DeployedImage:
+        from troposphere.sagemaker import DeployedImage as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class InferenceComponentComputeResourceRequirements(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentcomputeresourcerequirements.html
+    Properties:
+        - Name: NumberOfAcceleratorDevicesRequired
+        - Name: MaxMemoryRequiredInMb
+        - Name: MinMemoryRequiredInMb
+        - Name: NumberOfCpuCoresRequired
+    
+    """
+    
+    NumberOfAcceleratorDevicesRequired_: Optional[float] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentcomputeresourcerequirements.html#cfn-sagemaker-inferencecomponent-inferencecomponentcomputeresourcerequirements-numberofacceleratordevicesrequired""", alias="NumberOfAcceleratorDevicesRequired")
+    MaxMemoryRequiredInMb_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentcomputeresourcerequirements.html#cfn-sagemaker-inferencecomponent-inferencecomponentcomputeresourcerequirements-maxmemoryrequiredinmb""", alias="MaxMemoryRequiredInMb")
+    MinMemoryRequiredInMb_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentcomputeresourcerequirements.html#cfn-sagemaker-inferencecomponent-inferencecomponentcomputeresourcerequirements-minmemoryrequiredinmb""", alias="MinMemoryRequiredInMb")
+    NumberOfCpuCoresRequired_: Optional[float] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentcomputeresourcerequirements.html#cfn-sagemaker-inferencecomponent-inferencecomponentcomputeresourcerequirements-numberofcpucoresrequired""", alias="NumberOfCpuCoresRequired")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.InferenceComponentComputeResourceRequirements:
+        from troposphere.sagemaker import InferenceComponentComputeResourceRequirements as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class InferenceComponentContainerSpecification(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentcontainerspecification.html
+    Properties:
+        - Name: ArtifactUrl
+        - Name: Environment
+        - Name: DeployedImage
+        - Name: Image
+    
+    """
+    
+    ArtifactUrl_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentcontainerspecification.html#cfn-sagemaker-inferencecomponent-inferencecomponentcontainerspecification-artifacturl""", alias="ArtifactUrl")
+    Environment_: Optional[Dict[str, str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentcontainerspecification.html#cfn-sagemaker-inferencecomponent-inferencecomponentcontainerspecification-environment""", alias="Environment")
+    DeployedImage_: Optional['DeployedImage'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentcontainerspecification.html#cfn-sagemaker-inferencecomponent-inferencecomponentcontainerspecification-deployedimage""", alias="DeployedImage")
+    Image_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentcontainerspecification.html#cfn-sagemaker-inferencecomponent-inferencecomponentcontainerspecification-image""", alias="Image")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.InferenceComponentContainerSpecification:
+        from troposphere.sagemaker import InferenceComponentContainerSpecification as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class InferenceComponentRuntimeConfig(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentruntimeconfig.html
+    Properties:
+        - Name: CurrentCopyCount
+        - Name: DesiredCopyCount
+        - Name: CopyCount
+    
+    """
+    
+    CurrentCopyCount_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentruntimeconfig.html#cfn-sagemaker-inferencecomponent-inferencecomponentruntimeconfig-currentcopycount""", alias="CurrentCopyCount")
+    DesiredCopyCount_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentruntimeconfig.html#cfn-sagemaker-inferencecomponent-inferencecomponentruntimeconfig-desiredcopycount""", alias="DesiredCopyCount")
+    CopyCount_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentruntimeconfig.html#cfn-sagemaker-inferencecomponent-inferencecomponentruntimeconfig-copycount""", alias="CopyCount")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.InferenceComponentRuntimeConfig:
+        from troposphere.sagemaker import InferenceComponentRuntimeConfig as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class InferenceComponentSpecification(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentspecification.html
+    Properties:
+        - Name: Container
+        - Name: ModelName
+        - Name: ComputeResourceRequirements
+        - Name: StartupParameters
+    
+    """
+    
+    Container_: Optional['InferenceComponentContainerSpecification'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentspecification.html#cfn-sagemaker-inferencecomponent-inferencecomponentspecification-container""", alias="Container")
+    ModelName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentspecification.html#cfn-sagemaker-inferencecomponent-inferencecomponentspecification-modelname""", alias="ModelName")
+    ComputeResourceRequirements_: 'InferenceComponentComputeResourceRequirements' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentspecification.html#cfn-sagemaker-inferencecomponent-inferencecomponentspecification-computeresourcerequirements""", alias="ComputeResourceRequirements")
+    StartupParameters_: Optional['InferenceComponentStartupParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentspecification.html#cfn-sagemaker-inferencecomponent-inferencecomponentspecification-startupparameters""", alias="StartupParameters")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.InferenceComponentSpecification:
+        from troposphere.sagemaker import InferenceComponentSpecification as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class InferenceComponentStartupParameters(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentstartupparameters.html
+    Properties:
+        - Name: ModelDataDownloadTimeoutInSeconds
+        - Name: ContainerStartupHealthCheckTimeoutInSeconds
+    
+    """
+    
+    ModelDataDownloadTimeoutInSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentstartupparameters.html#cfn-sagemaker-inferencecomponent-inferencecomponentstartupparameters-modeldatadownloadtimeoutinseconds""", alias="ModelDataDownloadTimeoutInSeconds")
+    ContainerStartupHealthCheckTimeoutInSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-inferencecomponent-inferencecomponentstartupparameters.html#cfn-sagemaker-inferencecomponent-inferencecomponentstartupparameters-containerstartuphealthchecktimeoutinseconds""", alias="ContainerStartupHealthCheckTimeoutInSeconds")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.InferenceComponentStartupParameters:
+        from troposphere.sagemaker import InferenceComponentStartupParameters as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -1893,6 +2120,7 @@ class ContainerDefinition(BaseModel):
         - Name: Environment
         - Name: ModelDataUrl
         - Name: Image
+        - Name: ModelDataSource
         - Name: MultiModelConfig
     
     """
@@ -1905,6 +2133,7 @@ class ContainerDefinition(BaseModel):
     Environment_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition.html#cfn-sagemaker-model-containerdefinition-environment""", alias="Environment")
     ModelDataUrl_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition.html#cfn-sagemaker-model-containerdefinition-modeldataurl""", alias="ModelDataUrl")
     Image_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition.html#cfn-sagemaker-model-containerdefinition-image""", alias="Image")
+    ModelDataSource_: Optional['ModelDataSource'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition.html#cfn-sagemaker-model-containerdefinition-modeldatasource""", alias="ModelDataSource")
     MultiModelConfig_: Optional['MultiModelConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition.html#cfn-sagemaker-model-containerdefinition-multimodelconfig""", alias="MultiModelConfig")
     
 
@@ -1963,6 +2192,27 @@ class InferenceExecutionConfig(BaseModel):
 
     
 
+class ModelDataSource(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition-modeldatasource.html
+    Properties:
+        - Name: S3DataSource
+    
+    """
+    
+    S3DataSource_: 'S3DataSource' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition-modeldatasource.html#cfn-sagemaker-model-containerdefinition-modeldatasource-s3datasource""", alias="S3DataSource")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.ModelDataSource:
+        from troposphere.sagemaker import ModelDataSource as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class MultiModelConfig(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition-multimodelconfig.html
     Properties:
@@ -1998,6 +2248,31 @@ class RepositoryAuthConfig(BaseModel):
     @property
     def tropo_type(self) -> troposphere.sagemaker.RepositoryAuthConfig:
         from troposphere.sagemaker import RepositoryAuthConfig as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class S3DataSource(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition-modeldatasource-s3datasource.html
+    Properties:
+        - Name: S3Uri
+        - Name: S3DataType
+        - Name: CompressionType
+    
+    """
+    
+    S3Uri_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition-modeldatasource-s3datasource.html#cfn-sagemaker-model-containerdefinition-modeldatasource-s3datasource-s3uri""", alias="S3Uri")
+    S3DataType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition-modeldatasource-s3datasource.html#cfn-sagemaker-model-containerdefinition-modeldatasource-s3datasource-s3datatype""", alias="S3DataType")
+    CompressionType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sagemaker-model-containerdefinition-modeldatasource-s3datasource.html#cfn-sagemaker-model-containerdefinition-modeldatasource-s3datasource-compressiontype""", alias="CompressionType")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.S3DataSource:
+        from troposphere.sagemaker import S3DataSource as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -6074,9 +6349,12 @@ class EndpointConfig(BaseModel):
     Properties:
         - Name: ShadowProductionVariants
         - Name: DataCaptureConfig
+        - Name: ExecutionRoleArn
+        - Name: EnableNetworkIsolation
         - Name: ProductionVariants
         - Name: KmsKeyId
         - Name: AsyncInferenceConfig
+        - Name: VpcConfig
         - Name: EndpointConfigName
         - Name: ExplainerConfig
         - Name: Tags
@@ -6087,9 +6365,12 @@ class EndpointConfig(BaseModel):
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     ShadowProductionVariants_: Optional[List['ProductionVariant']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-shadowproductionvariants""", alias="ShadowProductionVariants")
     DataCaptureConfig_: Optional['DataCaptureConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-datacaptureconfig""", alias="DataCaptureConfig")
+    ExecutionRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-executionrolearn""", alias="ExecutionRoleArn")
+    EnableNetworkIsolation_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-enablenetworkisolation""", alias="EnableNetworkIsolation")
     ProductionVariants_: List['ProductionVariant'] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-productionvariants""", alias="ProductionVariants")
     KmsKeyId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-kmskeyid""", alias="KmsKeyId")
     AsyncInferenceConfig_: Optional['AsyncInferenceConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-asyncinferenceconfig""", alias="AsyncInferenceConfig")
+    VpcConfig_: Optional['VpcConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-vpcconfig""", alias="VpcConfig")
     EndpointConfigName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-endpointconfigname""", alias="EndpointConfigName")
     ExplainerConfig_: Optional['ExplainerConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-explainerconfig""", alias="ExplainerConfig")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpointconfig.html#cfn-sagemaker-endpointconfig-tags""", alias="Tags")
@@ -6219,6 +6500,50 @@ class ImageVersion(BaseModel):
         return resource_to_troposphere(self, TropoT)
 
 
+class InferenceComponent(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-inferencecomponent.html
+    Properties:
+        - Name: EndpointName
+        - Name: VariantName
+        - Name: InferenceComponentName
+        - Name: Specification
+        - Name: RuntimeConfig
+        - Name: EndpointArn
+        - Name: Tags
+    Attributes:
+        - Name: Specification.Container.DeployedImage.ResolutionTime
+        - Name: FailureReason
+        - Name: InferenceComponentStatus
+        - Name: CreationTime
+        - Name: LastModifiedTime
+        - Name: InferenceComponentArn
+        - Name: Specification.Container.DeployedImage.ResolvedImage
+        - Name: RuntimeConfig.CurrentCopyCount
+        - Name: RuntimeConfig.DesiredCopyCount
+        - Name: Specification.Container.DeployedImage
+        - Name: Specification.Container.DeployedImage.SpecifiedImage
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    EndpointName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-inferencecomponent.html#cfn-sagemaker-inferencecomponent-endpointname""", alias="EndpointName")
+    VariantName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-inferencecomponent.html#cfn-sagemaker-inferencecomponent-variantname""", alias="VariantName")
+    InferenceComponentName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-inferencecomponent.html#cfn-sagemaker-inferencecomponent-inferencecomponentname""", alias="InferenceComponentName")
+    Specification_: 'InferenceComponentSpecification' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-inferencecomponent.html#cfn-sagemaker-inferencecomponent-specification""", alias="Specification")
+    RuntimeConfig_: 'InferenceComponentRuntimeConfig' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-inferencecomponent.html#cfn-sagemaker-inferencecomponent-runtimeconfig""", alias="RuntimeConfig")
+    EndpointArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-inferencecomponent.html#cfn-sagemaker-inferencecomponent-endpointarn""", alias="EndpointArn")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-inferencecomponent.html#cfn-sagemaker-inferencecomponent-tags""", alias="Tags")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.sagemaker.InferenceComponent:
+        from troposphere.sagemaker import InferenceComponent as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.sagemaker import InferenceComponent as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
 class InferenceExperiment(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-inferenceexperiment.html
     Properties:
@@ -6288,7 +6613,7 @@ class Model(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
-    ExecutionRoleArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-model.html#cfn-sagemaker-model-executionrolearn""", alias="ExecutionRoleArn")
+    ExecutionRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-model.html#cfn-sagemaker-model-executionrolearn""", alias="ExecutionRoleArn")
     EnableNetworkIsolation_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-model.html#cfn-sagemaker-model-enablenetworkisolation""", alias="EnableNetworkIsolation")
     PrimaryContainer_: Optional['ContainerDefinition'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-model.html#cfn-sagemaker-model-primarycontainer""", alias="PrimaryContainer")
     ModelName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-model.html#cfn-sagemaker-model-modelname""", alias="ModelName")

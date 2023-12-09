@@ -14,6 +14,157 @@ from tropoloco import resource_to_troposphere, property_to_troposphere
 
 
 
+class MicrosoftSqlServerSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-microsoftsqlserversettings.html
+    Properties:
+        - Name: SslMode
+        - Name: ServerName
+        - Name: Port
+        - Name: DatabaseName
+        - Name: CertificateArn
+    
+    """
+    
+    SslMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-microsoftsqlserversettings.html#cfn-dms-dataprovider-microsoftsqlserversettings-sslmode""", alias="SslMode")
+    ServerName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-microsoftsqlserversettings.html#cfn-dms-dataprovider-microsoftsqlserversettings-servername""", alias="ServerName")
+    Port_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-microsoftsqlserversettings.html#cfn-dms-dataprovider-microsoftsqlserversettings-port""", alias="Port")
+    DatabaseName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-microsoftsqlserversettings.html#cfn-dms-dataprovider-microsoftsqlserversettings-databasename""", alias="DatabaseName")
+    CertificateArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-microsoftsqlserversettings.html#cfn-dms-dataprovider-microsoftsqlserversettings-certificatearn""", alias="CertificateArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.dms.MicrosoftSqlServerSettings:
+        from troposphere.dms import MicrosoftSqlServerSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MySqlSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-mysqlsettings.html
+    Properties:
+        - Name: SslMode
+        - Name: ServerName
+        - Name: Port
+        - Name: CertificateArn
+    
+    """
+    
+    SslMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-mysqlsettings.html#cfn-dms-dataprovider-mysqlsettings-sslmode""", alias="SslMode")
+    ServerName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-mysqlsettings.html#cfn-dms-dataprovider-mysqlsettings-servername""", alias="ServerName")
+    Port_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-mysqlsettings.html#cfn-dms-dataprovider-mysqlsettings-port""", alias="Port")
+    CertificateArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-mysqlsettings.html#cfn-dms-dataprovider-mysqlsettings-certificatearn""", alias="CertificateArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.dms.MySqlSettings:
+        from troposphere.dms import MySqlSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class OracleSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html
+    Properties:
+        - Name: SecretsManagerOracleAsmAccessRoleArn
+        - Name: SecretsManagerOracleAsmSecretId
+        - Name: SslMode
+        - Name: SecretsManagerSecurityDbEncryptionSecretId
+        - Name: ServerName
+        - Name: Port
+        - Name: DatabaseName
+        - Name: AsmServer
+        - Name: CertificateArn
+        - Name: SecretsManagerSecurityDbEncryptionAccessRoleArn
+    
+    """
+    
+    SecretsManagerOracleAsmAccessRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-secretsmanageroracleasmaccessrolearn""", alias="SecretsManagerOracleAsmAccessRoleArn")
+    SecretsManagerOracleAsmSecretId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-secretsmanageroracleasmsecretid""", alias="SecretsManagerOracleAsmSecretId")
+    SslMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-sslmode""", alias="SslMode")
+    SecretsManagerSecurityDbEncryptionSecretId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-secretsmanagersecuritydbencryptionsecretid""", alias="SecretsManagerSecurityDbEncryptionSecretId")
+    ServerName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-servername""", alias="ServerName")
+    Port_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-port""", alias="Port")
+    DatabaseName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-databasename""", alias="DatabaseName")
+    AsmServer_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-asmserver""", alias="AsmServer")
+    CertificateArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-certificatearn""", alias="CertificateArn")
+    SecretsManagerSecurityDbEncryptionAccessRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-secretsmanagersecuritydbencryptionaccessrolearn""", alias="SecretsManagerSecurityDbEncryptionAccessRoleArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.dms.OracleSettings:
+        from troposphere.dms import OracleSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class PostgreSqlSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-postgresqlsettings.html
+    Properties:
+        - Name: SslMode
+        - Name: ServerName
+        - Name: Port
+        - Name: DatabaseName
+        - Name: CertificateArn
+    
+    """
+    
+    SslMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-postgresqlsettings.html#cfn-dms-dataprovider-postgresqlsettings-sslmode""", alias="SslMode")
+    ServerName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-postgresqlsettings.html#cfn-dms-dataprovider-postgresqlsettings-servername""", alias="ServerName")
+    Port_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-postgresqlsettings.html#cfn-dms-dataprovider-postgresqlsettings-port""", alias="Port")
+    DatabaseName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-postgresqlsettings.html#cfn-dms-dataprovider-postgresqlsettings-databasename""", alias="DatabaseName")
+    CertificateArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-postgresqlsettings.html#cfn-dms-dataprovider-postgresqlsettings-certificatearn""", alias="CertificateArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.dms.PostgreSqlSettings:
+        from troposphere.dms import PostgreSqlSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class Settings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-settings.html
+    Properties:
+        - Name: OracleSettings
+        - Name: MicrosoftSqlServerSettings
+        - Name: MySqlSettings
+        - Name: PostgreSqlSettings
+    
+    """
+    
+    OracleSettings_: Optional['OracleSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-settings.html#cfn-dms-dataprovider-settings-oraclesettings""", alias="OracleSettings")
+    MicrosoftSqlServerSettings_: Optional['MicrosoftSqlServerSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-settings.html#cfn-dms-dataprovider-settings-microsoftsqlserversettings""", alias="MicrosoftSqlServerSettings")
+    MySqlSettings_: Optional['MySqlSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-settings.html#cfn-dms-dataprovider-settings-mysqlsettings""", alias="MySqlSettings")
+    PostgreSqlSettings_: Optional['PostgreSqlSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-settings.html#cfn-dms-dataprovider-settings-postgresqlsettings""", alias="PostgreSqlSettings")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.dms.Settings:
+        from troposphere.dms import Settings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class DocDbSettings(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-docdbsettings.html
     Properties:
@@ -139,18 +290,26 @@ class GcpMySQLSettings(BaseModel):
 class IbmDb2Settings(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-ibmdb2settings.html
     Properties:
+        - Name: LoadTimeout
         - Name: SetDataCaptureChanges
+        - Name: MaxFileSize
+        - Name: KeepCsvFiles
         - Name: CurrentLsn
         - Name: MaxKBytesPerRead
         - Name: SecretsManagerSecretId
+        - Name: WriteBufferSize
         - Name: SecretsManagerAccessRoleArn
     
     """
     
+    LoadTimeout_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-ibmdb2settings.html#cfn-dms-endpoint-ibmdb2settings-loadtimeout""", alias="LoadTimeout")
     SetDataCaptureChanges_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-ibmdb2settings.html#cfn-dms-endpoint-ibmdb2settings-setdatacapturechanges""", alias="SetDataCaptureChanges")
+    MaxFileSize_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-ibmdb2settings.html#cfn-dms-endpoint-ibmdb2settings-maxfilesize""", alias="MaxFileSize")
+    KeepCsvFiles_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-ibmdb2settings.html#cfn-dms-endpoint-ibmdb2settings-keepcsvfiles""", alias="KeepCsvFiles")
     CurrentLsn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-ibmdb2settings.html#cfn-dms-endpoint-ibmdb2settings-currentlsn""", alias="CurrentLsn")
     MaxKBytesPerRead_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-ibmdb2settings.html#cfn-dms-endpoint-ibmdb2settings-maxkbytesperread""", alias="MaxKBytesPerRead")
     SecretsManagerSecretId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-ibmdb2settings.html#cfn-dms-endpoint-ibmdb2settings-secretsmanagersecretid""", alias="SecretsManagerSecretId")
+    WriteBufferSize_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-ibmdb2settings.html#cfn-dms-endpoint-ibmdb2settings-writebuffersize""", alias="WriteBufferSize")
     SecretsManagerAccessRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-ibmdb2settings.html#cfn-dms-endpoint-ibmdb2settings-secretsmanageraccessrolearn""", alias="SecretsManagerAccessRoleArn")
     
 
@@ -677,14 +836,16 @@ class S3Settings(BaseModel):
         - Name: TimestampColumnName
         - Name: EnableStatistics
         - Name: DatePartitionSequence
-        - Name: IncludeOpForFullLoad
         - Name: CsvNullValue
+        - Name: IncludeOpForFullLoad
         - Name: CdcInsertsAndUpdates
         - Name: BucketName
         - Name: ServerSideEncryptionKmsKeyId
         - Name: UseTaskStartTimeForFullLoadTimestamp
+        - Name: GlueCatalogGeneration
         - Name: DataFormat
         - Name: CsvDelimiter
+        - Name: AddTrailingPaddingCharacter
         - Name: IgnoreHeaderRows
         - Name: CannedAclForObjects
         - Name: Rfc4180
@@ -694,23 +855,24 @@ class S3Settings(BaseModel):
         - Name: BucketFolder
         - Name: DatePartitionDelimiter
         - Name: EncodingType
-        - Name: ParquetVersion
         - Name: AddColumnName
         - Name: CdcMinFileSize
+        - Name: ParquetVersion
         - Name: ExternalTableDefinition
         - Name: UseCsvNoSupValue
         - Name: MaxFileSize
-        - Name: CsvNoSupValue
         - Name: CdcPath
+        - Name: CsvNoSupValue
+        - Name: CdcMaxBatchInterval
         - Name: CsvRowDelimiter
         - Name: RowGroupLength
-        - Name: CdcMaxBatchInterval
         - Name: DataPageSize
-        - Name: DictPageSizeLimit
         - Name: DatePartitionEnabled
+        - Name: DictPageSizeLimit
         - Name: CompressionType
         - Name: DatePartitionTimezone
         - Name: CdcInsertsOnly
+        - Name: ExpectedBucketOwner
         - Name: EncryptionMode
     
     """
@@ -718,14 +880,16 @@ class S3Settings(BaseModel):
     TimestampColumnName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-timestampcolumnname""", alias="TimestampColumnName")
     EnableStatistics_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-enablestatistics""", alias="EnableStatistics")
     DatePartitionSequence_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-datepartitionsequence""", alias="DatePartitionSequence")
-    IncludeOpForFullLoad_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-includeopforfullload""", alias="IncludeOpForFullLoad")
     CsvNullValue_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-csvnullvalue""", alias="CsvNullValue")
+    IncludeOpForFullLoad_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-includeopforfullload""", alias="IncludeOpForFullLoad")
     CdcInsertsAndUpdates_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-cdcinsertsandupdates""", alias="CdcInsertsAndUpdates")
     BucketName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-bucketname""", alias="BucketName")
     ServerSideEncryptionKmsKeyId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-serversideencryptionkmskeyid""", alias="ServerSideEncryptionKmsKeyId")
     UseTaskStartTimeForFullLoadTimestamp_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-usetaskstarttimeforfullloadtimestamp""", alias="UseTaskStartTimeForFullLoadTimestamp")
+    GlueCatalogGeneration_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-gluecataloggeneration""", alias="GlueCatalogGeneration")
     DataFormat_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-dataformat""", alias="DataFormat")
     CsvDelimiter_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-csvdelimiter""", alias="CsvDelimiter")
+    AddTrailingPaddingCharacter_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-addtrailingpaddingcharacter""", alias="AddTrailingPaddingCharacter")
     IgnoreHeaderRows_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-ignoreheaderrows""", alias="IgnoreHeaderRows")
     CannedAclForObjects_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-cannedaclforobjects""", alias="CannedAclForObjects")
     Rfc4180_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-rfc4180""", alias="Rfc4180")
@@ -735,23 +899,24 @@ class S3Settings(BaseModel):
     BucketFolder_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-bucketfolder""", alias="BucketFolder")
     DatePartitionDelimiter_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-datepartitiondelimiter""", alias="DatePartitionDelimiter")
     EncodingType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-encodingtype""", alias="EncodingType")
-    ParquetVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-parquetversion""", alias="ParquetVersion")
     AddColumnName_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-addcolumnname""", alias="AddColumnName")
     CdcMinFileSize_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-cdcminfilesize""", alias="CdcMinFileSize")
+    ParquetVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-parquetversion""", alias="ParquetVersion")
     ExternalTableDefinition_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-externaltabledefinition""", alias="ExternalTableDefinition")
     UseCsvNoSupValue_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-usecsvnosupvalue""", alias="UseCsvNoSupValue")
     MaxFileSize_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-maxfilesize""", alias="MaxFileSize")
-    CsvNoSupValue_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-csvnosupvalue""", alias="CsvNoSupValue")
     CdcPath_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-cdcpath""", alias="CdcPath")
+    CsvNoSupValue_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-csvnosupvalue""", alias="CsvNoSupValue")
+    CdcMaxBatchInterval_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-cdcmaxbatchinterval""", alias="CdcMaxBatchInterval")
     CsvRowDelimiter_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-csvrowdelimiter""", alias="CsvRowDelimiter")
     RowGroupLength_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-rowgrouplength""", alias="RowGroupLength")
-    CdcMaxBatchInterval_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-cdcmaxbatchinterval""", alias="CdcMaxBatchInterval")
     DataPageSize_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-datapagesize""", alias="DataPageSize")
-    DictPageSizeLimit_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-dictpagesizelimit""", alias="DictPageSizeLimit")
     DatePartitionEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-datepartitionenabled""", alias="DatePartitionEnabled")
+    DictPageSizeLimit_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-dictpagesizelimit""", alias="DictPageSizeLimit")
     CompressionType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-compressiontype""", alias="CompressionType")
     DatePartitionTimezone_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-datepartitiontimezone""", alias="DatePartitionTimezone")
     CdcInsertsOnly_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-cdcinsertsonly""", alias="CdcInsertsOnly")
+    ExpectedBucketOwner_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-expectedbucketowner""", alias="ExpectedBucketOwner")
     EncryptionMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-endpoint-s3settings.html#cfn-dms-endpoint-s3settings-encryptionmode""", alias="EncryptionMode")
     
 
@@ -782,6 +947,58 @@ class SybaseSettings(BaseModel):
     @property
     def tropo_type(self) -> troposphere.dms.SybaseSettings:
         from troposphere.dms import SybaseSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class DataProviderDescriptor(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-migrationproject-dataproviderdescriptor.html
+    Properties:
+        - Name: DataProviderName
+        - Name: DataProviderArn
+        - Name: SecretsManagerSecretId
+        - Name: SecretsManagerAccessRoleArn
+        - Name: DataProviderIdentifier
+    
+    """
+    
+    DataProviderName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-migrationproject-dataproviderdescriptor.html#cfn-dms-migrationproject-dataproviderdescriptor-dataprovidername""", alias="DataProviderName")
+    DataProviderArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-migrationproject-dataproviderdescriptor.html#cfn-dms-migrationproject-dataproviderdescriptor-dataproviderarn""", alias="DataProviderArn")
+    SecretsManagerSecretId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-migrationproject-dataproviderdescriptor.html#cfn-dms-migrationproject-dataproviderdescriptor-secretsmanagersecretid""", alias="SecretsManagerSecretId")
+    SecretsManagerAccessRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-migrationproject-dataproviderdescriptor.html#cfn-dms-migrationproject-dataproviderdescriptor-secretsmanageraccessrolearn""", alias="SecretsManagerAccessRoleArn")
+    DataProviderIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-migrationproject-dataproviderdescriptor.html#cfn-dms-migrationproject-dataproviderdescriptor-dataprovideridentifier""", alias="DataProviderIdentifier")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.dms.DataProviderDescriptor:
+        from troposphere.dms import DataProviderDescriptor as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class SchemaConversionApplicationAttributes(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-migrationproject-schemaconversionapplicationattributes.html
+    Properties:
+        - Name: S3BucketPath
+        - Name: S3BucketRoleArn
+    
+    """
+    
+    S3BucketPath_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-migrationproject-schemaconversionapplicationattributes.html#cfn-dms-migrationproject-schemaconversionapplicationattributes-s3bucketpath""", alias="S3BucketPath")
+    S3BucketRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-migrationproject-schemaconversionapplicationattributes.html#cfn-dms-migrationproject-schemaconversionapplicationattributes-s3bucketrolearn""", alias="S3BucketRoleArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.dms.SchemaConversionApplicationAttributes:
+        from troposphere.dms import SchemaConversionApplicationAttributes as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -853,6 +1070,41 @@ class Certificate(BaseModel):
 
     def to_troposphere(self):
         from troposphere.dms import Certificate as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class DataProvider(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-dataprovider.html
+    Properties:
+        - Name: DataProviderName
+        - Name: Description
+        - Name: ExactSettings
+        - Name: Engine
+        - Name: Settings
+        - Name: Tags
+        - Name: DataProviderIdentifier
+    Attributes:
+        - Name: DataProviderArn
+        - Name: DataProviderCreationTime
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    DataProviderName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-dataprovider.html#cfn-dms-dataprovider-dataprovidername""", alias="DataProviderName")
+    Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-dataprovider.html#cfn-dms-dataprovider-description""", alias="Description")
+    ExactSettings_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-dataprovider.html#cfn-dms-dataprovider-exactsettings""", alias="ExactSettings")
+    Engine_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-dataprovider.html#cfn-dms-dataprovider-engine""", alias="Engine")
+    Settings_: Optional['Settings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-dataprovider.html#cfn-dms-dataprovider-settings""", alias="Settings")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-dataprovider.html#cfn-dms-dataprovider-tags""", alias="Tags")
+    DataProviderIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-dataprovider.html#cfn-dms-dataprovider-dataprovideridentifier""", alias="DataProviderIdentifier")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.dms.DataProvider:
+        from troposphere.dms import DataProvider as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.dms import DataProvider as TropoT
         return resource_to_troposphere(self, TropoT)
 
 
@@ -967,6 +1219,89 @@ class EventSubscription(BaseModel):
 
     def to_troposphere(self):
         from troposphere.dms import EventSubscription as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class InstanceProfile(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html
+    Properties:
+        - Name: SubnetGroupIdentifier
+        - Name: Description
+        - Name: InstanceProfileName
+        - Name: KmsKeyArn
+        - Name: NetworkType
+        - Name: AvailabilityZone
+        - Name: PubliclyAccessible
+        - Name: VpcSecurityGroups
+        - Name: Tags
+        - Name: InstanceProfileIdentifier
+    Attributes:
+        - Name: InstanceProfileCreationTime
+        - Name: InstanceProfileArn
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    SubnetGroupIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html#cfn-dms-instanceprofile-subnetgroupidentifier""", alias="SubnetGroupIdentifier")
+    Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html#cfn-dms-instanceprofile-description""", alias="Description")
+    InstanceProfileName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html#cfn-dms-instanceprofile-instanceprofilename""", alias="InstanceProfileName")
+    KmsKeyArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html#cfn-dms-instanceprofile-kmskeyarn""", alias="KmsKeyArn")
+    NetworkType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html#cfn-dms-instanceprofile-networktype""", alias="NetworkType")
+    AvailabilityZone_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html#cfn-dms-instanceprofile-availabilityzone""", alias="AvailabilityZone")
+    PubliclyAccessible_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html#cfn-dms-instanceprofile-publiclyaccessible""", alias="PubliclyAccessible")
+    VpcSecurityGroups_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html#cfn-dms-instanceprofile-vpcsecuritygroups""", alias="VpcSecurityGroups")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html#cfn-dms-instanceprofile-tags""", alias="Tags")
+    InstanceProfileIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-instanceprofile.html#cfn-dms-instanceprofile-instanceprofileidentifier""", alias="InstanceProfileIdentifier")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.dms.InstanceProfile:
+        from troposphere.dms import InstanceProfile as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.dms import InstanceProfile as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class MigrationProject(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html
+    Properties:
+        - Name: TargetDataProviderDescriptors
+        - Name: MigrationProjectName
+        - Name: InstanceProfileName
+        - Name: Description
+        - Name: MigrationProjectIdentifier
+        - Name: SourceDataProviderDescriptors
+        - Name: TransformationRules
+        - Name: SchemaConversionApplicationAttributes
+        - Name: InstanceProfileArn
+        - Name: Tags
+        - Name: InstanceProfileIdentifier
+    Attributes:
+        - Name: MigrationProjectArn
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    TargetDataProviderDescriptors_: Optional[List['DataProviderDescriptor']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-targetdataproviderdescriptors""", alias="TargetDataProviderDescriptors")
+    MigrationProjectName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-migrationprojectname""", alias="MigrationProjectName")
+    InstanceProfileName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-instanceprofilename""", alias="InstanceProfileName")
+    Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-description""", alias="Description")
+    MigrationProjectIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-migrationprojectidentifier""", alias="MigrationProjectIdentifier")
+    SourceDataProviderDescriptors_: Optional[List['DataProviderDescriptor']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-sourcedataproviderdescriptors""", alias="SourceDataProviderDescriptors")
+    TransformationRules_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-transformationrules""", alias="TransformationRules")
+    SchemaConversionApplicationAttributes_: Optional['SchemaConversionApplicationAttributes'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-schemaconversionapplicationattributes""", alias="SchemaConversionApplicationAttributes")
+    InstanceProfileArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-instanceprofilearn""", alias="InstanceProfileArn")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-tags""", alias="Tags")
+    InstanceProfileIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dms-migrationproject.html#cfn-dms-migrationproject-instanceprofileidentifier""", alias="InstanceProfileIdentifier")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.dms.MigrationProject:
+        from troposphere.dms import MigrationProject as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.dms import MigrationProject as TropoT
         return resource_to_troposphere(self, TropoT)
 
 

@@ -214,6 +214,48 @@ class CrossRegionCopyRule(BaseModel):
 
     
 
+class CrossRegionCopyTarget(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-crossregioncopytarget.html
+    Properties:
+        - Name: TargetRegion
+    
+    """
+    
+    TargetRegion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-crossregioncopytarget.html#cfn-dlm-lifecyclepolicy-crossregioncopytarget-targetregion""", alias="TargetRegion")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.dlm.CrossRegionCopyTarget:
+        from troposphere.dlm import CrossRegionCopyTarget as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class CrossRegionCopyTargets(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-crossregioncopytargets.html
+    Properties:
+        - did not locate and properties
+    
+    """
+    
+    pass
+
+
+
+    @property
+    def tropo_type(self) -> troposphere.dlm.CrossRegionCopyTargets:
+        from troposphere.dlm import CrossRegionCopyTargets as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class DeprecateRule(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-deprecaterule.html
     Properties:
@@ -310,6 +352,73 @@ class EventSource(BaseModel):
 
     
 
+class ExcludeTags(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-excludetags.html
+    Properties:
+        - did not locate and properties
+    
+    """
+    
+    pass
+
+
+
+    @property
+    def tropo_type(self) -> troposphere.dlm.ExcludeTags:
+        from troposphere.dlm import ExcludeTags as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class ExcludeVolumeTypesList(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-excludevolumetypeslist.html
+    Properties:
+        - did not locate and properties
+    
+    """
+    
+    pass
+
+
+
+    @property
+    def tropo_type(self) -> troposphere.dlm.ExcludeVolumeTypesList:
+        from troposphere.dlm import ExcludeVolumeTypesList as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class Exclusions(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-exclusions.html
+    Properties:
+        - Name: ExcludeBootVolumes
+        - Name: ExcludeTags
+        - Name: ExcludeVolumeTypes
+    
+    """
+    
+    ExcludeBootVolumes_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-exclusions.html#cfn-dlm-lifecyclepolicy-exclusions-excludebootvolumes""", alias="ExcludeBootVolumes")
+    ExcludeTags_: Optional['ExcludeTags'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-exclusions.html#cfn-dlm-lifecyclepolicy-exclusions-excludetags""", alias="ExcludeTags")
+    ExcludeVolumeTypes_: Optional['ExcludeVolumeTypesList'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-exclusions.html#cfn-dlm-lifecyclepolicy-exclusions-excludevolumetypes""", alias="ExcludeVolumeTypes")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.dlm.Exclusions:
+        from troposphere.dlm import Exclusions as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class FastRestoreRule(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-fastrestorerule.html
     Properties:
@@ -365,25 +474,41 @@ class Parameters(BaseModel):
 class PolicyDetails(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html
     Properties:
+        - Name: PolicyLanguage
         - Name: ResourceTypes
         - Name: Schedules
         - Name: PolicyType
-        - Name: EventSource
+        - Name: CreateInterval
         - Name: Parameters
+        - Name: ExtendDeletion
+        - Name: Exclusions
         - Name: Actions
+        - Name: ResourceType
+        - Name: RetainInterval
+        - Name: EventSource
+        - Name: CrossRegionCopyTargets
         - Name: TargetTags
         - Name: ResourceLocations
+        - Name: CopyTags
     
     """
     
+    PolicyLanguage_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-policylanguage""", alias="PolicyLanguage")
     ResourceTypes_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-resourcetypes""", alias="ResourceTypes")
     Schedules_: Optional[List['Schedule']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-schedules""", alias="Schedules")
     PolicyType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-policytype""", alias="PolicyType")
-    EventSource_: Optional['EventSource'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-eventsource""", alias="EventSource")
+    CreateInterval_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-createinterval""", alias="CreateInterval")
     Parameters_: Optional['Parameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-parameters""", alias="Parameters")
+    ExtendDeletion_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-extenddeletion""", alias="ExtendDeletion")
+    Exclusions_: Optional['Exclusions'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-exclusions""", alias="Exclusions")
     Actions_: Optional[List['Action']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-actions""", alias="Actions")
+    ResourceType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-resourcetype""", alias="ResourceType")
+    RetainInterval_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-retaininterval""", alias="RetainInterval")
+    EventSource_: Optional['EventSource'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-eventsource""", alias="EventSource")
+    CrossRegionCopyTargets_: Optional['CrossRegionCopyTargets'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-crossregioncopytargets""", alias="CrossRegionCopyTargets")
     TargetTags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-targettags""", alias="TargetTags")
     ResourceLocations_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-resourcelocations""", alias="ResourceLocations")
+    CopyTags_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-policydetails.html#cfn-dlm-lifecyclepolicy-policydetails-copytags""", alias="CopyTags")
     
 
 
@@ -544,6 +669,27 @@ class ShareRule(BaseModel):
 
     
 
+class VolumeTypeValues(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dlm-lifecyclepolicy-volumetypevalues.html
+    Properties:
+        - did not locate and properties
+    
+    """
+    
+    pass
+
+
+
+    @property
+    def tropo_type(self) -> troposphere.dlm.VolumeTypeValues:
+        from troposphere.dlm import VolumeTypeValues as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 
 ######################################################################
 # AWS Resource
@@ -554,20 +700,34 @@ class LifecyclePolicy(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html
     Properties:
         - Name: ExecutionRoleArn
+        - Name: DefaultPolicy
+        - Name: CreateInterval
         - Name: Description
+        - Name: ExtendDeletion
+        - Name: Exclusions
         - Name: State
+        - Name: CrossRegionCopyTargets
         - Name: PolicyDetails
         - Name: Tags
+        - Name: RetainInterval
+        - Name: CopyTags
     Attributes:
         - Name: Arn
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     ExecutionRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-executionrolearn""", alias="ExecutionRoleArn")
+    DefaultPolicy_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-defaultpolicy""", alias="DefaultPolicy")
+    CreateInterval_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-createinterval""", alias="CreateInterval")
     Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-description""", alias="Description")
+    ExtendDeletion_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-extenddeletion""", alias="ExtendDeletion")
+    Exclusions_: Optional['Exclusions'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-exclusions""", alias="Exclusions")
     State_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-state""", alias="State")
+    CrossRegionCopyTargets_: Optional['CrossRegionCopyTargets'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-crossregioncopytargets""", alias="CrossRegionCopyTargets")
     PolicyDetails_: Optional['PolicyDetails'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-policydetails""", alias="PolicyDetails")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-tags""", alias="Tags")
+    RetainInterval_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-retaininterval""", alias="RetainInterval")
+    CopyTags_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dlm-lifecyclepolicy.html#cfn-dlm-lifecyclepolicy-copytags""", alias="CopyTags")
     
 
     @property

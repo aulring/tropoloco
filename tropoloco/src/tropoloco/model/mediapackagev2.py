@@ -110,6 +110,33 @@ class EncryptionMethod(BaseModel):
 
     
 
+class FilterConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-filterconfiguration.html
+    Properties:
+        - Name: Start
+        - Name: End
+        - Name: TimeDelaySeconds
+        - Name: ManifestFilter
+    
+    """
+    
+    Start_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-filterconfiguration.html#cfn-mediapackagev2-originendpoint-filterconfiguration-start""", alias="Start")
+    End_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-filterconfiguration.html#cfn-mediapackagev2-originendpoint-filterconfiguration-end""", alias="End")
+    TimeDelaySeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-filterconfiguration.html#cfn-mediapackagev2-originendpoint-filterconfiguration-timedelayseconds""", alias="TimeDelaySeconds")
+    ManifestFilter_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-filterconfiguration.html#cfn-mediapackagev2-originendpoint-filterconfiguration-manifestfilter""", alias="ManifestFilter")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.mediapackagev2.FilterConfiguration:
+        from troposphere.mediapackagev2 import FilterConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class HlsManifestConfiguration(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-hlsmanifestconfiguration.html
     Properties:
@@ -118,6 +145,7 @@ class HlsManifestConfiguration(BaseModel):
         - Name: ProgramDateTimeIntervalSeconds
         - Name: ChildManifestName
         - Name: ScteHls
+        - Name: FilterConfiguration
         - Name: Url
     
     """
@@ -127,6 +155,7 @@ class HlsManifestConfiguration(BaseModel):
     ProgramDateTimeIntervalSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-hlsmanifestconfiguration.html#cfn-mediapackagev2-originendpoint-hlsmanifestconfiguration-programdatetimeintervalseconds""", alias="ProgramDateTimeIntervalSeconds")
     ChildManifestName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-hlsmanifestconfiguration.html#cfn-mediapackagev2-originendpoint-hlsmanifestconfiguration-childmanifestname""", alias="ChildManifestName")
     ScteHls_: Optional['ScteHls'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-hlsmanifestconfiguration.html#cfn-mediapackagev2-originendpoint-hlsmanifestconfiguration-sctehls""", alias="ScteHls")
+    FilterConfiguration_: Optional['FilterConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-hlsmanifestconfiguration.html#cfn-mediapackagev2-originendpoint-hlsmanifestconfiguration-filterconfiguration""", alias="FilterConfiguration")
     Url_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-hlsmanifestconfiguration.html#cfn-mediapackagev2-originendpoint-hlsmanifestconfiguration-url""", alias="Url")
     
 
@@ -149,6 +178,7 @@ class LowLatencyHlsManifestConfiguration(BaseModel):
         - Name: ProgramDateTimeIntervalSeconds
         - Name: ChildManifestName
         - Name: ScteHls
+        - Name: FilterConfiguration
         - Name: Url
     
     """
@@ -158,6 +188,7 @@ class LowLatencyHlsManifestConfiguration(BaseModel):
     ProgramDateTimeIntervalSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-lowlatencyhlsmanifestconfiguration.html#cfn-mediapackagev2-originendpoint-lowlatencyhlsmanifestconfiguration-programdatetimeintervalseconds""", alias="ProgramDateTimeIntervalSeconds")
     ChildManifestName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-lowlatencyhlsmanifestconfiguration.html#cfn-mediapackagev2-originendpoint-lowlatencyhlsmanifestconfiguration-childmanifestname""", alias="ChildManifestName")
     ScteHls_: Optional['ScteHls'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-lowlatencyhlsmanifestconfiguration.html#cfn-mediapackagev2-originendpoint-lowlatencyhlsmanifestconfiguration-sctehls""", alias="ScteHls")
+    FilterConfiguration_: Optional['FilterConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-lowlatencyhlsmanifestconfiguration.html#cfn-mediapackagev2-originendpoint-lowlatencyhlsmanifestconfiguration-filterconfiguration""", alias="FilterConfiguration")
     Url_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediapackagev2-originendpoint-lowlatencyhlsmanifestconfiguration.html#cfn-mediapackagev2-originendpoint-lowlatencyhlsmanifestconfiguration-url""", alias="Url")
     
 

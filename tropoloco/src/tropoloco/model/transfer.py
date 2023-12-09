@@ -201,6 +201,27 @@ class ProtocolDetails(BaseModel):
 
     
 
+class S3StorageOptions(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-s3storageoptions.html
+    Properties:
+        - Name: DirectoryListingOptimization
+    
+    """
+    
+    DirectoryListingOptimization_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-s3storageoptions.html#cfn-transfer-server-s3storageoptions-directorylistingoptimization""", alias="DirectoryListingOptimization")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.transfer.S3StorageOptions:
+        from troposphere.transfer import S3StorageOptions as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class StructuredLogDestination(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-structuredlogdestination.html
     Properties:
@@ -273,11 +294,13 @@ class HomeDirectoryMapEntry(BaseModel):
     Properties:
         - Name: Entry
         - Name: Target
+        - Name: Type
     
     """
     
     Entry_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-user-homedirectorymapentry.html#cfn-transfer-user-homedirectorymapentry-entry""", alias="Entry")
     Target_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-user-homedirectorymapentry.html#cfn-transfer-user-homedirectorymapentry-target""", alias="Target")
+    Type_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-user-homedirectorymapentry.html#cfn-transfer-user-homedirectorymapentry-type""", alias="Type")
     
 
 
@@ -772,6 +795,7 @@ class Server(BaseModel):
         - Name: EndpointType
         - Name: SecurityPolicyName
         - Name: ProtocolDetails
+        - Name: S3StorageOptions
         - Name: WorkflowDetails
         - Name: Domain
         - Name: IdentityProviderType
@@ -793,6 +817,7 @@ class Server(BaseModel):
     EndpointType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-server.html#cfn-transfer-server-endpointtype""", alias="EndpointType")
     SecurityPolicyName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-server.html#cfn-transfer-server-securitypolicyname""", alias="SecurityPolicyName")
     ProtocolDetails_: Optional['ProtocolDetails'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-server.html#cfn-transfer-server-protocoldetails""", alias="ProtocolDetails")
+    S3StorageOptions_: Optional['S3StorageOptions'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-server.html#cfn-transfer-server-s3storageoptions""", alias="S3StorageOptions")
     WorkflowDetails_: Optional['WorkflowDetails'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-server.html#cfn-transfer-server-workflowdetails""", alias="WorkflowDetails")
     Domain_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-server.html#cfn-transfer-server-domain""", alias="Domain")
     IdentityProviderType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-server.html#cfn-transfer-server-identityprovidertype""", alias="IdentityProviderType")

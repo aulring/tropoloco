@@ -37,6 +37,29 @@ class MinimumHealthyHosts(BaseModel):
 
     
 
+class MinimumHealthyHostsPerZone(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codedeploy-deploymentconfig-minimumhealthyhostsperzone.html
+    Properties:
+        - Name: Type
+        - Name: Value
+    
+    """
+    
+    Type_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codedeploy-deploymentconfig-minimumhealthyhostsperzone.html#cfn-codedeploy-deploymentconfig-minimumhealthyhostsperzone-type""", alias="Type")
+    Value_: int =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codedeploy-deploymentconfig-minimumhealthyhostsperzone.html#cfn-codedeploy-deploymentconfig-minimumhealthyhostsperzone-value""", alias="Value")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.codedeploy.MinimumHealthyHostsPerZone:
+        from troposphere.codedeploy import MinimumHealthyHostsPerZone as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class TimeBasedCanary(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codedeploy-deploymentconfig-timebasedcanary.html
     Properties:
@@ -101,6 +124,31 @@ class TrafficRoutingConfig(BaseModel):
     @property
     def tropo_type(self) -> troposphere.codedeploy.TrafficRoutingConfig:
         from troposphere.codedeploy import TrafficRoutingConfig as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class ZonalConfig(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codedeploy-deploymentconfig-zonalconfig.html
+    Properties:
+        - Name: MonitorDurationInSeconds
+        - Name: MinimumHealthyHostsPerZone
+        - Name: FirstZoneMonitorDurationInSeconds
+    
+    """
+    
+    MonitorDurationInSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codedeploy-deploymentconfig-zonalconfig.html#cfn-codedeploy-deploymentconfig-zonalconfig-monitordurationinseconds""", alias="MonitorDurationInSeconds")
+    MinimumHealthyHostsPerZone_: Optional['MinimumHealthyHostsPerZone'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codedeploy-deploymentconfig-zonalconfig.html#cfn-codedeploy-deploymentconfig-zonalconfig-minimumhealthyhostsperzone""", alias="MinimumHealthyHostsPerZone")
+    FirstZoneMonitorDurationInSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codedeploy-deploymentconfig-zonalconfig.html#cfn-codedeploy-deploymentconfig-zonalconfig-firstzonemonitordurationinseconds""", alias="FirstZoneMonitorDurationInSeconds")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.codedeploy.ZonalConfig:
+        from troposphere.codedeploy import ZonalConfig as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -723,6 +771,7 @@ class DeploymentConfig(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentconfig.html
     Properties:
         - Name: ComputePlatform
+        - Name: ZonalConfig
         - Name: DeploymentConfigName
         - Name: TrafficRoutingConfig
         - Name: MinimumHealthyHosts
@@ -730,6 +779,7 @@ class DeploymentConfig(BaseModel):
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     ComputePlatform_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentconfig.html#cfn-codedeploy-deploymentconfig-computeplatform""", alias="ComputePlatform")
+    ZonalConfig_: Optional['ZonalConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentconfig.html#cfn-codedeploy-deploymentconfig-zonalconfig""", alias="ZonalConfig")
     DeploymentConfigName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentconfig.html#cfn-codedeploy-deploymentconfig-deploymentconfigname""", alias="DeploymentConfigName")
     TrafficRoutingConfig_: Optional['TrafficRoutingConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentconfig.html#cfn-codedeploy-deploymentconfig-trafficroutingconfig""", alias="TrafficRoutingConfig")
     MinimumHealthyHosts_: Optional['MinimumHealthyHosts'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentconfig.html#cfn-codedeploy-deploymentconfig-minimumhealthyhosts""", alias="MinimumHealthyHosts")
@@ -766,6 +816,7 @@ class DeploymentGroup(BaseModel):
         - Name: OutdatedInstancesStrategy
         - Name: ServiceRoleArn
         - Name: Tags
+        - Name: TerminationHookEnabled
         - Name: TriggerConfigurations
     """
     
@@ -788,6 +839,7 @@ class DeploymentGroup(BaseModel):
     OutdatedInstancesStrategy_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentgroup.html#cfn-codedeploy-deploymentgroup-outdatedinstancesstrategy""", alias="OutdatedInstancesStrategy")
     ServiceRoleArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentgroup.html#cfn-codedeploy-deploymentgroup-servicerolearn""", alias="ServiceRoleArn")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentgroup.html#cfn-codedeploy-deploymentgroup-tags""", alias="Tags")
+    TerminationHookEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentgroup.html#cfn-codedeploy-deploymentgroup-terminationhookenabled""", alias="TerminationHookEnabled")
     TriggerConfigurations_: Optional[List['TriggerConfig']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-deploymentgroup.html#cfn-codedeploy-deploymentgroup-triggerconfigurations""", alias="TriggerConfigurations")
     
 

@@ -78,6 +78,7 @@ class Collection(BaseModel):
     Properties:
         - Name: Type
         - Name: Description
+        - Name: StandbyReplicas
         - Name: Tags
         - Name: Name
     Attributes:
@@ -90,6 +91,7 @@ class Collection(BaseModel):
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     Type_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collection.html#cfn-opensearchserverless-collection-type""", alias="Type")
     Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collection.html#cfn-opensearchserverless-collection-description""", alias="Description")
+    StandbyReplicas_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collection.html#cfn-opensearchserverless-collection-standbyreplicas""", alias="StandbyReplicas")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collection.html#cfn-opensearchserverless-collection-tags""", alias="Tags")
     Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collection.html#cfn-opensearchserverless-collection-name""", alias="Name")
     
@@ -101,6 +103,32 @@ class Collection(BaseModel):
 
     def to_troposphere(self):
         from troposphere.opensearchserverless import Collection as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class LifecyclePolicy(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-lifecyclepolicy.html
+    Properties:
+        - Name: Policy
+        - Name: Type
+        - Name: Description
+        - Name: Name
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    Policy_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-lifecyclepolicy.html#cfn-opensearchserverless-lifecyclepolicy-policy""", alias="Policy")
+    Type_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-lifecyclepolicy.html#cfn-opensearchserverless-lifecyclepolicy-type""", alias="Type")
+    Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-lifecyclepolicy.html#cfn-opensearchserverless-lifecyclepolicy-description""", alias="Description")
+    Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-lifecyclepolicy.html#cfn-opensearchserverless-lifecyclepolicy-name""", alias="Name")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.opensearchserverless.LifecyclePolicy:
+        from troposphere.opensearchserverless import LifecyclePolicy as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.opensearchserverless import LifecyclePolicy as TropoT
         return resource_to_troposphere(self, TropoT)
 
 

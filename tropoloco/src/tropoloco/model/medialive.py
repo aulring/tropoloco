@@ -1448,6 +1448,29 @@ class EncoderSettings(BaseModel):
 
     
 
+class EpochLockingSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-epochlockingsettings.html
+    Properties:
+        - Name: JamSyncTime
+        - Name: CustomEpoch
+    
+    """
+    
+    JamSyncTime_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-epochlockingsettings.html#cfn-medialive-channel-epochlockingsettings-jamsynctime""", alias="JamSyncTime")
+    CustomEpoch_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-epochlockingsettings.html#cfn-medialive-channel-epochlockingsettings-customepoch""", alias="CustomEpoch")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.EpochLockingSettings:
+        from troposphere.medialive import EpochLockingSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class Esam(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-esam.html
     Properties:
@@ -1529,10 +1552,12 @@ class FeatureActivations(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-featureactivations.html
     Properties:
         - Name: InputPrepareScheduleActions
+        - Name: OutputStaticImageOverlayScheduleActions
     
     """
     
     InputPrepareScheduleActions_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-featureactivations.html#cfn-medialive-channel-featureactivations-inputpreparescheduleactions""", alias="InputPrepareScheduleActions")
+    OutputStaticImageOverlayScheduleActions_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-featureactivations.html#cfn-medialive-channel-featureactivations-outputstaticimageoverlayscheduleactions""", alias="OutputStaticImageOverlayScheduleActions")
     
 
 
@@ -1732,6 +1757,7 @@ class GlobalConfiguration(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-globalconfiguration.html
     Properties:
         - Name: InputEndAction
+        - Name: OutputLockingSettings
         - Name: OutputTimingSource
         - Name: OutputLockingMode
         - Name: SupportLowFramerateInputs
@@ -1741,6 +1767,7 @@ class GlobalConfiguration(BaseModel):
     """
     
     InputEndAction_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-globalconfiguration.html#cfn-medialive-channel-globalconfiguration-inputendaction""", alias="InputEndAction")
+    OutputLockingSettings_: Optional['OutputLockingSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-globalconfiguration.html#cfn-medialive-channel-globalconfiguration-outputlockingsettings""", alias="OutputLockingSettings")
     OutputTimingSource_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-globalconfiguration.html#cfn-medialive-channel-globalconfiguration-outputtimingsource""", alias="OutputTimingSource")
     OutputLockingMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-globalconfiguration.html#cfn-medialive-channel-globalconfiguration-outputlockingmode""", alias="OutputLockingMode")
     SupportLowFramerateInputs_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-globalconfiguration.html#cfn-medialive-channel-globalconfiguration-supportlowframerateinputs""", alias="SupportLowFramerateInputs")
@@ -3505,6 +3532,29 @@ class OutputLocationRef(BaseModel):
 
     
 
+class OutputLockingSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-outputlockingsettings.html
+    Properties:
+        - Name: PipelineLockingSettings
+        - Name: EpochLockingSettings
+    
+    """
+    
+    PipelineLockingSettings_: Optional['PipelineLockingSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-outputlockingsettings.html#cfn-medialive-channel-outputlockingsettings-pipelinelockingsettings""", alias="PipelineLockingSettings")
+    EpochLockingSettings_: Optional['EpochLockingSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-outputlockingsettings.html#cfn-medialive-channel-outputlockingsettings-epochlockingsettings""", alias="EpochLockingSettings")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.OutputLockingSettings:
+        from troposphere.medialive import OutputLockingSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class OutputSettings(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-outputsettings.html
     Properties:
@@ -3554,6 +3604,27 @@ class PassThroughSettings(BaseModel):
     @property
     def tropo_type(self) -> troposphere.medialive.PassThroughSettings:
         from troposphere.medialive import PassThroughSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class PipelineLockingSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-pipelinelockingsettings.html
+    Properties:
+        - did not locate and properties
+    
+    """
+    
+    pass
+
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.PipelineLockingSettings:
+        from troposphere.medialive import PipelineLockingSettings as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -4587,6 +4658,264 @@ class InputWhitelistRuleCidr(BaseModel):
 
     
 
+class MultiplexMediaConnectOutputDestinationSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-multiplexmediaconnectoutputdestinationsettings.html
+    Properties:
+        - Name: EntitlementArn
+    
+    """
+    
+    EntitlementArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-multiplexmediaconnectoutputdestinationsettings.html#cfn-medialive-multiplex-multiplexmediaconnectoutputdestinationsettings-entitlementarn""", alias="EntitlementArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.MultiplexMediaConnectOutputDestinationSettings:
+        from troposphere.medialive import MultiplexMediaConnectOutputDestinationSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MultiplexOutputDestination(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-multiplexoutputdestination.html
+    Properties:
+        - Name: MultiplexMediaConnectOutputDestinationSettings
+    
+    """
+    
+    MultiplexMediaConnectOutputDestinationSettings_: Optional['MultiplexMediaConnectOutputDestinationSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-multiplexoutputdestination.html#cfn-medialive-multiplex-multiplexoutputdestination-multiplexmediaconnectoutputdestinationsettings""", alias="MultiplexMediaConnectOutputDestinationSettings")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.MultiplexOutputDestination:
+        from troposphere.medialive import MultiplexOutputDestination as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MultiplexSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-multiplexsettings.html
+    Properties:
+        - Name: TransportStreamBitrate
+        - Name: MaximumVideoBufferDelayMilliseconds
+        - Name: TransportStreamId
+        - Name: TransportStreamReservedBitrate
+    
+    """
+    
+    TransportStreamBitrate_: int =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-multiplexsettings.html#cfn-medialive-multiplex-multiplexsettings-transportstreambitrate""", alias="TransportStreamBitrate")
+    MaximumVideoBufferDelayMilliseconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-multiplexsettings.html#cfn-medialive-multiplex-multiplexsettings-maximumvideobufferdelaymilliseconds""", alias="MaximumVideoBufferDelayMilliseconds")
+    TransportStreamId_: int =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-multiplexsettings.html#cfn-medialive-multiplex-multiplexsettings-transportstreamid""", alias="TransportStreamId")
+    TransportStreamReservedBitrate_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-multiplexsettings.html#cfn-medialive-multiplex-multiplexsettings-transportstreamreservedbitrate""", alias="TransportStreamReservedBitrate")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.MultiplexSettings:
+        from troposphere.medialive import MultiplexSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class Tags(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-tags.html
+    Properties:
+        - Name: Value
+        - Name: Key
+    
+    """
+    
+    Value_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-tags.html#cfn-medialive-multiplex-tags-value""", alias="Value")
+    Key_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplex-tags.html#cfn-medialive-multiplex-tags-key""", alias="Key")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.Tags:
+        from troposphere.medialive import Tags as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MultiplexProgramPacketIdentifiersMap(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html
+    Properties:
+        - Name: EtvPlatformPid
+        - Name: DvbTeletextPid
+        - Name: KlvDataPids
+        - Name: PcrPid
+        - Name: VideoPid
+        - Name: PmtPid
+        - Name: Scte27Pids
+        - Name: DvbSubPids
+        - Name: Scte35Pid
+        - Name: EtvSignalPid
+        - Name: PrivateMetadataPid
+        - Name: TimedMetadataPid
+        - Name: AudioPids
+    
+    """
+    
+    EtvPlatformPid_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-etvplatformpid""", alias="EtvPlatformPid")
+    DvbTeletextPid_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-dvbteletextpid""", alias="DvbTeletextPid")
+    KlvDataPids_: Optional[List[int]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-klvdatapids""", alias="KlvDataPids")
+    PcrPid_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-pcrpid""", alias="PcrPid")
+    VideoPid_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-videopid""", alias="VideoPid")
+    PmtPid_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-pmtpid""", alias="PmtPid")
+    Scte27Pids_: Optional[List[int]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-scte27pids""", alias="Scte27Pids")
+    DvbSubPids_: Optional[List[int]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-dvbsubpids""", alias="DvbSubPids")
+    Scte35Pid_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-scte35pid""", alias="Scte35Pid")
+    EtvSignalPid_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-etvsignalpid""", alias="EtvSignalPid")
+    PrivateMetadataPid_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-privatemetadatapid""", alias="PrivateMetadataPid")
+    TimedMetadataPid_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-timedmetadatapid""", alias="TimedMetadataPid")
+    AudioPids_: Optional[List[int]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap.html#cfn-medialive-multiplexprogram-multiplexprogrampacketidentifiersmap-audiopids""", alias="AudioPids")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.MultiplexProgramPacketIdentifiersMap:
+        from troposphere.medialive import MultiplexProgramPacketIdentifiersMap as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MultiplexProgramPipelineDetail(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampipelinedetail.html
+    Properties:
+        - Name: ActiveChannelPipeline
+        - Name: PipelineId
+    
+    """
+    
+    ActiveChannelPipeline_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampipelinedetail.html#cfn-medialive-multiplexprogram-multiplexprogrampipelinedetail-activechannelpipeline""", alias="ActiveChannelPipeline")
+    PipelineId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogrampipelinedetail.html#cfn-medialive-multiplexprogram-multiplexprogrampipelinedetail-pipelineid""", alias="PipelineId")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.MultiplexProgramPipelineDetail:
+        from troposphere.medialive import MultiplexProgramPipelineDetail as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MultiplexProgramServiceDescriptor(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogramservicedescriptor.html
+    Properties:
+        - Name: ProviderName
+        - Name: ServiceName
+    
+    """
+    
+    ProviderName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogramservicedescriptor.html#cfn-medialive-multiplexprogram-multiplexprogramservicedescriptor-providername""", alias="ProviderName")
+    ServiceName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogramservicedescriptor.html#cfn-medialive-multiplexprogram-multiplexprogramservicedescriptor-servicename""", alias="ServiceName")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.MultiplexProgramServiceDescriptor:
+        from troposphere.medialive import MultiplexProgramServiceDescriptor as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MultiplexProgramSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogramsettings.html
+    Properties:
+        - Name: PreferredChannelPipeline
+        - Name: ServiceDescriptor
+        - Name: VideoSettings
+        - Name: ProgramNumber
+    
+    """
+    
+    PreferredChannelPipeline_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogramsettings.html#cfn-medialive-multiplexprogram-multiplexprogramsettings-preferredchannelpipeline""", alias="PreferredChannelPipeline")
+    ServiceDescriptor_: Optional['MultiplexProgramServiceDescriptor'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogramsettings.html#cfn-medialive-multiplexprogram-multiplexprogramsettings-servicedescriptor""", alias="ServiceDescriptor")
+    VideoSettings_: Optional['MultiplexVideoSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogramsettings.html#cfn-medialive-multiplexprogram-multiplexprogramsettings-videosettings""", alias="VideoSettings")
+    ProgramNumber_: int =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexprogramsettings.html#cfn-medialive-multiplexprogram-multiplexprogramsettings-programnumber""", alias="ProgramNumber")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.MultiplexProgramSettings:
+        from troposphere.medialive import MultiplexProgramSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MultiplexStatmuxVideoSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexstatmuxvideosettings.html
+    Properties:
+        - Name: Priority
+        - Name: MaximumBitrate
+        - Name: MinimumBitrate
+    
+    """
+    
+    Priority_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexstatmuxvideosettings.html#cfn-medialive-multiplexprogram-multiplexstatmuxvideosettings-priority""", alias="Priority")
+    MaximumBitrate_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexstatmuxvideosettings.html#cfn-medialive-multiplexprogram-multiplexstatmuxvideosettings-maximumbitrate""", alias="MaximumBitrate")
+    MinimumBitrate_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexstatmuxvideosettings.html#cfn-medialive-multiplexprogram-multiplexstatmuxvideosettings-minimumbitrate""", alias="MinimumBitrate")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.MultiplexStatmuxVideoSettings:
+        from troposphere.medialive import MultiplexStatmuxVideoSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MultiplexVideoSettings(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexvideosettings.html
+    Properties:
+        - Name: StatmuxSettings
+        - Name: ConstantBitrate
+    
+    """
+    
+    StatmuxSettings_: Optional['MultiplexStatmuxVideoSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexvideosettings.html#cfn-medialive-multiplexprogram-multiplexvideosettings-statmuxsettings""", alias="StatmuxSettings")
+    ConstantBitrate_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-multiplexprogram-multiplexvideosettings.html#cfn-medialive-multiplexprogram-multiplexvideosettings-constantbitrate""", alias="ConstantBitrate")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.MultiplexVideoSettings:
+        from troposphere.medialive import MultiplexVideoSettings as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 
 ######################################################################
 # AWS Resource
@@ -4701,5 +5030,71 @@ class InputSecurityGroup(BaseModel):
 
     def to_troposphere(self):
         from troposphere.medialive import InputSecurityGroup as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class Multiplex(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplex.html
+    Properties:
+        - Name: MultiplexSettings
+        - Name: AvailabilityZones
+        - Name: Destinations
+        - Name: Tags
+        - Name: Name
+    Attributes:
+        - Name: State
+        - Name: ProgramCount
+        - Name: PipelinesRunningCount
+        - Name: Id
+        - Name: Arn
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    MultiplexSettings_: 'MultiplexSettings' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplex.html#cfn-medialive-multiplex-multiplexsettings""", alias="MultiplexSettings")
+    AvailabilityZones_: List[str] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplex.html#cfn-medialive-multiplex-availabilityzones""", alias="AvailabilityZones")
+    Destinations_: Optional[List['MultiplexOutputDestination']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplex.html#cfn-medialive-multiplex-destinations""", alias="Destinations")
+    Tags_: Optional[List['Tags']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplex.html#cfn-medialive-multiplex-tags""", alias="Tags")
+    Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplex.html#cfn-medialive-multiplex-name""", alias="Name")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.Multiplex:
+        from troposphere.medialive import Multiplex as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.medialive import Multiplex as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class Multiplexprogram(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplexprogram.html
+    Properties:
+        - Name: MultiplexId
+        - Name: PreferredChannelPipeline
+        - Name: PacketIdentifiersMap
+        - Name: ChannelId
+        - Name: PipelineDetails
+        - Name: MultiplexProgramSettings
+        - Name: ProgramName
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    MultiplexId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplexprogram.html#cfn-medialive-multiplexprogram-multiplexid""", alias="MultiplexId")
+    PreferredChannelPipeline_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplexprogram.html#cfn-medialive-multiplexprogram-preferredchannelpipeline""", alias="PreferredChannelPipeline")
+    PacketIdentifiersMap_: Optional['MultiplexProgramPacketIdentifiersMap'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplexprogram.html#cfn-medialive-multiplexprogram-packetidentifiersmap""", alias="PacketIdentifiersMap")
+    ChannelId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplexprogram.html#cfn-medialive-multiplexprogram-channelid""", alias="ChannelId")
+    PipelineDetails_: Optional[List['MultiplexProgramPipelineDetail']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplexprogram.html#cfn-medialive-multiplexprogram-pipelinedetails""", alias="PipelineDetails")
+    MultiplexProgramSettings_: Optional['MultiplexProgramSettings'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplexprogram.html#cfn-medialive-multiplexprogram-multiplexprogramsettings""", alias="MultiplexProgramSettings")
+    ProgramName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-medialive-multiplexprogram.html#cfn-medialive-multiplexprogram-programname""", alias="ProgramName")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.medialive.Multiplexprogram:
+        from troposphere.medialive import Multiplexprogram as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.medialive import Multiplexprogram as TropoT
         return resource_to_troposphere(self, TropoT)
 

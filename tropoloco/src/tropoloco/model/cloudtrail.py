@@ -93,6 +93,27 @@ class AdvancedFieldSelector(BaseModel):
 
     
 
+class InsightSelector(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-insightselector.html
+    Properties:
+        - Name: InsightType
+    
+    """
+    
+    InsightType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-eventdatastore-insightselector.html#cfn-cloudtrail-eventdatastore-insightselector-insighttype""", alias="InsightType")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.cloudtrail.InsightSelector:
+        from troposphere.cloudtrail import InsightSelector as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class AdvancedEventSelector(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudtrail-trail-advancedeventselector.html
     Properties:
@@ -257,15 +278,20 @@ class Channel(BaseModel):
 class EventDataStore(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html
     Properties:
-        - Name: OrganizationEnabled
         - Name: KmsKeyId
         - Name: AdvancedEventSelectors
         - Name: TerminationProtectionEnabled
         - Name: MultiRegionEnabled
         - Name: RetentionPeriod
+        - Name: FederationEnabled
         - Name: IngestionEnabled
-        - Name: Tags
         - Name: Name
+        - Name: InsightSelectors
+        - Name: OrganizationEnabled
+        - Name: FederationRoleArn
+        - Name: InsightsDestination
+        - Name: BillingMode
+        - Name: Tags
     Attributes:
         - Name: Status
         - Name: UpdatedTimestamp
@@ -274,15 +300,20 @@ class EventDataStore(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
-    OrganizationEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-organizationenabled""", alias="OrganizationEnabled")
     KmsKeyId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-kmskeyid""", alias="KmsKeyId")
     AdvancedEventSelectors_: Optional[List['AdvancedEventSelector']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-advancedeventselectors""", alias="AdvancedEventSelectors")
     TerminationProtectionEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-terminationprotectionenabled""", alias="TerminationProtectionEnabled")
     MultiRegionEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-multiregionenabled""", alias="MultiRegionEnabled")
     RetentionPeriod_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-retentionperiod""", alias="RetentionPeriod")
+    FederationEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-federationenabled""", alias="FederationEnabled")
     IngestionEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-ingestionenabled""", alias="IngestionEnabled")
-    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-tags""", alias="Tags")
     Name_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-name""", alias="Name")
+    InsightSelectors_: Optional[List['InsightSelector']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-insightselectors""", alias="InsightSelectors")
+    OrganizationEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-organizationenabled""", alias="OrganizationEnabled")
+    FederationRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-federationrolearn""", alias="FederationRoleArn")
+    InsightsDestination_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-insightsdestination""", alias="InsightsDestination")
+    BillingMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-billingmode""", alias="BillingMode")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-eventdatastore.html#cfn-cloudtrail-eventdatastore-tags""", alias="Tags")
     
 
     @property

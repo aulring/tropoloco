@@ -710,6 +710,7 @@ class AlertTarget(BaseModel):
 class Behavior(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html
     Properties:
+        - Name: ExportMetric
         - Name: SuppressAlerts
         - Name: Metric
         - Name: Criteria
@@ -718,6 +719,7 @@ class Behavior(BaseModel):
     
     """
     
+    ExportMetric_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html#cfn-iot-securityprofile-behavior-exportmetric""", alias="ExportMetric")
     SuppressAlerts_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html#cfn-iot-securityprofile-behavior-suppressalerts""", alias="SuppressAlerts")
     Metric_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html#cfn-iot-securityprofile-behavior-metric""", alias="Metric")
     Criteria_: Optional['BehaviorCriteria'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-behavior.html#cfn-iot-securityprofile-behavior-criteria""", alias="Criteria")
@@ -816,11 +818,13 @@ class MetricDimension(BaseModel):
 class MetricToRetain(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metrictoretain.html
     Properties:
+        - Name: ExportMetric
         - Name: Metric
         - Name: MetricDimension
     
     """
     
+    ExportMetric_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metrictoretain.html#cfn-iot-securityprofile-metrictoretain-exportmetric""", alias="ExportMetric")
     Metric_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metrictoretain.html#cfn-iot-securityprofile-metrictoretain-metric""", alias="Metric")
     MetricDimension_: Optional['MetricDimension'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metrictoretain.html#cfn-iot-securityprofile-metrictoretain-metricdimension""", alias="MetricDimension")
     
@@ -860,6 +864,29 @@ class MetricValue(BaseModel):
     @property
     def tropo_type(self) -> troposphere.iot.MetricValue:
         from troposphere.iot import MetricValue as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MetricsExportConfig(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricsexportconfig.html
+    Properties:
+        - Name: MqttTopic
+        - Name: RoleArn
+    
+    """
+    
+    MqttTopic_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricsexportconfig.html#cfn-iot-securityprofile-metricsexportconfig-mqtttopic""", alias="MqttTopic")
+    RoleArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iot-securityprofile-metricsexportconfig.html#cfn-iot-securityprofile-metricsexportconfig-rolearn""", alias="RoleArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.iot.MetricsExportConfig:
+        from troposphere.iot import MetricsExportConfig as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -2630,6 +2657,7 @@ class SecurityProfile(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html
     Properties:
         - Name: AdditionalMetricsToRetainV2
+        - Name: MetricsExportConfig
         - Name: SecurityProfileDescription
         - Name: Behaviors
         - Name: SecurityProfileName
@@ -2642,6 +2670,7 @@ class SecurityProfile(BaseModel):
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     AdditionalMetricsToRetainV2_: Optional[List['MetricToRetain']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-additionalmetricstoretainv2""", alias="AdditionalMetricsToRetainV2")
+    MetricsExportConfig_: Optional['MetricsExportConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-metricsexportconfig""", alias="MetricsExportConfig")
     SecurityProfileDescription_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-securityprofiledescription""", alias="SecurityProfileDescription")
     Behaviors_: Optional[List['Behavior']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-behaviors""", alias="Behaviors")
     SecurityProfileName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-securityprofile.html#cfn-iot-securityprofile-securityprofilename""", alias="SecurityProfileName")

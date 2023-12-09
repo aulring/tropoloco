@@ -651,3 +651,34 @@ class Nodegroup(BaseModel):
         from troposphere.eks import Nodegroup as TropoT
         return resource_to_troposphere(self, TropoT)
 
+
+class PodIdentityAssociation(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-podidentityassociation.html
+    Properties:
+        - Name: ServiceAccount
+        - Name: ClusterName
+        - Name: RoleArn
+        - Name: Namespace
+        - Name: Tags
+    Attributes:
+        - Name: AssociationArn
+        - Name: AssociationId
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    ServiceAccount_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-podidentityassociation.html#cfn-eks-podidentityassociation-serviceaccount""", alias="ServiceAccount")
+    ClusterName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-podidentityassociation.html#cfn-eks-podidentityassociation-clustername""", alias="ClusterName")
+    RoleArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-podidentityassociation.html#cfn-eks-podidentityassociation-rolearn""", alias="RoleArn")
+    Namespace_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-podidentityassociation.html#cfn-eks-podidentityassociation-namespace""", alias="Namespace")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-podidentityassociation.html#cfn-eks-podidentityassociation-tags""", alias="Tags")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.eks.PodIdentityAssociation:
+        from troposphere.eks import PodIdentityAssociation as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.eks import PodIdentityAssociation as TropoT
+        return resource_to_troposphere(self, TropoT)
+

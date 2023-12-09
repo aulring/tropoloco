@@ -102,6 +102,93 @@ class AccountPolicy(BaseModel):
         return resource_to_troposphere(self, TropoT)
 
 
+class Delivery(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-delivery.html
+    Properties:
+        - Name: DeliveryDestinationArn
+        - Name: DeliverySourceName
+        - Name: Tags
+    Attributes:
+        - Name: DeliveryId
+        - Name: Arn
+        - Name: DeliveryDestinationType
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    DeliveryDestinationArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-delivery.html#cfn-logs-delivery-deliverydestinationarn""", alias="DeliveryDestinationArn")
+    DeliverySourceName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-delivery.html#cfn-logs-delivery-deliverysourcename""", alias="DeliverySourceName")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-delivery.html#cfn-logs-delivery-tags""", alias="Tags")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.logs.Delivery:
+        from troposphere.logs import Delivery as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.logs import Delivery as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class DeliveryDestination(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverydestination.html
+    Properties:
+        - Name: DestinationResourceArn
+        - Name: DeliveryDestinationPolicy
+        - Name: Tags
+        - Name: Name
+    Attributes:
+        - Name: Arn
+        - Name: DeliveryDestinationType
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    DestinationResourceArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverydestination.html#cfn-logs-deliverydestination-destinationresourcearn""", alias="DestinationResourceArn")
+    DeliveryDestinationPolicy_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverydestination.html#cfn-logs-deliverydestination-deliverydestinationpolicy""", alias="DeliveryDestinationPolicy")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverydestination.html#cfn-logs-deliverydestination-tags""", alias="Tags")
+    Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverydestination.html#cfn-logs-deliverydestination-name""", alias="Name")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.logs.DeliveryDestination:
+        from troposphere.logs import DeliveryDestination as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.logs import DeliveryDestination as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class DeliverySource(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverysource.html
+    Properties:
+        - Name: ResourceArn
+        - Name: LogType
+        - Name: Tags
+        - Name: Name
+    Attributes:
+        - Name: Service
+        - Name: Arn
+        - Name: ResourceArns
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    ResourceArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverysource.html#cfn-logs-deliverysource-resourcearn""", alias="ResourceArn")
+    LogType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverysource.html#cfn-logs-deliverysource-logtype""", alias="LogType")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverysource.html#cfn-logs-deliverysource-tags""", alias="Tags")
+    Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverysource.html#cfn-logs-deliverysource-name""", alias="Name")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.logs.DeliverySource:
+        from troposphere.logs import DeliverySource as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.logs import DeliverySource as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
 class Destination(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-destination.html
     Properties:
@@ -130,11 +217,49 @@ class Destination(BaseModel):
         return resource_to_troposphere(self, TropoT)
 
 
+class LogAnomalyDetector(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loganomalydetector.html
+    Properties:
+        - Name: AnomalyVisibilityTime
+        - Name: FilterPattern
+        - Name: AccountId
+        - Name: KmsKeyId
+        - Name: LogGroupArnList
+        - Name: EvaluationFrequency
+        - Name: DetectorName
+    Attributes:
+        - Name: CreationTimeStamp
+        - Name: AnomalyDetectorStatus
+        - Name: AnomalyDetectorArn
+        - Name: LastModifiedTimeStamp
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    AnomalyVisibilityTime_: Optional[float] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loganomalydetector.html#cfn-logs-loganomalydetector-anomalyvisibilitytime""", alias="AnomalyVisibilityTime")
+    FilterPattern_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loganomalydetector.html#cfn-logs-loganomalydetector-filterpattern""", alias="FilterPattern")
+    AccountId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loganomalydetector.html#cfn-logs-loganomalydetector-accountid""", alias="AccountId")
+    KmsKeyId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loganomalydetector.html#cfn-logs-loganomalydetector-kmskeyid""", alias="KmsKeyId")
+    LogGroupArnList_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loganomalydetector.html#cfn-logs-loganomalydetector-loggrouparnlist""", alias="LogGroupArnList")
+    EvaluationFrequency_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loganomalydetector.html#cfn-logs-loganomalydetector-evaluationfrequency""", alias="EvaluationFrequency")
+    DetectorName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loganomalydetector.html#cfn-logs-loganomalydetector-detectorname""", alias="DetectorName")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.logs.LogAnomalyDetector:
+        from troposphere.logs import LogAnomalyDetector as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.logs import LogAnomalyDetector as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
 class LogGroup(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html
     Properties:
         - Name: RetentionInDays
         - Name: KmsKeyId
+        - Name: LogGroupClass
         - Name: LogGroupName
         - Name: Tags
         - Name: DataProtectionPolicy
@@ -145,6 +270,7 @@ class LogGroup(BaseModel):
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     RetentionInDays_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html#cfn-logs-loggroup-retentionindays""", alias="RetentionInDays")
     KmsKeyId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html#cfn-logs-loggroup-kmskeyid""", alias="KmsKeyId")
+    LogGroupClass_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html#cfn-logs-loggroup-loggroupclass""", alias="LogGroupClass")
     LogGroupName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html#cfn-logs-loggroup-loggroupname""", alias="LogGroupName")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html#cfn-logs-loggroup-tags""", alias="Tags")
     DataProtectionPolicy_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html#cfn-logs-loggroup-dataprotectionpolicy""", alias="DataProtectionPolicy")

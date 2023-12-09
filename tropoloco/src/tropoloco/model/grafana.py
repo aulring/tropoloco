@@ -176,6 +176,7 @@ class Workspace(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html
     Properties:
         - Name: NotificationDestinations
+        - Name: PluginAdminEnabled
         - Name: Description
         - Name: PermissionType
         - Name: AccountAccessType
@@ -204,6 +205,7 @@ class Workspace(BaseModel):
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     NotificationDestinations_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-notificationdestinations""", alias="NotificationDestinations")
+    PluginAdminEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-pluginadminenabled""", alias="PluginAdminEnabled")
     Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-description""", alias="Description")
     PermissionType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-permissiontype""", alias="PermissionType")
     AccountAccessType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-grafana-workspace.html#cfn-grafana-workspace-accountaccesstype""", alias="AccountAccessType")

@@ -238,11 +238,15 @@ class PullThroughCacheRule(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-pullthroughcacherule.html
     Properties:
         - Name: UpstreamRegistryUrl
+        - Name: UpstreamRegistry
+        - Name: CredentialArn
         - Name: EcrRepositoryPrefix
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     UpstreamRegistryUrl_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-pullthroughcacherule.html#cfn-ecr-pullthroughcacherule-upstreamregistryurl""", alias="UpstreamRegistryUrl")
+    UpstreamRegistry_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-pullthroughcacherule.html#cfn-ecr-pullthroughcacherule-upstreamregistry""", alias="UpstreamRegistry")
+    CredentialArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-pullthroughcacherule.html#cfn-ecr-pullthroughcacherule-credentialarn""", alias="CredentialArn")
     EcrRepositoryPrefix_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-pullthroughcacherule.html#cfn-ecr-pullthroughcacherule-ecrrepositoryprefix""", alias="EcrRepositoryPrefix")
     
 

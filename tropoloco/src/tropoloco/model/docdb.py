@@ -120,6 +120,8 @@ class DBClusterParameterGroup(BaseModel):
 class DBInstance(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-dbinstance.html
     Properties:
+        - Name: CACertificateIdentifier
+        - Name: CertificateRotationRestart
         - Name: DBInstanceClass
         - Name: DBClusterIdentifier
         - Name: AvailabilityZone
@@ -134,6 +136,8 @@ class DBInstance(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
+    CACertificateIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-dbinstance.html#cfn-docdb-dbinstance-cacertificateidentifier""", alias="CACertificateIdentifier")
+    CertificateRotationRestart_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-dbinstance.html#cfn-docdb-dbinstance-certificaterotationrestart""", alias="CertificateRotationRestart")
     DBInstanceClass_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-dbinstance.html#cfn-docdb-dbinstance-dbinstanceclass""", alias="DBInstanceClass")
     DBClusterIdentifier_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-dbinstance.html#cfn-docdb-dbinstance-dbclusteridentifier""", alias="DBClusterIdentifier")
     AvailabilityZone_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-dbinstance.html#cfn-docdb-dbinstance-availabilityzone""", alias="AvailabilityZone")
@@ -177,5 +181,35 @@ class DBSubnetGroup(BaseModel):
 
     def to_troposphere(self):
         from troposphere.docdb import DBSubnetGroup as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class EventSubscription(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-eventsubscription.html
+    Properties:
+        - Name: SourceType
+        - Name: Enabled
+        - Name: EventCategories
+        - Name: SubscriptionName
+        - Name: SnsTopicArn
+        - Name: SourceIds
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    SourceType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-eventsubscription.html#cfn-docdb-eventsubscription-sourcetype""", alias="SourceType")
+    Enabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-eventsubscription.html#cfn-docdb-eventsubscription-enabled""", alias="Enabled")
+    EventCategories_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-eventsubscription.html#cfn-docdb-eventsubscription-eventcategories""", alias="EventCategories")
+    SubscriptionName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-eventsubscription.html#cfn-docdb-eventsubscription-subscriptionname""", alias="SubscriptionName")
+    SnsTopicArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-eventsubscription.html#cfn-docdb-eventsubscription-snstopicarn""", alias="SnsTopicArn")
+    SourceIds_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-eventsubscription.html#cfn-docdb-eventsubscription-sourceids""", alias="SourceIds")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.docdb.EventSubscription:
+        from troposphere.docdb import EventSubscription as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.docdb import EventSubscription as TropoT
         return resource_to_troposphere(self, TropoT)
 

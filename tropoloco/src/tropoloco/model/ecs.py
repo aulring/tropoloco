@@ -20,12 +20,14 @@ class AutoScalingGroupProvider(BaseModel):
         - Name: ManagedScaling
         - Name: AutoScalingGroupArn
         - Name: ManagedTerminationProtection
+        - Name: ManagedDraining
     
     """
     
     ManagedScaling_: Optional['ManagedScaling'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-capacityprovider-autoscalinggroupprovider.html#cfn-ecs-capacityprovider-autoscalinggroupprovider-managedscaling""", alias="ManagedScaling")
     AutoScalingGroupArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-capacityprovider-autoscalinggroupprovider.html#cfn-ecs-capacityprovider-autoscalinggroupprovider-autoscalinggrouparn""", alias="AutoScalingGroupArn")
     ManagedTerminationProtection_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-capacityprovider-autoscalinggroupprovider.html#cfn-ecs-capacityprovider-autoscalinggroupprovider-managedterminationprotection""", alias="ManagedTerminationProtection")
+    ManagedDraining_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-capacityprovider-autoscalinggroupprovider.html#cfn-ecs-capacityprovider-autoscalinggroupprovider-manageddraining""", alias="ManagedDraining")
     
 
 
@@ -1678,14 +1680,14 @@ class Service(BaseModel):
         - Name: PlatformVersion
         - Name: HealthCheckGracePeriodSeconds
         - Name: EnableECSManagedTags
+        - Name: PropagateTags
         - Name: EnableExecuteCommand
         - Name: PlacementConstraints
-        - Name: PropagateTags
         - Name: Cluster
         - Name: LoadBalancers
         - Name: ServiceConnectConfiguration
-        - Name: DesiredCount
         - Name: PlacementStrategies
+        - Name: DesiredCount
         - Name: DeploymentController
         - Name: ServiceRegistries
         - Name: CapacityProviderStrategy
@@ -1695,8 +1697,8 @@ class Service(BaseModel):
         - Name: TaskDefinition
         - Name: ServiceName
         - Name: NetworkConfiguration
-        - Name: DeploymentConfiguration
         - Name: Tags
+        - Name: DeploymentConfiguration
     Attributes:
         - Name: ServiceArn
         - Name: Name
@@ -1706,14 +1708,14 @@ class Service(BaseModel):
     PlatformVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-platformversion""", alias="PlatformVersion")
     HealthCheckGracePeriodSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-healthcheckgraceperiodseconds""", alias="HealthCheckGracePeriodSeconds")
     EnableECSManagedTags_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-enableecsmanagedtags""", alias="EnableECSManagedTags")
+    PropagateTags_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-propagatetags""", alias="PropagateTags")
     EnableExecuteCommand_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-enableexecutecommand""", alias="EnableExecuteCommand")
     PlacementConstraints_: Optional[List['PlacementConstraint']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-placementconstraints""", alias="PlacementConstraints")
-    PropagateTags_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-propagatetags""", alias="PropagateTags")
     Cluster_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-cluster""", alias="Cluster")
     LoadBalancers_: Optional[List['LoadBalancer']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-loadbalancers""", alias="LoadBalancers")
     ServiceConnectConfiguration_: Optional['ServiceConnectConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-serviceconnectconfiguration""", alias="ServiceConnectConfiguration")
-    DesiredCount_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-desiredcount""", alias="DesiredCount")
     PlacementStrategies_: Optional[List['PlacementStrategy']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-placementstrategies""", alias="PlacementStrategies")
+    DesiredCount_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-desiredcount""", alias="DesiredCount")
     DeploymentController_: Optional['DeploymentController'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-deploymentcontroller""", alias="DeploymentController")
     ServiceRegistries_: Optional[List['ServiceRegistry']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-serviceregistries""", alias="ServiceRegistries")
     CapacityProviderStrategy_: Optional[List['CapacityProviderStrategyItem']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-capacityproviderstrategy""", alias="CapacityProviderStrategy")
@@ -1723,8 +1725,8 @@ class Service(BaseModel):
     TaskDefinition_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-taskdefinition""", alias="TaskDefinition")
     ServiceName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-servicename""", alias="ServiceName")
     NetworkConfiguration_: Optional['NetworkConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-networkconfiguration""", alias="NetworkConfiguration")
-    DeploymentConfiguration_: Optional['DeploymentConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-deploymentconfiguration""", alias="DeploymentConfiguration")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-tags""", alias="Tags")
+    DeploymentConfiguration_: Optional['DeploymentConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-deploymentconfiguration""", alias="DeploymentConfiguration")
     
 
     @property

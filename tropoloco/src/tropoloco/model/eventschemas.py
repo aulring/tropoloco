@@ -99,7 +99,7 @@ class Discoverer(BaseModel):
     Attributes:
         - Name: DiscovererArn
         - Name: DiscovererId
-        - Name: CrossAccount
+        - Name: State
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")

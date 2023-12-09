@@ -196,6 +196,31 @@ class ForwardConfig(BaseModel):
 
     
 
+class MutualAuthentication(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-listener-mutualauthentication.html
+    Properties:
+        - Name: IgnoreClientCertificateExpiry
+        - Name: Mode
+        - Name: TrustStoreArn
+    
+    """
+    
+    IgnoreClientCertificateExpiry_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-listener-mutualauthentication.html#cfn-elasticloadbalancingv2-listener-mutualauthentication-ignoreclientcertificateexpiry""", alias="IgnoreClientCertificateExpiry")
+    Mode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-listener-mutualauthentication.html#cfn-elasticloadbalancingv2-listener-mutualauthentication-mode""", alias="Mode")
+    TrustStoreArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-listener-mutualauthentication.html#cfn-elasticloadbalancingv2-listener-mutualauthentication-truststorearn""", alias="TrustStoreArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.elasticloadbalancingv2.MutualAuthentication:
+        from troposphere.elasticloadbalancingv2 import MutualAuthentication as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class RedirectConfig(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-listener-redirectconfig.html
     Properties:
@@ -839,6 +864,60 @@ class TargetGroupAttribute(BaseModel):
 
     
 
+class RevocationContent(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-truststorerevocation-revocationcontent.html
+    Properties:
+        - Name: S3ObjectVersion
+        - Name: S3Bucket
+        - Name: S3Key
+        - Name: RevocationType
+    
+    """
+    
+    S3ObjectVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-truststorerevocation-revocationcontent.html#cfn-elasticloadbalancingv2-truststorerevocation-revocationcontent-s3objectversion""", alias="S3ObjectVersion")
+    S3Bucket_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-truststorerevocation-revocationcontent.html#cfn-elasticloadbalancingv2-truststorerevocation-revocationcontent-s3bucket""", alias="S3Bucket")
+    S3Key_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-truststorerevocation-revocationcontent.html#cfn-elasticloadbalancingv2-truststorerevocation-revocationcontent-s3key""", alias="S3Key")
+    RevocationType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-truststorerevocation-revocationcontent.html#cfn-elasticloadbalancingv2-truststorerevocation-revocationcontent-revocationtype""", alias="RevocationType")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.elasticloadbalancingv2.RevocationContent:
+        from troposphere.elasticloadbalancingv2 import RevocationContent as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class TrustStoreRevocation(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-truststorerevocation-truststorerevocation.html
+    Properties:
+        - Name: NumberOfRevokedEntries
+        - Name: TrustStoreArn
+        - Name: RevocationType
+        - Name: RevocationId
+    
+    """
+    
+    NumberOfRevokedEntries_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-truststorerevocation-truststorerevocation.html#cfn-elasticloadbalancingv2-truststorerevocation-truststorerevocation-numberofrevokedentries""", alias="NumberOfRevokedEntries")
+    TrustStoreArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-truststorerevocation-truststorerevocation.html#cfn-elasticloadbalancingv2-truststorerevocation-truststorerevocation-truststorearn""", alias="TrustStoreArn")
+    RevocationType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-truststorerevocation-truststorerevocation.html#cfn-elasticloadbalancingv2-truststorerevocation-truststorerevocation-revocationtype""", alias="RevocationType")
+    RevocationId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticloadbalancingv2-truststorerevocation-truststorerevocation.html#cfn-elasticloadbalancingv2-truststorerevocation-truststorerevocation-revocationid""", alias="RevocationId")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.elasticloadbalancingv2.TrustStoreRevocation:
+        from troposphere.elasticloadbalancingv2 import TrustStoreRevocation as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 
 ######################################################################
 # AWS Resource
@@ -848,6 +927,7 @@ class TargetGroupAttribute(BaseModel):
 class Listener(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html
     Properties:
+        - Name: MutualAuthentication
         - Name: AlpnPolicy
         - Name: SslPolicy
         - Name: LoadBalancerArn
@@ -860,6 +940,7 @@ class Listener(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
+    MutualAuthentication_: Optional['MutualAuthentication'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html#cfn-elasticloadbalancingv2-listener-mutualauthentication""", alias="MutualAuthentication")
     AlpnPolicy_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html#cfn-elasticloadbalancingv2-listener-alpnpolicy""", alias="AlpnPolicy")
     SslPolicy_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html#cfn-elasticloadbalancingv2-listener-sslpolicy""", alias="SslPolicy")
     LoadBalancerArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html#cfn-elasticloadbalancingv2-listener-loadbalancerarn""", alias="LoadBalancerArn")
@@ -1031,5 +1112,62 @@ class TargetGroup(BaseModel):
 
     def to_troposphere(self):
         from troposphere.elasticloadbalancingv2 import TargetGroup as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class TrustStore(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-truststore.html
+    Properties:
+        - Name: CaCertificatesBundleS3Bucket
+        - Name: CaCertificatesBundleS3ObjectVersion
+        - Name: Tags
+        - Name: Name
+        - Name: CaCertificatesBundleS3Key
+    Attributes:
+        - Name: Status
+        - Name: TrustStoreArn
+        - Name: NumberOfCaCertificates
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    CaCertificatesBundleS3Bucket_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-truststore.html#cfn-elasticloadbalancingv2-truststore-cacertificatesbundles3bucket""", alias="CaCertificatesBundleS3Bucket")
+    CaCertificatesBundleS3ObjectVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-truststore.html#cfn-elasticloadbalancingv2-truststore-cacertificatesbundles3objectversion""", alias="CaCertificatesBundleS3ObjectVersion")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-truststore.html#cfn-elasticloadbalancingv2-truststore-tags""", alias="Tags")
+    Name_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-truststore.html#cfn-elasticloadbalancingv2-truststore-name""", alias="Name")
+    CaCertificatesBundleS3Key_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-truststore.html#cfn-elasticloadbalancingv2-truststore-cacertificatesbundles3key""", alias="CaCertificatesBundleS3Key")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.elasticloadbalancingv2.TrustStore:
+        from troposphere.elasticloadbalancingv2 import TrustStore as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.elasticloadbalancingv2 import TrustStore as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class TrustStoreRevocation(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-truststorerevocation.html
+    Properties:
+        - Name: RevocationContents
+        - Name: TrustStoreArn
+    Attributes:
+        - Name: TrustStoreRevocations
+        - Name: RevocationId
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    RevocationContents_: Optional[List['RevocationContent']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-truststorerevocation.html#cfn-elasticloadbalancingv2-truststorerevocation-revocationcontents""", alias="RevocationContents")
+    TrustStoreArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-truststorerevocation.html#cfn-elasticloadbalancingv2-truststorerevocation-truststorearn""", alias="TrustStoreArn")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.elasticloadbalancingv2.TrustStoreRevocation:
+        from troposphere.elasticloadbalancingv2 import TrustStoreRevocation as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.elasticloadbalancingv2 import TrustStoreRevocation as TropoT
         return resource_to_troposphere(self, TropoT)
 

@@ -14,6 +14,27 @@ from tropoloco import resource_to_troposphere, property_to_troposphere
 
 
 
+class AnalyzerConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-accessanalyzer-analyzer-analyzerconfiguration.html
+    Properties:
+        - Name: UnusedAccessConfiguration
+    
+    """
+    
+    UnusedAccessConfiguration_: Optional['UnusedAccessConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-accessanalyzer-analyzer-analyzerconfiguration.html#cfn-accessanalyzer-analyzer-analyzerconfiguration-unusedaccessconfiguration""", alias="UnusedAccessConfiguration")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.accessanalyzer.AnalyzerConfiguration:
+        from troposphere.accessanalyzer import AnalyzerConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class ArchiveRule(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-accessanalyzer-analyzer-archiverule.html
     Properties:
@@ -66,6 +87,27 @@ class Filter(BaseModel):
 
     
 
+class UnusedAccessConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-accessanalyzer-analyzer-unusedaccessconfiguration.html
+    Properties:
+        - Name: UnusedAccessAge
+    
+    """
+    
+    UnusedAccessAge_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-accessanalyzer-analyzer-unusedaccessconfiguration.html#cfn-accessanalyzer-analyzer-unusedaccessconfiguration-unusedaccessage""", alias="UnusedAccessAge")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.accessanalyzer.UnusedAccessConfiguration:
+        from troposphere.accessanalyzer import UnusedAccessConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 
 ######################################################################
 # AWS Resource
@@ -79,6 +121,7 @@ class Analyzer(BaseModel):
         - Name: Type
         - Name: AnalyzerName
         - Name: Tags
+        - Name: AnalyzerConfiguration
     Attributes:
         - Name: Arn
     """
@@ -88,6 +131,7 @@ class Analyzer(BaseModel):
     Type_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-accessanalyzer-analyzer.html#cfn-accessanalyzer-analyzer-type""", alias="Type")
     AnalyzerName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-accessanalyzer-analyzer.html#cfn-accessanalyzer-analyzer-analyzername""", alias="AnalyzerName")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-accessanalyzer-analyzer.html#cfn-accessanalyzer-analyzer-tags""", alias="Tags")
+    AnalyzerConfiguration_: Optional['AnalyzerConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-accessanalyzer-analyzer.html#cfn-accessanalyzer-analyzer-analyzerconfiguration""", alias="AnalyzerConfiguration")
     
 
     @property

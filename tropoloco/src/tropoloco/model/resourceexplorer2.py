@@ -14,27 +14,6 @@ from tropoloco import resource_to_troposphere, property_to_troposphere
 
 
 
-class Filters(BaseModel):
-    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resourceexplorer2-view-filters.html
-    Properties:
-        - Name: FilterString
-    
-    """
-    
-    FilterString_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resourceexplorer2-view-filters.html#cfn-resourceexplorer2-view-filters-filterstring""", alias="FilterString")
-    
-
-
-    @property
-    def tropo_type(self) -> troposphere.resourceexplorer2.Filters:
-        from troposphere.resourceexplorer2 import Filters as TropoT
-        return TropoT
-
-    def to_troposphere(self):
-        property_to_troposphere(self)
-
-    
-
 class IncludedProperty(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resourceexplorer2-view-includedproperty.html
     Properties:
@@ -49,6 +28,27 @@ class IncludedProperty(BaseModel):
     @property
     def tropo_type(self) -> troposphere.resourceexplorer2.IncludedProperty:
         from troposphere.resourceexplorer2 import IncludedProperty as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class SearchFilter(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resourceexplorer2-view-searchfilter.html
+    Properties:
+        - Name: FilterString
+    
+    """
+    
+    FilterString_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resourceexplorer2-view-searchfilter.html#cfn-resourceexplorer2-view-searchfilter-filterstring""", alias="FilterString")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.resourceexplorer2.SearchFilter:
+        from troposphere.resourceexplorer2 import SearchFilter as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -113,6 +113,7 @@ class View(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resourceexplorer2-view.html
     Properties:
         - Name: Filters
+        - Name: Scope
         - Name: IncludedProperties
         - Name: Tags
         - Name: ViewName
@@ -121,7 +122,8 @@ class View(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
-    Filters_: Optional['Filters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resourceexplorer2-view.html#cfn-resourceexplorer2-view-filters""", alias="Filters")
+    Filters_: Optional['SearchFilter'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resourceexplorer2-view.html#cfn-resourceexplorer2-view-filters""", alias="Filters")
+    Scope_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resourceexplorer2-view.html#cfn-resourceexplorer2-view-scope""", alias="Scope")
     IncludedProperties_: Optional[List['IncludedProperty']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resourceexplorer2-view.html#cfn-resourceexplorer2-view-includedproperties""", alias="IncludedProperties")
     Tags_: Optional[Dict[str, str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resourceexplorer2-view.html#cfn-resourceexplorer2-view-tags""", alias="Tags")
     ViewName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resourceexplorer2-view.html#cfn-resourceexplorer2-view-viewname""", alias="ViewName")

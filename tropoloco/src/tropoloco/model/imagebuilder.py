@@ -785,6 +785,227 @@ class S3Logs(BaseModel):
 
     
 
+class Action(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-action.html
+    Properties:
+        - Name: Type
+        - Name: IncludeResources
+    
+    """
+    
+    Type_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-action.html#cfn-imagebuilder-lifecyclepolicy-action-type""", alias="Type")
+    IncludeResources_: Optional['IncludeResources'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-action.html#cfn-imagebuilder-lifecyclepolicy-action-includeresources""", alias="IncludeResources")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.imagebuilder.Action:
+        from troposphere.imagebuilder import Action as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class AmiExclusionRules(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-amiexclusionrules.html
+    Properties:
+        - Name: IsPublic
+        - Name: LastLaunched
+        - Name: Regions
+        - Name: SharedAccounts
+        - Name: TagMap
+    
+    """
+    
+    IsPublic_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-amiexclusionrules.html#cfn-imagebuilder-lifecyclepolicy-amiexclusionrules-ispublic""", alias="IsPublic")
+    LastLaunched_: Optional['LastLaunched'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-amiexclusionrules.html#cfn-imagebuilder-lifecyclepolicy-amiexclusionrules-lastlaunched""", alias="LastLaunched")
+    Regions_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-amiexclusionrules.html#cfn-imagebuilder-lifecyclepolicy-amiexclusionrules-regions""", alias="Regions")
+    SharedAccounts_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-amiexclusionrules.html#cfn-imagebuilder-lifecyclepolicy-amiexclusionrules-sharedaccounts""", alias="SharedAccounts")
+    TagMap_: Optional[Dict[str, str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-amiexclusionrules.html#cfn-imagebuilder-lifecyclepolicy-amiexclusionrules-tagmap""", alias="TagMap")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.imagebuilder.AmiExclusionRules:
+        from troposphere.imagebuilder import AmiExclusionRules as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class ExclusionRules(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-exclusionrules.html
+    Properties:
+        - Name: Amis
+        - Name: TagMap
+    
+    """
+    
+    Amis_: Optional['AmiExclusionRules'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-exclusionrules.html#cfn-imagebuilder-lifecyclepolicy-exclusionrules-amis""", alias="Amis")
+    TagMap_: Optional[Dict[str, str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-exclusionrules.html#cfn-imagebuilder-lifecyclepolicy-exclusionrules-tagmap""", alias="TagMap")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.imagebuilder.ExclusionRules:
+        from troposphere.imagebuilder import ExclusionRules as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class Filter(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-filter.html
+    Properties:
+        - Name: Type
+        - Name: Value
+        - Name: RetainAtLeast
+        - Name: Unit
+    
+    """
+    
+    Type_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-filter.html#cfn-imagebuilder-lifecyclepolicy-filter-type""", alias="Type")
+    Value_: int =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-filter.html#cfn-imagebuilder-lifecyclepolicy-filter-value""", alias="Value")
+    RetainAtLeast_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-filter.html#cfn-imagebuilder-lifecyclepolicy-filter-retainatleast""", alias="RetainAtLeast")
+    Unit_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-filter.html#cfn-imagebuilder-lifecyclepolicy-filter-unit""", alias="Unit")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.imagebuilder.Filter:
+        from troposphere.imagebuilder import Filter as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class IncludeResources(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-includeresources.html
+    Properties:
+        - Name: Containers
+        - Name: Amis
+        - Name: Snapshots
+    
+    """
+    
+    Containers_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-includeresources.html#cfn-imagebuilder-lifecyclepolicy-includeresources-containers""", alias="Containers")
+    Amis_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-includeresources.html#cfn-imagebuilder-lifecyclepolicy-includeresources-amis""", alias="Amis")
+    Snapshots_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-includeresources.html#cfn-imagebuilder-lifecyclepolicy-includeresources-snapshots""", alias="Snapshots")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.imagebuilder.IncludeResources:
+        from troposphere.imagebuilder import IncludeResources as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class LastLaunched(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-lastlaunched.html
+    Properties:
+        - Name: Value
+        - Name: Unit
+    
+    """
+    
+    Value_: int =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-lastlaunched.html#cfn-imagebuilder-lifecyclepolicy-lastlaunched-value""", alias="Value")
+    Unit_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-lastlaunched.html#cfn-imagebuilder-lifecyclepolicy-lastlaunched-unit""", alias="Unit")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.imagebuilder.LastLaunched:
+        from troposphere.imagebuilder import LastLaunched as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class PolicyDetail(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-policydetail.html
+    Properties:
+        - Name: Action
+        - Name: ExclusionRules
+        - Name: Filter
+    
+    """
+    
+    Action_: 'Action' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-policydetail.html#cfn-imagebuilder-lifecyclepolicy-policydetail-action""", alias="Action")
+    ExclusionRules_: Optional['ExclusionRules'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-policydetail.html#cfn-imagebuilder-lifecyclepolicy-policydetail-exclusionrules""", alias="ExclusionRules")
+    Filter_: 'Filter' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-policydetail.html#cfn-imagebuilder-lifecyclepolicy-policydetail-filter""", alias="Filter")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.imagebuilder.PolicyDetail:
+        from troposphere.imagebuilder import PolicyDetail as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class RecipeSelection(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-recipeselection.html
+    Properties:
+        - Name: Name
+        - Name: SemanticVersion
+    
+    """
+    
+    Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-recipeselection.html#cfn-imagebuilder-lifecyclepolicy-recipeselection-name""", alias="Name")
+    SemanticVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-recipeselection.html#cfn-imagebuilder-lifecyclepolicy-recipeselection-semanticversion""", alias="SemanticVersion")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.imagebuilder.RecipeSelection:
+        from troposphere.imagebuilder import RecipeSelection as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class ResourceSelection(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-resourceselection.html
+    Properties:
+        - Name: Recipes
+        - Name: TagMap
+    
+    """
+    
+    Recipes_: Optional[List['RecipeSelection']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-resourceselection.html#cfn-imagebuilder-lifecyclepolicy-resourceselection-recipes""", alias="Recipes")
+    TagMap_: Optional[Dict[str, str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-lifecyclepolicy-resourceselection.html#cfn-imagebuilder-lifecyclepolicy-resourceselection-tagmap""", alias="TagMap")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.imagebuilder.ResourceSelection:
+        from troposphere.imagebuilder import ResourceSelection as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 
 ######################################################################
 # AWS Resource
@@ -1081,5 +1302,41 @@ class InfrastructureConfiguration(BaseModel):
 
     def to_troposphere(self):
         from troposphere.imagebuilder import InfrastructureConfiguration as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class LifecyclePolicy(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-lifecyclepolicy.html
+    Properties:
+        - Name: Status
+        - Name: Description
+        - Name: ResourceType
+        - Name: PolicyDetails
+        - Name: ExecutionRole
+        - Name: ResourceSelection
+        - Name: Tags
+        - Name: Name
+    Attributes:
+        - Name: Arn
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    Status_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-lifecyclepolicy.html#cfn-imagebuilder-lifecyclepolicy-status""", alias="Status")
+    Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-lifecyclepolicy.html#cfn-imagebuilder-lifecyclepolicy-description""", alias="Description")
+    ResourceType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-lifecyclepolicy.html#cfn-imagebuilder-lifecyclepolicy-resourcetype""", alias="ResourceType")
+    PolicyDetails_: List['PolicyDetail'] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-lifecyclepolicy.html#cfn-imagebuilder-lifecyclepolicy-policydetails""", alias="PolicyDetails")
+    ExecutionRole_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-lifecyclepolicy.html#cfn-imagebuilder-lifecyclepolicy-executionrole""", alias="ExecutionRole")
+    ResourceSelection_: 'ResourceSelection' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-lifecyclepolicy.html#cfn-imagebuilder-lifecyclepolicy-resourceselection""", alias="ResourceSelection")
+    Tags_: Optional[Dict[str, str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-lifecyclepolicy.html#cfn-imagebuilder-lifecyclepolicy-tags""", alias="Tags")
+    Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-lifecyclepolicy.html#cfn-imagebuilder-lifecyclepolicy-name""", alias="Name")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.imagebuilder.LifecyclePolicy:
+        from troposphere.imagebuilder import LifecyclePolicy as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.imagebuilder import LifecyclePolicy as TropoT
         return resource_to_troposphere(self, TropoT)
 

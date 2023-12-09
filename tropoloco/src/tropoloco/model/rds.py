@@ -537,6 +537,7 @@ class DBCluster(BaseModel):
         - Name: Domain
         - Name: BacktrackWindow
         - Name: DBInstanceParameterGroupName
+        - Name: EnableGlobalWriteForwarding
         - Name: MonitoringRoleArn
         - Name: AssociatedRoles
         - Name: EnableHttpEndpoint
@@ -601,6 +602,7 @@ class DBCluster(BaseModel):
     Domain_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-domain""", alias="Domain")
     BacktrackWindow_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-backtrackwindow""", alias="BacktrackWindow")
     DBInstanceParameterGroupName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-dbinstanceparametergroupname""", alias="DBInstanceParameterGroupName")
+    EnableGlobalWriteForwarding_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-enableglobalwriteforwarding""", alias="EnableGlobalWriteForwarding")
     MonitoringRoleArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-monitoringrolearn""", alias="MonitoringRoleArn")
     AssociatedRoles_: Optional[List['DBClusterRole']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-associatedroles""", alias="AssociatedRoles")
     EnableHttpEndpoint_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-enablehttpendpoint""", alias="EnableHttpEndpoint")
@@ -717,6 +719,7 @@ class DBInstance(BaseModel):
         - Name: RestoreTime
         - Name: CertificateRotationRestart
         - Name: NetworkType
+        - Name: DedicatedLogVolume
         - Name: CopyTagsToSnapshot
         - Name: DomainIAMRoleName
         - Name: ReplicaMode
@@ -803,6 +806,7 @@ class DBInstance(BaseModel):
     RestoreTime_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-restoretime""", alias="RestoreTime")
     CertificateRotationRestart_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-certificaterotationrestart""", alias="CertificateRotationRestart")
     NetworkType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-networktype""", alias="NetworkType")
+    DedicatedLogVolume_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-dedicatedlogvolume""", alias="DedicatedLogVolume")
     CopyTagsToSnapshot_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-copytagstosnapshot""", alias="CopyTagsToSnapshot")
     DomainIAMRoleName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-domainiamrolename""", alias="DomainIAMRoleName")
     ReplicaMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html#cfn-rds-dbinstance-replicamode""", alias="ReplicaMode")

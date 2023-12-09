@@ -90,6 +90,7 @@ class AnalysisDefaults(BaseModel):
 class AnalysisDefinition(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-analysisdefinition.html
     Properties:
+        - Name: Options
         - Name: FilterGroups
         - Name: CalculatedFields
         - Name: DataSetIdentifierDeclarations
@@ -100,6 +101,7 @@ class AnalysisDefinition(BaseModel):
     
     """
     
+    Options_: Optional['AssetOptions'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-analysisdefinition.html#cfn-quicksight-analysis-analysisdefinition-options""", alias="Options")
     FilterGroups_: Optional[List['FilterGroup']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-analysisdefinition.html#cfn-quicksight-analysis-analysisdefinition-filtergroups""", alias="FilterGroups")
     CalculatedFields_: Optional[List['CalculatedField']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-analysisdefinition.html#cfn-quicksight-analysis-analysisdefinition-calculatedfields""", alias="CalculatedFields")
     DataSetIdentifierDeclarations_: List['DataSetIdentifierDeclaration'] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-analysisdefinition.html#cfn-quicksight-analysis-analysisdefinition-datasetidentifierdeclarations""", alias="DataSetIdentifierDeclarations")
@@ -295,6 +297,29 @@ class ArcOptions(BaseModel):
     @property
     def tropo_type(self) -> troposphere.quicksight.ArcOptions:
         from troposphere.quicksight import ArcOptions as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class AssetOptions(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-assetoptions.html
+    Properties:
+        - Name: Timezone
+        - Name: WeekStart
+    
+    """
+    
+    Timezone_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-assetoptions.html#cfn-quicksight-analysis-assetoptions-timezone""", alias="Timezone")
+    WeekStart_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-assetoptions.html#cfn-quicksight-analysis-assetoptions-weekstart""", alias="WeekStart")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.quicksight.AssetOptions:
+        from troposphere.quicksight import AssetOptions as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -12249,6 +12274,29 @@ class ArcOptions(BaseModel):
 
     
 
+class AssetOptions(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-assetoptions.html
+    Properties:
+        - Name: Timezone
+        - Name: WeekStart
+    
+    """
+    
+    Timezone_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-assetoptions.html#cfn-quicksight-dashboard-assetoptions-timezone""", alias="Timezone")
+    WeekStart_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-assetoptions.html#cfn-quicksight-dashboard-assetoptions-weekstart""", alias="WeekStart")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.quicksight.AssetOptions:
+        from troposphere.quicksight import AssetOptions as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class AttributeAggregationFunction(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-attributeaggregationfunction.html
     Properties:
@@ -14341,6 +14389,7 @@ class DashboardVersion(BaseModel):
 class DashboardVersionDefinition(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-dashboardversiondefinition.html
     Properties:
+        - Name: Options
         - Name: FilterGroups
         - Name: CalculatedFields
         - Name: DataSetIdentifierDeclarations
@@ -14351,6 +14400,7 @@ class DashboardVersionDefinition(BaseModel):
     
     """
     
+    Options_: Optional['AssetOptions'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-dashboardversiondefinition.html#cfn-quicksight-dashboard-dashboardversiondefinition-options""", alias="Options")
     FilterGroups_: Optional[List['FilterGroup']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-dashboardversiondefinition.html#cfn-quicksight-dashboard-dashboardversiondefinition-filtergroups""", alias="FilterGroups")
     CalculatedFields_: Optional[List['CalculatedField']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-dashboardversiondefinition.html#cfn-quicksight-dashboard-dashboardversiondefinition-calculatedfields""", alias="CalculatedFields")
     DataSetIdentifierDeclarations_: List['DataSetIdentifierDeclaration'] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-dashboardversiondefinition.html#cfn-quicksight-dashboard-dashboardversiondefinition-datasetidentifierdeclarations""", alias="DataSetIdentifierDeclarations")
@@ -18749,6 +18799,27 @@ class LineSeriesAxisDisplayOptions(BaseModel):
     @property
     def tropo_type(self) -> troposphere.quicksight.LineSeriesAxisDisplayOptions:
         from troposphere.quicksight import LineSeriesAxisDisplayOptions as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class LinkSharingConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-linksharingconfiguration.html
+    Properties:
+        - Name: Permissions
+    
+    """
+    
+    Permissions_: Optional[List['ResourcePermission']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-linksharingconfiguration.html#cfn-quicksight-dashboard-linksharingconfiguration-permissions""", alias="Permissions")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.quicksight.LinkSharingConfiguration:
+        from troposphere.quicksight import LinkSharingConfiguration as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -24432,12 +24503,14 @@ class CastColumnTypeOperation(BaseModel):
     Properties:
         - Name: ColumnName
         - Name: Format
+        - Name: SubType
         - Name: NewColumnType
     
     """
     
     ColumnName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-castcolumntypeoperation.html#cfn-quicksight-dataset-castcolumntypeoperation-columnname""", alias="ColumnName")
     Format_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-castcolumntypeoperation.html#cfn-quicksight-dataset-castcolumntypeoperation-format""", alias="Format")
+    SubType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-castcolumntypeoperation.html#cfn-quicksight-dataset-castcolumntypeoperation-subtype""", alias="SubType")
     NewColumnType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-castcolumntypeoperation.html#cfn-quicksight-dataset-castcolumntypeoperation-newcolumntype""", alias="NewColumnType")
     
 
@@ -24874,11 +24947,13 @@ class InputColumn(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-inputcolumn.html
     Properties:
         - Name: Type
+        - Name: SubType
         - Name: Name
     
     """
     
     Type_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-inputcolumn.html#cfn-quicksight-dataset-inputcolumn-type""", alias="Type")
+    SubType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-inputcolumn.html#cfn-quicksight-dataset-inputcolumn-subtype""", alias="SubType")
     Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-inputcolumn.html#cfn-quicksight-dataset-inputcolumn-name""", alias="Name")
     
 
@@ -25099,12 +25174,14 @@ class OutputColumn(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-outputcolumn.html
     Properties:
         - Name: Type
+        - Name: SubType
         - Name: Description
         - Name: Name
     
     """
     
     Type_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-outputcolumn.html#cfn-quicksight-dataset-outputcolumn-type""", alias="Type")
+    SubType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-outputcolumn.html#cfn-quicksight-dataset-outputcolumn-subtype""", alias="SubType")
     Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-outputcolumn.html#cfn-quicksight-dataset-outputcolumn-description""", alias="Description")
     Name_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dataset-outputcolumn.html#cfn-quicksight-dataset-outputcolumn-name""", alias="Name")
     
@@ -25725,6 +25802,7 @@ class DataSourceParameters(BaseModel):
         - Name: MariaDbParameters
         - Name: OracleParameters
         - Name: PrestoParameters
+        - Name: StarburstParameters
         - Name: RedshiftParameters
         - Name: MySqlParameters
         - Name: SqlServerParameters
@@ -25734,6 +25812,7 @@ class DataSourceParameters(BaseModel):
         - Name: PostgreSqlParameters
         - Name: AuroraParameters
         - Name: S3Parameters
+        - Name: TrinoParameters
         - Name: DatabricksParameters
     
     """
@@ -25746,6 +25825,7 @@ class DataSourceParameters(BaseModel):
     MariaDbParameters_: Optional['MariaDbParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-mariadbparameters""", alias="MariaDbParameters")
     OracleParameters_: Optional['OracleParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-oracleparameters""", alias="OracleParameters")
     PrestoParameters_: Optional['PrestoParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-prestoparameters""", alias="PrestoParameters")
+    StarburstParameters_: Optional['StarburstParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-starburstparameters""", alias="StarburstParameters")
     RedshiftParameters_: Optional['RedshiftParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-redshiftparameters""", alias="RedshiftParameters")
     MySqlParameters_: Optional['MySqlParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-mysqlparameters""", alias="MySqlParameters")
     SqlServerParameters_: Optional['SqlServerParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-sqlserverparameters""", alias="SqlServerParameters")
@@ -25755,6 +25835,7 @@ class DataSourceParameters(BaseModel):
     PostgreSqlParameters_: Optional['PostgreSqlParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-postgresqlparameters""", alias="PostgreSqlParameters")
     AuroraParameters_: Optional['AuroraParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-auroraparameters""", alias="AuroraParameters")
     S3Parameters_: Optional['S3Parameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-s3parameters""", alias="S3Parameters")
+    TrinoParameters_: Optional['TrinoParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-trinoparameters""", alias="TrinoParameters")
     DatabricksParameters_: Optional['DatabricksParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-datasourceparameters.html#cfn-quicksight-datasource-datasourceparameters-databricksparameters""", alias="DatabricksParameters")
     
 
@@ -26132,6 +26213,33 @@ class SslProperties(BaseModel):
 
     
 
+class StarburstParameters(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-starburstparameters.html
+    Properties:
+        - Name: Port
+        - Name: ProductType
+        - Name: Host
+        - Name: Catalog
+    
+    """
+    
+    Port_: float =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-starburstparameters.html#cfn-quicksight-datasource-starburstparameters-port""", alias="Port")
+    ProductType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-starburstparameters.html#cfn-quicksight-datasource-starburstparameters-producttype""", alias="ProductType")
+    Host_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-starburstparameters.html#cfn-quicksight-datasource-starburstparameters-host""", alias="Host")
+    Catalog_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-starburstparameters.html#cfn-quicksight-datasource-starburstparameters-catalog""", alias="Catalog")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.quicksight.StarburstParameters:
+        from troposphere.quicksight import StarburstParameters as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class TeradataParameters(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-teradataparameters.html
     Properties:
@@ -26150,6 +26258,31 @@ class TeradataParameters(BaseModel):
     @property
     def tropo_type(self) -> troposphere.quicksight.TeradataParameters:
         from troposphere.quicksight import TeradataParameters as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class TrinoParameters(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-trinoparameters.html
+    Properties:
+        - Name: Port
+        - Name: Host
+        - Name: Catalog
+    
+    """
+    
+    Port_: float =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-trinoparameters.html#cfn-quicksight-datasource-trinoparameters-port""", alias="Port")
+    Host_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-trinoparameters.html#cfn-quicksight-datasource-trinoparameters-host""", alias="Host")
+    Catalog_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-datasource-trinoparameters.html#cfn-quicksight-datasource-trinoparameters-catalog""", alias="Catalog")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.quicksight.TrinoParameters:
+        from troposphere.quicksight import TrinoParameters as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -26434,6 +26567,29 @@ class ArcOptions(BaseModel):
     @property
     def tropo_type(self) -> troposphere.quicksight.ArcOptions:
         from troposphere.quicksight import ArcOptions as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class AssetOptions(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-assetoptions.html
+    Properties:
+        - Name: Timezone
+        - Name: WeekStart
+    
+    """
+    
+    Timezone_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-assetoptions.html#cfn-quicksight-template-assetoptions-timezone""", alias="Timezone")
+    WeekStart_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-assetoptions.html#cfn-quicksight-template-assetoptions-weekstart""", alias="WeekStart")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.quicksight.AssetOptions:
+        from troposphere.quicksight import AssetOptions as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -36967,6 +37123,7 @@ class TemplateVersion(BaseModel):
 class TemplateVersionDefinition(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-templateversiondefinition.html
     Properties:
+        - Name: Options
         - Name: FilterGroups
         - Name: CalculatedFields
         - Name: DataSetConfigurations
@@ -36977,6 +37134,7 @@ class TemplateVersionDefinition(BaseModel):
     
     """
     
+    Options_: Optional['AssetOptions'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-templateversiondefinition.html#cfn-quicksight-template-templateversiondefinition-options""", alias="Options")
     FilterGroups_: Optional[List['FilterGroup']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-templateversiondefinition.html#cfn-quicksight-template-templateversiondefinition-filtergroups""", alias="FilterGroups")
     CalculatedFields_: Optional[List['CalculatedField']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-templateversiondefinition.html#cfn-quicksight-template-templateversiondefinition-calculatedfields""", alias="CalculatedFields")
     DataSetConfigurations_: List['DataSetConfiguration'] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-templateversiondefinition.html#cfn-quicksight-template-templateversiondefinition-datasetconfigurations""", alias="DataSetConfigurations")
@@ -39474,18 +39632,19 @@ class Analysis(BaseModel):
 class Dashboard(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html
     Properties:
-        - Name: DashboardPublishOptions
         - Name: Parameters
         - Name: VersionDescription
         - Name: SourceEntity
         - Name: ThemeArn
         - Name: Definition
-        - Name: AwsAccountId
-        - Name: Permissions
         - Name: ValidationStrategy
         - Name: DashboardId
-        - Name: Tags
+        - Name: LinkSharingConfiguration
         - Name: Name
+        - Name: DashboardPublishOptions
+        - Name: AwsAccountId
+        - Name: Permissions
+        - Name: Tags
     Attributes:
         - Name: Version.Status
         - Name: CreatedTime
@@ -39505,18 +39664,19 @@ class Dashboard(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
-    DashboardPublishOptions_: Optional['DashboardPublishOptions'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-dashboardpublishoptions""", alias="DashboardPublishOptions")
     Parameters_: Optional['Parameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-parameters""", alias="Parameters")
     VersionDescription_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-versiondescription""", alias="VersionDescription")
     SourceEntity_: Optional['DashboardSourceEntity'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-sourceentity""", alias="SourceEntity")
     ThemeArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-themearn""", alias="ThemeArn")
     Definition_: Optional['DashboardVersionDefinition'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-definition""", alias="Definition")
-    AwsAccountId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-awsaccountid""", alias="AwsAccountId")
-    Permissions_: Optional[List['ResourcePermission']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-permissions""", alias="Permissions")
     ValidationStrategy_: Optional['ValidationStrategy'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-validationstrategy""", alias="ValidationStrategy")
     DashboardId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-dashboardid""", alias="DashboardId")
-    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-tags""", alias="Tags")
+    LinkSharingConfiguration_: Optional['LinkSharingConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-linksharingconfiguration""", alias="LinkSharingConfiguration")
     Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-name""", alias="Name")
+    DashboardPublishOptions_: Optional['DashboardPublishOptions'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-dashboardpublishoptions""", alias="DashboardPublishOptions")
+    AwsAccountId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-awsaccountid""", alias="AwsAccountId")
+    Permissions_: Optional[List['ResourcePermission']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-permissions""", alias="Permissions")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-dashboard.html#cfn-quicksight-dashboard-tags""", alias="Tags")
     
 
     @property

@@ -116,6 +116,7 @@ class Environment(BaseModel):
         - Name: WeeklyMaintenanceWindowStart
         - Name: PluginsS3ObjectVersion
         - Name: StartupScriptS3ObjectVersion
+        - Name: EndpointManagement
         - Name: DagS3Path
         - Name: LoggingConfiguration
         - Name: WebserverAccessMode
@@ -124,6 +125,9 @@ class Environment(BaseModel):
         - Name: Tags
     Attributes:
         - Name: LoggingConfiguration.TaskLogs.CloudWatchLogGroupArn
+        - Name: WebserverVpcEndpointService
+        - Name: DatabaseVpcEndpointService
+        - Name: CeleryExecutorQueue
         - Name: LoggingConfiguration.WebserverLogs.CloudWatchLogGroupArn
         - Name: LoggingConfiguration.DagProcessingLogs.CloudWatchLogGroupArn
         - Name: WebserverUrl
@@ -149,6 +153,7 @@ class Environment(BaseModel):
     WeeklyMaintenanceWindowStart_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mwaa-environment.html#cfn-mwaa-environment-weeklymaintenancewindowstart""", alias="WeeklyMaintenanceWindowStart")
     PluginsS3ObjectVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mwaa-environment.html#cfn-mwaa-environment-pluginss3objectversion""", alias="PluginsS3ObjectVersion")
     StartupScriptS3ObjectVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mwaa-environment.html#cfn-mwaa-environment-startupscripts3objectversion""", alias="StartupScriptS3ObjectVersion")
+    EndpointManagement_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mwaa-environment.html#cfn-mwaa-environment-endpointmanagement""", alias="EndpointManagement")
     DagS3Path_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mwaa-environment.html#cfn-mwaa-environment-dags3path""", alias="DagS3Path")
     LoggingConfiguration_: Optional['LoggingConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mwaa-environment.html#cfn-mwaa-environment-loggingconfiguration""", alias="LoggingConfiguration")
     WebserverAccessMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mwaa-environment.html#cfn-mwaa-environment-webserveraccessmode""", alias="WebserverAccessMode")

@@ -563,6 +563,33 @@ class ImageConfig(BaseModel):
 
     
 
+class LoggingConfig(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-loggingconfig.html
+    Properties:
+        - Name: LogFormat
+        - Name: ApplicationLogLevel
+        - Name: LogGroup
+        - Name: SystemLogLevel
+    
+    """
+    
+    LogFormat_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-loggingconfig.html#cfn-lambda-function-loggingconfig-logformat""", alias="LogFormat")
+    ApplicationLogLevel_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-loggingconfig.html#cfn-lambda-function-loggingconfig-applicationloglevel""", alias="ApplicationLogLevel")
+    LogGroup_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-loggingconfig.html#cfn-lambda-function-loggingconfig-loggroup""", alias="LogGroup")
+    SystemLogLevel_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-loggingconfig.html#cfn-lambda-function-loggingconfig-systemloglevel""", alias="SystemLogLevel")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.awslambda.LoggingConfig:
+        from troposphere.awslambda import LoggingConfig as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class RuntimeManagementConfig(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-runtimemanagementconfig.html
     Properties:
@@ -936,7 +963,6 @@ class EventSourceMapping(BaseModel):
 class Function(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html
     Properties:
-        - Name: Policy
         - Name: Description
         - Name: TracingConfig
         - Name: VpcConfig
@@ -958,6 +984,7 @@ class Function(BaseModel):
         - Name: Handler
         - Name: Code
         - Name: Role
+        - Name: LoggingConfig
         - Name: Environment
         - Name: EphemeralStorage
         - Name: Architectures
@@ -969,7 +996,6 @@ class Function(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
-    Policy_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-policy""", alias="Policy")
     Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-description""", alias="Description")
     TracingConfig_: Optional['TracingConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-tracingconfig""", alias="TracingConfig")
     VpcConfig_: Optional['VPCConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-vpcconfig""", alias="VpcConfig")
@@ -991,6 +1017,7 @@ class Function(BaseModel):
     Handler_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-handler""", alias="Handler")
     Code_: 'Code' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-code""", alias="Code")
     Role_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-role""", alias="Role")
+    LoggingConfig_: Optional['LoggingConfig'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-loggingconfig""", alias="LoggingConfig")
     Environment_: Optional['Environment'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-environment""", alias="Environment")
     EphemeralStorage_: Optional['EphemeralStorage'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-ephemeralstorage""", alias="EphemeralStorage")
     Architectures_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-architectures""", alias="Architectures")

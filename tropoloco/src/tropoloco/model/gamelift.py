@@ -231,6 +231,49 @@ class RuntimeConfiguration(BaseModel):
 
     
 
+class ScalingPolicy(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html
+    Properties:
+        - Name: Status
+        - Name: MetricName
+        - Name: PolicyType
+        - Name: ComparisonOperator
+        - Name: TargetConfiguration
+        - Name: UpdateStatus
+        - Name: ScalingAdjustment
+        - Name: EvaluationPeriods
+        - Name: Location
+        - Name: Name
+        - Name: ScalingAdjustmentType
+        - Name: Threshold
+    
+    """
+    
+    Status_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-status""", alias="Status")
+    MetricName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-metricname""", alias="MetricName")
+    PolicyType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-policytype""", alias="PolicyType")
+    ComparisonOperator_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-comparisonoperator""", alias="ComparisonOperator")
+    TargetConfiguration_: Optional['TargetConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-targetconfiguration""", alias="TargetConfiguration")
+    UpdateStatus_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-updatestatus""", alias="UpdateStatus")
+    ScalingAdjustment_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-scalingadjustment""", alias="ScalingAdjustment")
+    EvaluationPeriods_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-evaluationperiods""", alias="EvaluationPeriods")
+    Location_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-location""", alias="Location")
+    Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-name""", alias="Name")
+    ScalingAdjustmentType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-scalingadjustmenttype""", alias="ScalingAdjustmentType")
+    Threshold_: Optional[float] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-scalingpolicy.html#cfn-gamelift-fleet-scalingpolicy-threshold""", alias="Threshold")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.gamelift.ScalingPolicy:
+        from troposphere.gamelift import ScalingPolicy as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class ServerProcess(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-serverprocess.html
     Properties:
@@ -249,6 +292,27 @@ class ServerProcess(BaseModel):
     @property
     def tropo_type(self) -> troposphere.gamelift.ServerProcess:
         from troposphere.gamelift import ServerProcess as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class TargetConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-targetconfiguration.html
+    Properties:
+        - Name: TargetValue
+    
+    """
+    
+    TargetValue_: float =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-fleet-targetconfiguration.html#cfn-gamelift-fleet-targetconfiguration-targetvalue""", alias="TargetValue")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.gamelift.TargetConfiguration:
+        from troposphere.gamelift import TargetConfiguration as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -348,27 +412,6 @@ class TargetTrackingConfiguration(BaseModel):
 
     
 
-class Destination(BaseModel):
-    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-gamesessionqueue-destination.html
-    Properties:
-        - Name: DestinationArn
-    
-    """
-    
-    DestinationArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-gamesessionqueue-destination.html#cfn-gamelift-gamesessionqueue-destination-destinationarn""", alias="DestinationArn")
-    
-
-
-    @property
-    def tropo_type(self) -> troposphere.gamelift.Destination:
-        from troposphere.gamelift import Destination as TropoT
-        return TropoT
-
-    def to_troposphere(self):
-        property_to_troposphere(self)
-
-    
-
 class FilterConfiguration(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-gamesessionqueue-filterconfiguration.html
     Properties:
@@ -383,6 +426,27 @@ class FilterConfiguration(BaseModel):
     @property
     def tropo_type(self) -> troposphere.gamelift.FilterConfiguration:
         from troposphere.gamelift import FilterConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class GameSessionQueueDestination(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-gamesessionqueue-gamesessionqueuedestination.html
+    Properties:
+        - Name: DestinationArn
+    
+    """
+    
+    DestinationArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-gamesessionqueue-gamesessionqueuedestination.html#cfn-gamelift-gamesessionqueue-gamesessionqueuedestination-destinationarn""", alias="DestinationArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.gamelift.GameSessionQueueDestination:
+        from troposphere.gamelift import GameSessionQueueDestination as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -551,6 +615,7 @@ class Build(BaseModel):
 class Fleet(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-fleet.html
     Properties:
+        - Name: ScalingPolicies
         - Name: Description
         - Name: PeerVpcId
         - Name: FleetType
@@ -578,6 +643,7 @@ class Fleet(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
+    ScalingPolicies_: Optional[List['ScalingPolicy']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-fleet.html#cfn-gamelift-fleet-scalingpolicies""", alias="ScalingPolicies")
     Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-fleet.html#cfn-gamelift-fleet-description""", alias="Description")
     PeerVpcId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-fleet.html#cfn-gamelift-fleet-peervpcid""", alias="PeerVpcId")
     FleetType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-fleet.html#cfn-gamelift-fleet-fleettype""", alias="FleetType")
@@ -677,7 +743,7 @@ class GameSessionQueue(BaseModel):
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     TimeoutInSeconds_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html#cfn-gamelift-gamesessionqueue-timeoutinseconds""", alias="TimeoutInSeconds")
     PlayerLatencyPolicies_: Optional[List['PlayerLatencyPolicy']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html#cfn-gamelift-gamesessionqueue-playerlatencypolicies""", alias="PlayerLatencyPolicies")
-    Destinations_: Optional[List['Destination']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html#cfn-gamelift-gamesessionqueue-destinations""", alias="Destinations")
+    Destinations_: Optional[List['GameSessionQueueDestination']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html#cfn-gamelift-gamesessionqueue-destinations""", alias="Destinations")
     NotificationTarget_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html#cfn-gamelift-gamesessionqueue-notificationtarget""", alias="NotificationTarget")
     FilterConfiguration_: Optional['FilterConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html#cfn-gamelift-gamesessionqueue-filterconfiguration""", alias="FilterConfiguration")
     CustomEventData_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html#cfn-gamelift-gamesessionqueue-customeventdata""", alias="CustomEventData")
@@ -734,10 +800,12 @@ class MatchmakingConfiguration(BaseModel):
         - Name: BackfillMode
         - Name: RequestTimeoutSeconds
         - Name: AcceptanceRequired
+        - Name: CreationTime
         - Name: FlexMatchMode
         - Name: RuleSetName
         - Name: GameSessionQueueArns
         - Name: Tags
+        - Name: RuleSetArn
     Attributes:
         - Name: Arn
         - Name: Name
@@ -755,10 +823,12 @@ class MatchmakingConfiguration(BaseModel):
     BackfillMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-matchmakingconfiguration.html#cfn-gamelift-matchmakingconfiguration-backfillmode""", alias="BackfillMode")
     RequestTimeoutSeconds_: int =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-matchmakingconfiguration.html#cfn-gamelift-matchmakingconfiguration-requesttimeoutseconds""", alias="RequestTimeoutSeconds")
     AcceptanceRequired_: bool =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-matchmakingconfiguration.html#cfn-gamelift-matchmakingconfiguration-acceptancerequired""", alias="AcceptanceRequired")
+    CreationTime_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-matchmakingconfiguration.html#cfn-gamelift-matchmakingconfiguration-creationtime""", alias="CreationTime")
     FlexMatchMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-matchmakingconfiguration.html#cfn-gamelift-matchmakingconfiguration-flexmatchmode""", alias="FlexMatchMode")
     RuleSetName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-matchmakingconfiguration.html#cfn-gamelift-matchmakingconfiguration-rulesetname""", alias="RuleSetName")
     GameSessionQueueArns_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-matchmakingconfiguration.html#cfn-gamelift-matchmakingconfiguration-gamesessionqueuearns""", alias="GameSessionQueueArns")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-matchmakingconfiguration.html#cfn-gamelift-matchmakingconfiguration-tags""", alias="Tags")
+    RuleSetArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-matchmakingconfiguration.html#cfn-gamelift-matchmakingconfiguration-rulesetarn""", alias="RuleSetArn")
     
 
     @property
@@ -778,6 +848,7 @@ class MatchmakingRuleSet(BaseModel):
         - Name: Tags
         - Name: Name
     Attributes:
+        - Name: CreationTime
         - Name: Arn
         - Name: Name
     """
@@ -806,8 +877,10 @@ class Script(BaseModel):
         - Name: Tags
         - Name: Name
     Attributes:
+        - Name: CreationTime
         - Name: Id
         - Name: Arn
+        - Name: SizeOnDisk
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")

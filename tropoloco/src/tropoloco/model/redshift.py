@@ -263,54 +263,55 @@ class ScheduledActionType(BaseModel):
 class Cluster(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html
     Properties:
-        - Name: HsmClientCertificateIdentifier
         - Name: RevisionTarget
-        - Name: ElasticIp
         - Name: AutomatedSnapshotRetentionPeriod
-        - Name: AvailabilityZoneRelocationStatus
-        - Name: AquaConfigurationStatus
         - Name: Encrypted
-        - Name: SnapshotIdentifier
-        - Name: AvailabilityZoneRelocation
         - Name: Port
         - Name: NumberOfNodes
-        - Name: SnapshotCopyGrantName
         - Name: DestinationRegion
-        - Name: EnhancedVpcRouting
-        - Name: ClusterParameterGroupName
-        - Name: DeferMaintenanceEndTime
         - Name: AllowVersionUpgrade
         - Name: Endpoint
-        - Name: RotateEncryptionKey
-        - Name: VpcSecurityGroupIds
         - Name: MaintenanceTrackName
         - Name: OwnerAccount
+        - Name: MultiAZ
         - Name: Tags
         - Name: SnapshotClusterIdentifier
         - Name: IamRoles
         - Name: KmsKeyId
         - Name: SnapshotCopyManual
-        - Name: ClusterVersion
-        - Name: HsmConfigurationIdentifier
         - Name: AvailabilityZone
-        - Name: PreferredMaintenanceWindow
-        - Name: DeferMaintenanceStartTime
         - Name: ClusterSecurityGroups
-        - Name: ClusterType
-        - Name: Classic
         - Name: ClusterIdentifier
         - Name: MasterUserPassword
         - Name: ClusterSubnetGroupName
         - Name: LoggingProperties
         - Name: DeferMaintenance
-        - Name: DeferMaintenanceDuration
         - Name: NodeType
         - Name: MasterUsername
-        - Name: DBName
         - Name: PubliclyAccessible
         - Name: ManualSnapshotRetentionPeriod
-        - Name: SnapshotCopyRetentionPeriod
         - Name: ResourceAction
+        - Name: HsmClientCertificateIdentifier
+        - Name: ElasticIp
+        - Name: AvailabilityZoneRelocationStatus
+        - Name: AquaConfigurationStatus
+        - Name: SnapshotIdentifier
+        - Name: AvailabilityZoneRelocation
+        - Name: SnapshotCopyGrantName
+        - Name: EnhancedVpcRouting
+        - Name: ClusterParameterGroupName
+        - Name: DeferMaintenanceEndTime
+        - Name: RotateEncryptionKey
+        - Name: VpcSecurityGroupIds
+        - Name: ClusterVersion
+        - Name: HsmConfigurationIdentifier
+        - Name: PreferredMaintenanceWindow
+        - Name: DeferMaintenanceStartTime
+        - Name: ClusterType
+        - Name: Classic
+        - Name: DeferMaintenanceDuration
+        - Name: DBName
+        - Name: SnapshotCopyRetentionPeriod
     Attributes:
         - Name: Endpoint.Address
         - Name: Endpoint.Port
@@ -319,54 +320,55 @@ class Cluster(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
-    HsmClientCertificateIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-hsmclientcertificateidentifier""", alias="HsmClientCertificateIdentifier")
     RevisionTarget_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-revisiontarget""", alias="RevisionTarget")
-    ElasticIp_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-elasticip""", alias="ElasticIp")
     AutomatedSnapshotRetentionPeriod_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-automatedsnapshotretentionperiod""", alias="AutomatedSnapshotRetentionPeriod")
-    AvailabilityZoneRelocationStatus_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-availabilityzonerelocationstatus""", alias="AvailabilityZoneRelocationStatus")
-    AquaConfigurationStatus_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-aquaconfigurationstatus""", alias="AquaConfigurationStatus")
     Encrypted_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-encrypted""", alias="Encrypted")
-    SnapshotIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-snapshotidentifier""", alias="SnapshotIdentifier")
-    AvailabilityZoneRelocation_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-availabilityzonerelocation""", alias="AvailabilityZoneRelocation")
     Port_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-port""", alias="Port")
     NumberOfNodes_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-numberofnodes""", alias="NumberOfNodes")
-    SnapshotCopyGrantName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-snapshotcopygrantname""", alias="SnapshotCopyGrantName")
     DestinationRegion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-destinationregion""", alias="DestinationRegion")
-    EnhancedVpcRouting_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-enhancedvpcrouting""", alias="EnhancedVpcRouting")
-    ClusterParameterGroupName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-clusterparametergroupname""", alias="ClusterParameterGroupName")
-    DeferMaintenanceEndTime_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-defermaintenanceendtime""", alias="DeferMaintenanceEndTime")
     AllowVersionUpgrade_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-allowversionupgrade""", alias="AllowVersionUpgrade")
     Endpoint_: Optional['Endpoint'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-endpoint""", alias="Endpoint")
-    RotateEncryptionKey_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-rotateencryptionkey""", alias="RotateEncryptionKey")
-    VpcSecurityGroupIds_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-vpcsecuritygroupids""", alias="VpcSecurityGroupIds")
     MaintenanceTrackName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-maintenancetrackname""", alias="MaintenanceTrackName")
     OwnerAccount_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-owneraccount""", alias="OwnerAccount")
+    MultiAZ_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-multiaz""", alias="MultiAZ")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-tags""", alias="Tags")
     SnapshotClusterIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-snapshotclusteridentifier""", alias="SnapshotClusterIdentifier")
     IamRoles_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-iamroles""", alias="IamRoles")
     KmsKeyId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-kmskeyid""", alias="KmsKeyId")
     SnapshotCopyManual_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-snapshotcopymanual""", alias="SnapshotCopyManual")
-    ClusterVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-clusterversion""", alias="ClusterVersion")
-    HsmConfigurationIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-hsmconfigurationidentifier""", alias="HsmConfigurationIdentifier")
     AvailabilityZone_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-availabilityzone""", alias="AvailabilityZone")
-    PreferredMaintenanceWindow_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-preferredmaintenancewindow""", alias="PreferredMaintenanceWindow")
-    DeferMaintenanceStartTime_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-defermaintenancestarttime""", alias="DeferMaintenanceStartTime")
     ClusterSecurityGroups_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-clustersecuritygroups""", alias="ClusterSecurityGroups")
-    ClusterType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-clustertype""", alias="ClusterType")
-    Classic_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-classic""", alias="Classic")
     ClusterIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-clusteridentifier""", alias="ClusterIdentifier")
     MasterUserPassword_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-masteruserpassword""", alias="MasterUserPassword")
     ClusterSubnetGroupName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-clustersubnetgroupname""", alias="ClusterSubnetGroupName")
     LoggingProperties_: Optional['LoggingProperties'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-loggingproperties""", alias="LoggingProperties")
     DeferMaintenance_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-defermaintenance""", alias="DeferMaintenance")
-    DeferMaintenanceDuration_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-defermaintenanceduration""", alias="DeferMaintenanceDuration")
     NodeType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-nodetype""", alias="NodeType")
     MasterUsername_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-masterusername""", alias="MasterUsername")
-    DBName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-dbname""", alias="DBName")
     PubliclyAccessible_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-publiclyaccessible""", alias="PubliclyAccessible")
     ManualSnapshotRetentionPeriod_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-manualsnapshotretentionperiod""", alias="ManualSnapshotRetentionPeriod")
-    SnapshotCopyRetentionPeriod_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-snapshotcopyretentionperiod""", alias="SnapshotCopyRetentionPeriod")
     ResourceAction_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-resourceaction""", alias="ResourceAction")
+    HsmClientCertificateIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-hsmclientcertificateidentifier""", alias="HsmClientCertificateIdentifier")
+    ElasticIp_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-elasticip""", alias="ElasticIp")
+    AvailabilityZoneRelocationStatus_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-availabilityzonerelocationstatus""", alias="AvailabilityZoneRelocationStatus")
+    AquaConfigurationStatus_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-aquaconfigurationstatus""", alias="AquaConfigurationStatus")
+    SnapshotIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-snapshotidentifier""", alias="SnapshotIdentifier")
+    AvailabilityZoneRelocation_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-availabilityzonerelocation""", alias="AvailabilityZoneRelocation")
+    SnapshotCopyGrantName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-snapshotcopygrantname""", alias="SnapshotCopyGrantName")
+    EnhancedVpcRouting_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-enhancedvpcrouting""", alias="EnhancedVpcRouting")
+    ClusterParameterGroupName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-clusterparametergroupname""", alias="ClusterParameterGroupName")
+    DeferMaintenanceEndTime_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-defermaintenanceendtime""", alias="DeferMaintenanceEndTime")
+    RotateEncryptionKey_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-rotateencryptionkey""", alias="RotateEncryptionKey")
+    VpcSecurityGroupIds_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-vpcsecuritygroupids""", alias="VpcSecurityGroupIds")
+    ClusterVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-clusterversion""", alias="ClusterVersion")
+    HsmConfigurationIdentifier_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-hsmconfigurationidentifier""", alias="HsmConfigurationIdentifier")
+    PreferredMaintenanceWindow_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-preferredmaintenancewindow""", alias="PreferredMaintenanceWindow")
+    DeferMaintenanceStartTime_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-defermaintenancestarttime""", alias="DeferMaintenanceStartTime")
+    ClusterType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-clustertype""", alias="ClusterType")
+    Classic_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-classic""", alias="Classic")
+    DeferMaintenanceDuration_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-defermaintenanceduration""", alias="DeferMaintenanceDuration")
+    DBName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-dbname""", alias="DBName")
+    SnapshotCopyRetentionPeriod_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-snapshotcopyretentionperiod""", alias="SnapshotCopyRetentionPeriod")
     
 
     @property

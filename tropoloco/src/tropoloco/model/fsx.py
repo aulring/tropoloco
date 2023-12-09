@@ -217,7 +217,9 @@ class NfsExports(BaseModel):
 class OntapConfiguration(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html
     Properties:
+        - Name: HAPairs
         - Name: FsxAdminPassword
+        - Name: ThroughputCapacityPerHAPair
         - Name: RouteTableIds
         - Name: WeeklyMaintenanceStartTime
         - Name: DiskIopsConfiguration
@@ -230,7 +232,9 @@ class OntapConfiguration(BaseModel):
     
     """
     
+    HAPairs_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html#cfn-fsx-filesystem-ontapconfiguration-hapairs""", alias="HAPairs")
     FsxAdminPassword_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html#cfn-fsx-filesystem-ontapconfiguration-fsxadminpassword""", alias="FsxAdminPassword")
+    ThroughputCapacityPerHAPair_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html#cfn-fsx-filesystem-ontapconfiguration-throughputcapacityperhapair""", alias="ThroughputCapacityPerHAPair")
     RouteTableIds_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html#cfn-fsx-filesystem-ontapconfiguration-routetableids""", alias="RouteTableIds")
     WeeklyMaintenanceStartTime_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html#cfn-fsx-filesystem-ontapconfiguration-weeklymaintenancestarttime""", alias="WeeklyMaintenanceStartTime")
     DiskIopsConfiguration_: Optional['DiskIopsConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-ontapconfiguration.html#cfn-fsx-filesystem-ontapconfiguration-diskiopsconfiguration""", alias="DiskIopsConfiguration")
@@ -482,6 +486,29 @@ class SelfManagedActiveDirectoryConfiguration(BaseModel):
 
     
 
+class AggregateConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration-aggregateconfiguration.html
+    Properties:
+        - Name: Aggregates
+        - Name: ConstituentsPerAggregate
+    
+    """
+    
+    Aggregates_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration-aggregateconfiguration.html#cfn-fsx-volume-ontapconfiguration-aggregateconfiguration-aggregates""", alias="Aggregates")
+    ConstituentsPerAggregate_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration-aggregateconfiguration.html#cfn-fsx-volume-ontapconfiguration-aggregateconfiguration-constituentsperaggregate""", alias="ConstituentsPerAggregate")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.fsx.AggregateConfiguration:
+        from troposphere.fsx import AggregateConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class AutocommitPeriod(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration-snaplockconfiguration-autocommitperiod.html
     Properties:
@@ -554,26 +581,32 @@ class OntapConfiguration(BaseModel):
     Properties:
         - Name: JunctionPath
         - Name: StorageVirtualMachineId
-        - Name: SnapshotPolicy
         - Name: TieringPolicy
-        - Name: StorageEfficiencyEnabled
         - Name: SizeInMegabytes
-        - Name: CopyTagsToBackups
+        - Name: VolumeStyle
+        - Name: SizeInBytes
         - Name: SecurityStyle
         - Name: SnaplockConfiguration
+        - Name: AggregateConfiguration
+        - Name: SnapshotPolicy
+        - Name: StorageEfficiencyEnabled
+        - Name: CopyTagsToBackups
         - Name: OntapVolumeType
     
     """
     
     JunctionPath_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-junctionpath""", alias="JunctionPath")
     StorageVirtualMachineId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-storagevirtualmachineid""", alias="StorageVirtualMachineId")
-    SnapshotPolicy_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-snapshotpolicy""", alias="SnapshotPolicy")
     TieringPolicy_: Optional['TieringPolicy'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-tieringpolicy""", alias="TieringPolicy")
-    StorageEfficiencyEnabled_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-storageefficiencyenabled""", alias="StorageEfficiencyEnabled")
-    SizeInMegabytes_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-sizeinmegabytes""", alias="SizeInMegabytes")
-    CopyTagsToBackups_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-copytagstobackups""", alias="CopyTagsToBackups")
+    SizeInMegabytes_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-sizeinmegabytes""", alias="SizeInMegabytes")
+    VolumeStyle_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-volumestyle""", alias="VolumeStyle")
+    SizeInBytes_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-sizeinbytes""", alias="SizeInBytes")
     SecurityStyle_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-securitystyle""", alias="SecurityStyle")
     SnaplockConfiguration_: Optional['SnaplockConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-snaplockconfiguration""", alias="SnaplockConfiguration")
+    AggregateConfiguration_: Optional['AggregateConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-aggregateconfiguration""", alias="AggregateConfiguration")
+    SnapshotPolicy_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-snapshotpolicy""", alias="SnapshotPolicy")
+    StorageEfficiencyEnabled_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-storageefficiencyenabled""", alias="StorageEfficiencyEnabled")
+    CopyTagsToBackups_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-copytagstobackups""", alias="CopyTagsToBackups")
     OntapVolumeType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-volume-ontapconfiguration.html#cfn-fsx-volume-ontapconfiguration-ontapvolumetype""", alias="OntapVolumeType")
     
 

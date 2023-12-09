@@ -64,6 +64,29 @@ class ExperimentTemplateAction(BaseModel):
 
     
 
+class ExperimentTemplateExperimentOptions(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fis-experimenttemplate-experimenttemplateexperimentoptions.html
+    Properties:
+        - Name: EmptyTargetResolutionMode
+        - Name: AccountTargeting
+    
+    """
+    
+    EmptyTargetResolutionMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fis-experimenttemplate-experimenttemplateexperimentoptions.html#cfn-fis-experimenttemplate-experimenttemplateexperimentoptions-emptytargetresolutionmode""", alias="EmptyTargetResolutionMode")
+    AccountTargeting_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fis-experimenttemplate-experimenttemplateexperimentoptions.html#cfn-fis-experimenttemplate-experimenttemplateexperimentoptions-accounttargeting""", alias="AccountTargeting")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.fis.ExperimentTemplateExperimentOptions:
+        from troposphere.fis import ExperimentTemplateExperimentOptions as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class ExperimentTemplateLogConfiguration(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fis-experimenttemplate-experimenttemplatelogconfiguration.html
     Properties:
@@ -200,6 +223,7 @@ class ExperimentTemplate(BaseModel):
     Properties:
         - Name: Description
         - Name: Actions
+        - Name: ExperimentOptions
         - Name: StopConditions
         - Name: Targets
         - Name: LogConfiguration
@@ -212,6 +236,7 @@ class ExperimentTemplate(BaseModel):
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     Description_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-experimenttemplate.html#cfn-fis-experimenttemplate-description""", alias="Description")
     Actions_: Optional[Dict[str, 'ExperimentTemplateAction']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-experimenttemplate.html#cfn-fis-experimenttemplate-actions""", alias="Actions")
+    ExperimentOptions_: Optional['ExperimentTemplateExperimentOptions'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-experimenttemplate.html#cfn-fis-experimenttemplate-experimentoptions""", alias="ExperimentOptions")
     StopConditions_: List['ExperimentTemplateStopCondition'] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-experimenttemplate.html#cfn-fis-experimenttemplate-stopconditions""", alias="StopConditions")
     Targets_: Dict[str, 'ExperimentTemplateTarget'] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-experimenttemplate.html#cfn-fis-experimenttemplate-targets""", alias="Targets")
     LogConfiguration_: Optional['ExperimentTemplateLogConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-experimenttemplate.html#cfn-fis-experimenttemplate-logconfiguration""", alias="LogConfiguration")
@@ -226,5 +251,31 @@ class ExperimentTemplate(BaseModel):
 
     def to_troposphere(self):
         from troposphere.fis import ExperimentTemplate as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class TargetAccountConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-targetaccountconfiguration.html
+    Properties:
+        - Name: AccountId
+        - Name: Description
+        - Name: ExperimentTemplateId
+        - Name: RoleArn
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    AccountId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-targetaccountconfiguration.html#cfn-fis-targetaccountconfiguration-accountid""", alias="AccountId")
+    Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-targetaccountconfiguration.html#cfn-fis-targetaccountconfiguration-description""", alias="Description")
+    ExperimentTemplateId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-targetaccountconfiguration.html#cfn-fis-targetaccountconfiguration-experimenttemplateid""", alias="ExperimentTemplateId")
+    RoleArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fis-targetaccountconfiguration.html#cfn-fis-targetaccountconfiguration-rolearn""", alias="RoleArn")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.fis.TargetAccountConfiguration:
+        from troposphere.fis import TargetAccountConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.fis import TargetAccountConfiguration as TropoT
         return resource_to_troposphere(self, TropoT)
 

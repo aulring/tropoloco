@@ -267,6 +267,7 @@ class CustomLineItem(BaseModel):
     Properties:
         - Name: BillingPeriodRange
         - Name: Description
+        - Name: AccountId
         - Name: BillingGroupArn
         - Name: CustomLineItemChargeDetails
         - Name: Tags
@@ -276,13 +277,14 @@ class CustomLineItem(BaseModel):
         - Name: ProductCode
         - Name: CreationTime
         - Name: LastModifiedTime
-        - Name: Arn
         - Name: AssociationSize
+        - Name: Arn
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     BillingPeriodRange_: Optional['BillingPeriodRange'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-billingconductor-customlineitem.html#cfn-billingconductor-customlineitem-billingperiodrange""", alias="BillingPeriodRange")
     Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-billingconductor-customlineitem.html#cfn-billingconductor-customlineitem-description""", alias="Description")
+    AccountId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-billingconductor-customlineitem.html#cfn-billingconductor-customlineitem-accountid""", alias="AccountId")
     BillingGroupArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-billingconductor-customlineitem.html#cfn-billingconductor-customlineitem-billinggrouparn""", alias="BillingGroupArn")
     CustomLineItemChargeDetails_: Optional['CustomLineItemChargeDetails'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-billingconductor-customlineitem.html#cfn-billingconductor-customlineitem-customlineitemchargedetails""", alias="CustomLineItemChargeDetails")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-billingconductor-customlineitem.html#cfn-billingconductor-customlineitem-tags""", alias="Tags")

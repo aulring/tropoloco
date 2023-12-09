@@ -202,6 +202,27 @@ class CapacityProviderStrategyItem(BaseModel):
 
     
 
+class CloudwatchLogsLogDestination(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-cloudwatchlogslogdestination.html
+    Properties:
+        - Name: LogGroupArn
+    
+    """
+    
+    LogGroupArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-cloudwatchlogslogdestination.html#cfn-pipes-pipe-cloudwatchlogslogdestination-loggrouparn""", alias="LogGroupArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.pipes.CloudwatchLogsLogDestination:
+        from troposphere.pipes import CloudwatchLogsLogDestination as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class DeadLetterConfig(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-deadletterconfig.html
     Properties:
@@ -446,6 +467,27 @@ class FilterCriteria(BaseModel):
 
     
 
+class FirehoseLogDestination(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-firehoselogdestination.html
+    Properties:
+        - Name: DeliveryStreamArn
+    
+    """
+    
+    DeliveryStreamArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-firehoselogdestination.html#cfn-pipes-pipe-firehoselogdestination-deliverystreamarn""", alias="DeliveryStreamArn")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.pipes.FirehoseLogDestination:
+        from troposphere.pipes import FirehoseLogDestination as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class MQBrokerAccessCredentials(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-mqbrokeraccesscredentials.html
     Properties:
@@ -552,6 +594,35 @@ class PipeEnrichmentParameters(BaseModel):
     @property
     def tropo_type(self) -> troposphere.pipes.PipeEnrichmentParameters:
         from troposphere.pipes import PipeEnrichmentParameters as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class PipeLogConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-pipelogconfiguration.html
+    Properties:
+        - Name: FirehoseLogDestination
+        - Name: CloudwatchLogsLogDestination
+        - Name: IncludeExecutionData
+        - Name: S3LogDestination
+        - Name: Level
+    
+    """
+    
+    FirehoseLogDestination_: Optional['FirehoseLogDestination'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-pipelogconfiguration.html#cfn-pipes-pipe-pipelogconfiguration-firehoselogdestination""", alias="FirehoseLogDestination")
+    CloudwatchLogsLogDestination_: Optional['CloudwatchLogsLogDestination'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-pipelogconfiguration.html#cfn-pipes-pipe-pipelogconfiguration-cloudwatchlogslogdestination""", alias="CloudwatchLogsLogDestination")
+    IncludeExecutionData_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-pipelogconfiguration.html#cfn-pipes-pipe-pipelogconfiguration-includeexecutiondata""", alias="IncludeExecutionData")
+    S3LogDestination_: Optional['S3LogDestination'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-pipelogconfiguration.html#cfn-pipes-pipe-pipelogconfiguration-s3logdestination""", alias="S3LogDestination")
+    Level_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-pipelogconfiguration.html#cfn-pipes-pipe-pipelogconfiguration-level""", alias="Level")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.pipes.PipeLogConfiguration:
+        from troposphere.pipes import PipeLogConfiguration as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -1199,6 +1270,33 @@ class PlacementStrategy(BaseModel):
 
     
 
+class S3LogDestination(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-s3logdestination.html
+    Properties:
+        - Name: BucketName
+        - Name: OutputFormat
+        - Name: Prefix
+        - Name: BucketOwner
+    
+    """
+    
+    BucketName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-s3logdestination.html#cfn-pipes-pipe-s3logdestination-bucketname""", alias="BucketName")
+    OutputFormat_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-s3logdestination.html#cfn-pipes-pipe-s3logdestination-outputformat""", alias="OutputFormat")
+    Prefix_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-s3logdestination.html#cfn-pipes-pipe-s3logdestination-prefix""", alias="Prefix")
+    BucketOwner_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-s3logdestination.html#cfn-pipes-pipe-s3logdestination-bucketowner""", alias="BucketOwner")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.pipes.S3LogDestination:
+        from troposphere.pipes import S3LogDestination as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class SageMakerPipelineParameter(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-pipes-pipe-sagemakerpipelineparameter.html
     Properties:
@@ -1286,6 +1384,7 @@ class Pipe(BaseModel):
         - Name: Description
         - Name: DesiredState
         - Name: TargetParameters
+        - Name: LogConfiguration
         - Name: EnrichmentParameters
         - Name: RoleArn
         - Name: Source
@@ -1306,6 +1405,7 @@ class Pipe(BaseModel):
     Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pipes-pipe.html#cfn-pipes-pipe-description""", alias="Description")
     DesiredState_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pipes-pipe.html#cfn-pipes-pipe-desiredstate""", alias="DesiredState")
     TargetParameters_: Optional['PipeTargetParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pipes-pipe.html#cfn-pipes-pipe-targetparameters""", alias="TargetParameters")
+    LogConfiguration_: Optional['PipeLogConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pipes-pipe.html#cfn-pipes-pipe-logconfiguration""", alias="LogConfiguration")
     EnrichmentParameters_: Optional['PipeEnrichmentParameters'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pipes-pipe.html#cfn-pipes-pipe-enrichmentparameters""", alias="EnrichmentParameters")
     RoleArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pipes-pipe.html#cfn-pipes-pipe-rolearn""", alias="RoleArn")
     Source_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pipes-pipe.html#cfn-pipes-pipe-source""", alias="Source")

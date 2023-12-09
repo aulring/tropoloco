@@ -428,6 +428,81 @@ class ReportSetting(BaseModel):
 
     
 
+class RestoreTestingRecoveryPointSelection(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingplan-restoretestingrecoverypointselection.html
+    Properties:
+        - Name: SelectionWindowDays
+        - Name: RecoveryPointTypes
+        - Name: IncludeVaults
+        - Name: ExcludeVaults
+        - Name: Algorithm
+    
+    """
+    
+    SelectionWindowDays_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingplan-restoretestingrecoverypointselection.html#cfn-backup-restoretestingplan-restoretestingrecoverypointselection-selectionwindowdays""", alias="SelectionWindowDays")
+    RecoveryPointTypes_: List[str] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingplan-restoretestingrecoverypointselection.html#cfn-backup-restoretestingplan-restoretestingrecoverypointselection-recoverypointtypes""", alias="RecoveryPointTypes")
+    IncludeVaults_: List[str] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingplan-restoretestingrecoverypointselection.html#cfn-backup-restoretestingplan-restoretestingrecoverypointselection-includevaults""", alias="IncludeVaults")
+    ExcludeVaults_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingplan-restoretestingrecoverypointselection.html#cfn-backup-restoretestingplan-restoretestingrecoverypointselection-excludevaults""", alias="ExcludeVaults")
+    Algorithm_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingplan-restoretestingrecoverypointselection.html#cfn-backup-restoretestingplan-restoretestingrecoverypointselection-algorithm""", alias="Algorithm")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.backup.RestoreTestingRecoveryPointSelection:
+        from troposphere.backup import RestoreTestingRecoveryPointSelection as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class KeyValue(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-keyvalue.html
+    Properties:
+        - Name: Value
+        - Name: Key
+    
+    """
+    
+    Value_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-keyvalue.html#cfn-backup-restoretestingselection-keyvalue-value""", alias="Value")
+    Key_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-keyvalue.html#cfn-backup-restoretestingselection-keyvalue-key""", alias="Key")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.backup.KeyValue:
+        from troposphere.backup import KeyValue as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class ProtectedResourceConditions(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-protectedresourceconditions.html
+    Properties:
+        - Name: StringEquals
+        - Name: StringNotEquals
+    
+    """
+    
+    StringEquals_: Optional[List['KeyValue']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-protectedresourceconditions.html#cfn-backup-restoretestingselection-protectedresourceconditions-stringequals""", alias="StringEquals")
+    StringNotEquals_: Optional[List['KeyValue']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-restoretestingselection-protectedresourceconditions.html#cfn-backup-restoretestingselection-protectedresourceconditions-stringnotequals""", alias="StringNotEquals")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.backup.ProtectedResourceConditions:
+        from troposphere.backup import ProtectedResourceConditions as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 
 ######################################################################
 # AWS Resource
@@ -577,5 +652,71 @@ class ReportPlan(BaseModel):
 
     def to_troposphere(self):
         from troposphere.backup import ReportPlan as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class RestoreTestingPlan(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingplan.html
+    Properties:
+        - Name: ScheduleExpression
+        - Name: StartWindowHours
+        - Name: RecoveryPointSelection
+        - Name: RestoreTestingPlanName
+        - Name: ScheduleExpressionTimezone
+        - Name: Tags
+    Attributes:
+        - Name: RestoreTestingPlanArn
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    ScheduleExpression_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingplan.html#cfn-backup-restoretestingplan-scheduleexpression""", alias="ScheduleExpression")
+    StartWindowHours_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingplan.html#cfn-backup-restoretestingplan-startwindowhours""", alias="StartWindowHours")
+    RecoveryPointSelection_: 'RestoreTestingRecoveryPointSelection' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingplan.html#cfn-backup-restoretestingplan-recoverypointselection""", alias="RecoveryPointSelection")
+    RestoreTestingPlanName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingplan.html#cfn-backup-restoretestingplan-restoretestingplanname""", alias="RestoreTestingPlanName")
+    ScheduleExpressionTimezone_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingplan.html#cfn-backup-restoretestingplan-scheduleexpressiontimezone""", alias="ScheduleExpressionTimezone")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingplan.html#cfn-backup-restoretestingplan-tags""", alias="Tags")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.backup.RestoreTestingPlan:
+        from troposphere.backup import RestoreTestingPlan as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.backup import RestoreTestingPlan as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class RestoreTestingSelection(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html
+    Properties:
+        - Name: ProtectedResourceConditions
+        - Name: ProtectedResourceType
+        - Name: RestoreMetadataOverrides
+        - Name: RestoreTestingSelectionName
+        - Name: ProtectedResourceArns
+        - Name: RestoreTestingPlanName
+        - Name: IamRoleArn
+        - Name: ValidationWindowHours
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    ProtectedResourceConditions_: Optional['ProtectedResourceConditions'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-protectedresourceconditions""", alias="ProtectedResourceConditions")
+    ProtectedResourceType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-protectedresourcetype""", alias="ProtectedResourceType")
+    RestoreMetadataOverrides_: Optional[Dict[str, str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-restoremetadataoverrides""", alias="RestoreMetadataOverrides")
+    RestoreTestingSelectionName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-restoretestingselectionname""", alias="RestoreTestingSelectionName")
+    ProtectedResourceArns_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-protectedresourcearns""", alias="ProtectedResourceArns")
+    RestoreTestingPlanName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-restoretestingplanname""", alias="RestoreTestingPlanName")
+    IamRoleArn_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-iamrolearn""", alias="IamRoleArn")
+    ValidationWindowHours_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-restoretestingselection.html#cfn-backup-restoretestingselection-validationwindowhours""", alias="ValidationWindowHours")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.backup.RestoreTestingSelection:
+        from troposphere.backup import RestoreTestingSelection as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.backup import RestoreTestingSelection as TropoT
         return resource_to_troposphere(self, TropoT)
 

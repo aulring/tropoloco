@@ -234,6 +234,7 @@ class NodeConfiguration(BaseModel):
 class Accessor(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-managedblockchain-accessor.html
     Properties:
+        - Name: NetworkType
         - Name: Tags
         - Name: AccessorType
     Attributes:
@@ -245,6 +246,7 @@ class Accessor(BaseModel):
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
+    NetworkType_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-managedblockchain-accessor.html#cfn-managedblockchain-accessor-networktype""", alias="NetworkType")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-managedblockchain-accessor.html#cfn-managedblockchain-accessor-tags""", alias="Tags")
     AccessorType_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-managedblockchain-accessor.html#cfn-managedblockchain-accessor-accessortype""", alias="AccessorType")
     

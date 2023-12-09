@@ -260,6 +260,54 @@ class RecordingGroup(BaseModel):
 
     
 
+class RecordingMode(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-config-configurationrecorder-recordingmode.html
+    Properties:
+        - Name: RecordingFrequency
+        - Name: RecordingModeOverrides
+    
+    """
+    
+    RecordingFrequency_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-config-configurationrecorder-recordingmode.html#cfn-config-configurationrecorder-recordingmode-recordingfrequency""", alias="RecordingFrequency")
+    RecordingModeOverrides_: Optional[List['RecordingModeOverride']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-config-configurationrecorder-recordingmode.html#cfn-config-configurationrecorder-recordingmode-recordingmodeoverrides""", alias="RecordingModeOverrides")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.config.RecordingMode:
+        from troposphere.config import RecordingMode as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class RecordingModeOverride(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-config-configurationrecorder-recordingmodeoverride.html
+    Properties:
+        - Name: Description
+        - Name: RecordingFrequency
+        - Name: ResourceTypes
+    
+    """
+    
+    Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-config-configurationrecorder-recordingmodeoverride.html#cfn-config-configurationrecorder-recordingmodeoverride-description""", alias="Description")
+    RecordingFrequency_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-config-configurationrecorder-recordingmodeoverride.html#cfn-config-configurationrecorder-recordingmodeoverride-recordingfrequency""", alias="RecordingFrequency")
+    ResourceTypes_: List[str] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-config-configurationrecorder-recordingmodeoverride.html#cfn-config-configurationrecorder-recordingmodeoverride-resourcetypes""", alias="ResourceTypes")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.config.RecordingModeOverride:
+        from troposphere.config import RecordingModeOverride as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class RecordingStrategy(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-config-configurationrecorder-recordingstrategy.html
     Properties:
@@ -696,12 +744,14 @@ class ConfigurationRecorder(BaseModel):
     Properties:
         - Name: Name
         - Name: RecordingGroup
+        - Name: RecordingMode
         - Name: RoleARN
     """
     
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     Name_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configurationrecorder.html#cfn-config-configurationrecorder-name""", alias="Name")
     RecordingGroup_: Optional['RecordingGroup'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configurationrecorder.html#cfn-config-configurationrecorder-recordinggroup""", alias="RecordingGroup")
+    RecordingMode_: Optional['RecordingMode'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configurationrecorder.html#cfn-config-configurationrecorder-recordingmode""", alias="RecordingMode")
     RoleARN_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configurationrecorder.html#cfn-config-configurationrecorder-rolearn""", alias="RoleARN")
     
 

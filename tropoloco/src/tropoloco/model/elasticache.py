@@ -300,6 +300,96 @@ class NodeGroupConfiguration(BaseModel):
 
     
 
+class CacheUsageLimits(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-cacheusagelimits.html
+    Properties:
+        - Name: DataStorage
+        - Name: ECPUPerSecond
+    
+    """
+    
+    DataStorage_: Optional['DataStorage'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-cacheusagelimits.html#cfn-elasticache-serverlesscache-cacheusagelimits-datastorage""", alias="DataStorage")
+    ECPUPerSecond_: Optional['ECPUPerSecond'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-cacheusagelimits.html#cfn-elasticache-serverlesscache-cacheusagelimits-ecpupersecond""", alias="ECPUPerSecond")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.elasticache.CacheUsageLimits:
+        from troposphere.elasticache import CacheUsageLimits as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class DataStorage(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-datastorage.html
+    Properties:
+        - Name: Maximum
+        - Name: Unit
+    
+    """
+    
+    Maximum_: int =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-datastorage.html#cfn-elasticache-serverlesscache-datastorage-maximum""", alias="Maximum")
+    Unit_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-datastorage.html#cfn-elasticache-serverlesscache-datastorage-unit""", alias="Unit")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.elasticache.DataStorage:
+        from troposphere.elasticache import DataStorage as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class ECPUPerSecond(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-ecpupersecond.html
+    Properties:
+        - Name: Maximum
+    
+    """
+    
+    Maximum_: int =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-ecpupersecond.html#cfn-elasticache-serverlesscache-ecpupersecond-maximum""", alias="Maximum")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.elasticache.ECPUPerSecond:
+        from troposphere.elasticache import ECPUPerSecond as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class Endpoint(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-endpoint.html
+    Properties:
+        - Name: Address
+        - Name: Port
+    
+    """
+    
+    Address_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-endpoint.html#cfn-elasticache-serverlesscache-endpoint-address""", alias="Address")
+    Port_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-serverlesscache-endpoint.html#cfn-elasticache-serverlesscache-endpoint-port""", alias="Port")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.elasticache.Endpoint:
+        from troposphere.elasticache import Endpoint as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class AuthenticationMode(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-user-authenticationmode.html
     Properties:
@@ -617,6 +707,63 @@ class SecurityGroupIngress(BaseModel):
 
     def to_troposphere(self):
         from troposphere.elasticache import SecurityGroupIngress as TropoT
+        return resource_to_troposphere(self, TropoT)
+
+
+class ServerlessCache(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html
+    Properties:
+        - Name: Description
+        - Name: KmsKeyId
+        - Name: FinalSnapshotName
+        - Name: UserGroupId
+        - Name: CacheUsageLimits
+        - Name: SecurityGroupIds
+        - Name: SnapshotArnsToRestore
+        - Name: SubnetIds
+        - Name: DailySnapshotTime
+        - Name: SnapshotRetentionLimit
+        - Name: ServerlessCacheName
+        - Name: MajorEngineVersion
+        - Name: Engine
+        - Name: Tags
+    Attributes:
+        - Name: Status
+        - Name: Endpoint.Address
+        - Name: FullEngineVersion
+        - Name: Endpoint
+        - Name: ReaderEndpoint.Address
+        - Name: CreateTime
+        - Name: ReaderEndpoint.Port
+        - Name: Endpoint.Port
+        - Name: ARN
+        - Name: ReaderEndpoint
+    """
+    
+    title: str = Field(description="Title of cloudformation resource.", alias="title")
+    Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-description""", alias="Description")
+    KmsKeyId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-kmskeyid""", alias="KmsKeyId")
+    FinalSnapshotName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-finalsnapshotname""", alias="FinalSnapshotName")
+    UserGroupId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-usergroupid""", alias="UserGroupId")
+    CacheUsageLimits_: Optional['CacheUsageLimits'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-cacheusagelimits""", alias="CacheUsageLimits")
+    SecurityGroupIds_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-securitygroupids""", alias="SecurityGroupIds")
+    SnapshotArnsToRestore_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-snapshotarnstorestore""", alias="SnapshotArnsToRestore")
+    SubnetIds_: Optional[List[str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-subnetids""", alias="SubnetIds")
+    DailySnapshotTime_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-dailysnapshottime""", alias="DailySnapshotTime")
+    SnapshotRetentionLimit_: Optional[int] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-snapshotretentionlimit""", alias="SnapshotRetentionLimit")
+    ServerlessCacheName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-serverlesscachename""", alias="ServerlessCacheName")
+    MajorEngineVersion_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-majorengineversion""", alias="MajorEngineVersion")
+    Engine_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-engine""", alias="Engine")
+    Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-serverlesscache.html#cfn-elasticache-serverlesscache-tags""", alias="Tags")
+    
+
+    @property
+    def tropo_type(self) -> troposphere.elasticache.ServerlessCache:
+        from troposphere.elasticache import ServerlessCache as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        from troposphere.elasticache import ServerlessCache as TropoT
         return resource_to_troposphere(self, TropoT)
 
 

@@ -154,16 +154,39 @@ class ElasticFileSystemTag(BaseModel):
 
     
 
+class FileSystemProtection(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-efs-filesystem-filesystemprotection.html
+    Properties:
+        - Name: ReplicationOverwriteProtection
+    
+    """
+    
+    ReplicationOverwriteProtection_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-efs-filesystem-filesystemprotection.html#cfn-efs-filesystem-filesystemprotection-replicationoverwriteprotection""", alias="ReplicationOverwriteProtection")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.efs.FileSystemProtection:
+        from troposphere.efs import FileSystemProtection as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class LifecyclePolicy(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-efs-filesystem-lifecyclepolicy.html
     Properties:
         - Name: TransitionToIA
         - Name: TransitionToPrimaryStorageClass
+        - Name: TransitionToArchive
     
     """
     
     TransitionToIA_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-efs-filesystem-lifecyclepolicy.html#cfn-efs-filesystem-lifecyclepolicy-transitiontoia""", alias="TransitionToIA")
     TransitionToPrimaryStorageClass_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-efs-filesystem-lifecyclepolicy.html#cfn-efs-filesystem-lifecyclepolicy-transitiontoprimarystorageclass""", alias="TransitionToPrimaryStorageClass")
+    TransitionToArchive_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-efs-filesystem-lifecyclepolicy.html#cfn-efs-filesystem-lifecyclepolicy-transitiontoarchive""", alias="TransitionToArchive")
     
 
 
@@ -269,12 +292,13 @@ class FileSystem(BaseModel):
         - Name: PerformanceMode
         - Name: Encrypted
         - Name: BypassPolicyLockoutSafetyCheck
+        - Name: FileSystemProtection
+        - Name: LifecyclePolicies
+        - Name: ThroughputMode
         - Name: FileSystemTags
         - Name: ProvisionedThroughputInMibps
         - Name: FileSystemPolicy
         - Name: AvailabilityZoneName
-        - Name: LifecyclePolicies
-        - Name: ThroughputMode
         - Name: ReplicationConfiguration
         - Name: BackupPolicy
     Attributes:
@@ -287,12 +311,13 @@ class FileSystem(BaseModel):
     PerformanceMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-performancemode""", alias="PerformanceMode")
     Encrypted_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-encrypted""", alias="Encrypted")
     BypassPolicyLockoutSafetyCheck_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-bypasspolicylockoutsafetycheck""", alias="BypassPolicyLockoutSafetyCheck")
+    FileSystemProtection_: Optional['FileSystemProtection'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-filesystemprotection""", alias="FileSystemProtection")
+    LifecyclePolicies_: Optional[List['LifecyclePolicy']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-lifecyclepolicies""", alias="LifecyclePolicies")
+    ThroughputMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-throughputmode""", alias="ThroughputMode")
     FileSystemTags_: Optional[List['ElasticFileSystemTag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-filesystemtags""", alias="FileSystemTags")
     ProvisionedThroughputInMibps_: Optional[float] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-provisionedthroughputinmibps""", alias="ProvisionedThroughputInMibps")
     FileSystemPolicy_: Optional[Dict] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-filesystempolicy""", alias="FileSystemPolicy")
     AvailabilityZoneName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-availabilityzonename""", alias="AvailabilityZoneName")
-    LifecyclePolicies_: Optional[List['LifecyclePolicy']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-lifecyclepolicies""", alias="LifecyclePolicies")
-    ThroughputMode_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-throughputmode""", alias="ThroughputMode")
     ReplicationConfiguration_: Optional['ReplicationConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-replicationconfiguration""", alias="ReplicationConfiguration")
     BackupPolicy_: Optional['BackupPolicy'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-backuppolicy""", alias="BackupPolicy")
     

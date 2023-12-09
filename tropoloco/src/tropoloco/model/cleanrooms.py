@@ -114,18 +114,62 @@ class MemberSpecification(BaseModel):
         - Name: AccountId
         - Name: DisplayName
         - Name: MemberAbilities
+        - Name: PaymentConfiguration
     
     """
     
     AccountId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-memberspecification.html#cfn-cleanrooms-collaboration-memberspecification-accountid""", alias="AccountId")
     DisplayName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-memberspecification.html#cfn-cleanrooms-collaboration-memberspecification-displayname""", alias="DisplayName")
     MemberAbilities_: List[str] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-memberspecification.html#cfn-cleanrooms-collaboration-memberspecification-memberabilities""", alias="MemberAbilities")
+    PaymentConfiguration_: Optional['PaymentConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-memberspecification.html#cfn-cleanrooms-collaboration-memberspecification-paymentconfiguration""", alias="PaymentConfiguration")
     
 
 
     @property
     def tropo_type(self) -> troposphere.cleanrooms.MemberSpecification:
         from troposphere.cleanrooms import MemberSpecification as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class PaymentConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-paymentconfiguration.html
+    Properties:
+        - Name: QueryCompute
+    
+    """
+    
+    QueryCompute_: 'QueryComputePaymentConfig' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-paymentconfiguration.html#cfn-cleanrooms-collaboration-paymentconfiguration-querycompute""", alias="QueryCompute")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.cleanrooms.PaymentConfiguration:
+        from troposphere.cleanrooms import PaymentConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class QueryComputePaymentConfig(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-querycomputepaymentconfig.html
+    Properties:
+        - Name: IsResponsible
+    
+    """
+    
+    IsResponsible_: bool =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-collaboration-querycomputepaymentconfig.html#cfn-cleanrooms-collaboration-querycomputepaymentconfig-isresponsible""", alias="IsResponsible")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.cleanrooms.QueryComputePaymentConfig:
+        from troposphere.cleanrooms import QueryComputePaymentConfig as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -375,6 +419,27 @@ class TableReference(BaseModel):
 
     
 
+class MembershipPaymentConfiguration(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershippaymentconfiguration.html
+    Properties:
+        - Name: QueryCompute
+    
+    """
+    
+    QueryCompute_: 'MembershipQueryComputePaymentConfig' =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershippaymentconfiguration.html#cfn-cleanrooms-membership-membershippaymentconfiguration-querycompute""", alias="QueryCompute")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.cleanrooms.MembershipPaymentConfiguration:
+        from troposphere.cleanrooms import MembershipPaymentConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class MembershipProtectedQueryOutputConfiguration(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershipprotectedqueryoutputconfiguration.html
     Properties:
@@ -412,6 +477,27 @@ class MembershipProtectedQueryResultConfiguration(BaseModel):
     @property
     def tropo_type(self) -> troposphere.cleanrooms.MembershipProtectedQueryResultConfiguration:
         from troposphere.cleanrooms import MembershipProtectedQueryResultConfiguration as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
+class MembershipQueryComputePaymentConfig(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershipquerycomputepaymentconfig.html
+    Properties:
+        - Name: IsResponsible
+    
+    """
+    
+    IsResponsible_: bool =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-membershipquerycomputepaymentconfig.html#cfn-cleanrooms-membership-membershipquerycomputepaymentconfig-isresponsible""", alias="IsResponsible")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.cleanrooms.MembershipQueryComputePaymentConfig:
+        from troposphere.cleanrooms import MembershipQueryComputePaymentConfig as TropoT
         return TropoT
 
     def to_troposphere(self):
@@ -497,6 +583,7 @@ class Collaboration(BaseModel):
         - Name: CreatorMemberAbilities
         - Name: Description
         - Name: QueryLogStatus
+        - Name: CreatorPaymentConfiguration
         - Name: DataEncryptionMetadata
         - Name: Tags
         - Name: Members
@@ -511,6 +598,7 @@ class Collaboration(BaseModel):
     CreatorMemberAbilities_: List[str] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-creatormemberabilities""", alias="CreatorMemberAbilities")
     Description_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-description""", alias="Description")
     QueryLogStatus_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-querylogstatus""", alias="QueryLogStatus")
+    CreatorPaymentConfiguration_: Optional['PaymentConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-creatorpaymentconfiguration""", alias="CreatorPaymentConfiguration")
     DataEncryptionMetadata_: Optional['DataEncryptionMetadata'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-dataencryptionmetadata""", alias="DataEncryptionMetadata")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-tags""", alias="Tags")
     Members_: List['MemberSpecification'] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html#cfn-cleanrooms-collaboration-members""", alias="Members")
@@ -602,6 +690,7 @@ class Membership(BaseModel):
         - Name: DefaultResultConfiguration
         - Name: QueryLogStatus
         - Name: Tags
+        - Name: PaymentConfiguration
     Attributes:
         - Name: MembershipIdentifier
         - Name: Arn
@@ -614,6 +703,7 @@ class Membership(BaseModel):
     DefaultResultConfiguration_: Optional['MembershipProtectedQueryResultConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-membership.html#cfn-cleanrooms-membership-defaultresultconfiguration""", alias="DefaultResultConfiguration")
     QueryLogStatus_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-membership.html#cfn-cleanrooms-membership-querylogstatus""", alias="QueryLogStatus")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-membership.html#cfn-cleanrooms-membership-tags""", alias="Tags")
+    PaymentConfiguration_: Optional['MembershipPaymentConfiguration'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-membership.html#cfn-cleanrooms-membership-paymentconfiguration""", alias="PaymentConfiguration")
     
 
     @property

@@ -14,6 +14,27 @@ from tropoloco import resource_to_troposphere, property_to_troposphere
 
 
 
+class CompositeComponentType(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-componenttype-compositecomponenttype.html
+    Properties:
+        - Name: ComponentTypeId
+    
+    """
+    
+    ComponentTypeId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-componenttype-compositecomponenttype.html#cfn-iottwinmaker-componenttype-compositecomponenttype-componenttypeid""", alias="ComponentTypeId")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.iottwinmaker.CompositeComponentType:
+        from troposphere.iottwinmaker import CompositeComponentType as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class DataConnector(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-componenttype-dataconnector.html
     Properties:
@@ -330,6 +351,39 @@ class Component(BaseModel):
 
     
 
+class CompositeComponent(BaseModel):
+    """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-entity-compositecomponent.html
+    Properties:
+        - Name: Status
+        - Name: ComponentPath
+        - Name: Description
+        - Name: PropertyGroups
+        - Name: ComponentTypeId
+        - Name: ComponentName
+        - Name: Properties
+    
+    """
+    
+    Status_: Optional['Status'] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-entity-compositecomponent.html#cfn-iottwinmaker-entity-compositecomponent-status""", alias="Status")
+    ComponentPath_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-entity-compositecomponent.html#cfn-iottwinmaker-entity-compositecomponent-componentpath""", alias="ComponentPath")
+    Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-entity-compositecomponent.html#cfn-iottwinmaker-entity-compositecomponent-description""", alias="Description")
+    PropertyGroups_: Optional[Dict[str, 'PropertyGroup']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-entity-compositecomponent.html#cfn-iottwinmaker-entity-compositecomponent-propertygroups""", alias="PropertyGroups")
+    ComponentTypeId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-entity-compositecomponent.html#cfn-iottwinmaker-entity-compositecomponent-componenttypeid""", alias="ComponentTypeId")
+    ComponentName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-entity-compositecomponent.html#cfn-iottwinmaker-entity-compositecomponent-componentname""", alias="ComponentName")
+    Properties_: Optional[Dict[str, 'Property']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-entity-compositecomponent.html#cfn-iottwinmaker-entity-compositecomponent-properties""", alias="Properties")
+    
+
+
+    @property
+    def tropo_type(self) -> troposphere.iottwinmaker.CompositeComponent:
+        from troposphere.iottwinmaker import CompositeComponent as TropoT
+        return TropoT
+
+    def to_troposphere(self):
+        property_to_troposphere(self)
+
+    
+
 class DataType(BaseModel):
     """http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iottwinmaker-entity-datatype.html
     Properties:
@@ -590,6 +644,7 @@ class ComponentType(BaseModel):
         - Name: WorkspaceId
         - Name: ComponentTypeId
         - Name: Functions
+        - Name: CompositeComponentTypes
         - Name: Tags
     Attributes:
         - Name: Status
@@ -613,6 +668,7 @@ class ComponentType(BaseModel):
     WorkspaceId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-componenttype.html#cfn-iottwinmaker-componenttype-workspaceid""", alias="WorkspaceId")
     ComponentTypeId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-componenttype.html#cfn-iottwinmaker-componenttype-componenttypeid""", alias="ComponentTypeId")
     Functions_: Optional[Dict[str, 'Function']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-componenttype.html#cfn-iottwinmaker-componenttype-functions""", alias="Functions")
+    CompositeComponentTypes_: Optional[Dict[str, 'CompositeComponentType']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-componenttype.html#cfn-iottwinmaker-componenttype-compositecomponenttypes""", alias="CompositeComponentTypes")
     Tags_: Optional[Dict[str, str]] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-componenttype.html#cfn-iottwinmaker-componenttype-tags""", alias="Tags")
     
 
@@ -632,6 +688,7 @@ class Entity(BaseModel):
         - Name: EntityId
         - Name: Components
         - Name: ParentEntityId
+        - Name: CompositeComponents
         - Name: Description
         - Name: EntityName
         - Name: WorkspaceId
@@ -639,12 +696,10 @@ class Entity(BaseModel):
     Attributes:
         - Name: Status
         - Name: CreationDateTime
-        - Name: Status.Error.Message
         - Name: HasChildEntities
         - Name: Status.State
         - Name: Status.Error
         - Name: UpdateDateTime
-        - Name: Status.Error.Code
         - Name: Arn
     """
     
@@ -652,6 +707,7 @@ class Entity(BaseModel):
     EntityId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-entity.html#cfn-iottwinmaker-entity-entityid""", alias="EntityId")
     Components_: Optional[Dict[str, 'Component']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-entity.html#cfn-iottwinmaker-entity-components""", alias="Components")
     ParentEntityId_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-entity.html#cfn-iottwinmaker-entity-parententityid""", alias="ParentEntityId")
+    CompositeComponents_: Optional[Dict[str, 'CompositeComponent']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-entity.html#cfn-iottwinmaker-entity-compositecomponents""", alias="CompositeComponents")
     Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-entity.html#cfn-iottwinmaker-entity-description""", alias="Description")
     EntityName_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-entity.html#cfn-iottwinmaker-entity-entityname""", alias="EntityName")
     WorkspaceId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iottwinmaker-entity.html#cfn-iottwinmaker-entity-workspaceid""", alias="WorkspaceId")

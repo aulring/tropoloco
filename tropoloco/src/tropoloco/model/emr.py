@@ -1561,10 +1561,13 @@ class Studio(BaseModel):
     Properties:
         - Name: WorkspaceSecurityGroupId
         - Name: Description
+        - Name: EncryptionKeyArn
         - Name: DefaultS3Location
         - Name: SubnetIds
         - Name: IdpAuthUrl
+        - Name: TrustedIdentityPropagationEnabled
         - Name: Name
+        - Name: IdcUserAssignment
         - Name: ServiceRole
         - Name: VpcId
         - Name: EngineSecurityGroupId
@@ -1572,6 +1575,7 @@ class Studio(BaseModel):
         - Name: IdpRelayStateParameterName
         - Name: AuthMode
         - Name: Tags
+        - Name: IdcInstanceArn
     Attributes:
         - Name: Arn
         - Name: StudioId
@@ -1581,10 +1585,13 @@ class Studio(BaseModel):
     title: str = Field(description="Title of cloudformation resource.", alias="title")
     WorkspaceSecurityGroupId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-workspacesecuritygroupid""", alias="WorkspaceSecurityGroupId")
     Description_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-description""", alias="Description")
+    EncryptionKeyArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-encryptionkeyarn""", alias="EncryptionKeyArn")
     DefaultS3Location_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-defaults3location""", alias="DefaultS3Location")
     SubnetIds_: List[str] =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-subnetids""", alias="SubnetIds")
     IdpAuthUrl_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-idpauthurl""", alias="IdpAuthUrl")
+    TrustedIdentityPropagationEnabled_: Optional[bool] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-trustedidentitypropagationenabled""", alias="TrustedIdentityPropagationEnabled")
     Name_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-name""", alias="Name")
+    IdcUserAssignment_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-idcuserassignment""", alias="IdcUserAssignment")
     ServiceRole_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-servicerole""", alias="ServiceRole")
     VpcId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-vpcid""", alias="VpcId")
     EngineSecurityGroupId_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-enginesecuritygroupid""", alias="EngineSecurityGroupId")
@@ -1592,6 +1599,7 @@ class Studio(BaseModel):
     IdpRelayStateParameterName_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-idprelaystateparametername""", alias="IdpRelayStateParameterName")
     AuthMode_: str =  Field(description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-authmode""", alias="AuthMode")
     Tags_: Optional[List['Tag']] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-tags""", alias="Tags")
+    IdcInstanceArn_: Optional[str] = Field(None, description="""http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-studio.html#cfn-emr-studio-idcinstancearn""", alias="IdcInstanceArn")
     
 
     @property
